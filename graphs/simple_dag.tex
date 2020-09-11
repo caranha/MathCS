@@ -1,0 +1,12 @@
+\begin{tikzpicture}[scale=.8,auto,swap]
+  \tikzset{edge/.style = {->,>=latex'}}
+  \node[vertex] (a) at (0,0) {a};
+  \node[vertex] (b) at (2,3) {b};
+  \node[vertex] (c) at (4,2) {c};
+    \node[vertex] (d) at (4,0) {d};
+    \draw[edge] (a) to (b);
+    \draw[edge] (a) to (c);
+    \draw[edge] (c) to (b);
+    \draw[edge] (d) to (c);
+    \draw[edge] (d) to (a);
+\end{tikzpicture}
