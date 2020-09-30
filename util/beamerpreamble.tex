@@ -3,6 +3,7 @@
 \usepackage{graphicx}
 \usepackage{url}
 \usepackage{color}
+\usepackage{pagenote}[continuous,page]
 \usepackage{relsize}		% For \smaller
 \usepackage{url}			% For \url
 \usepackage{epstopdf}	% Included EPS files automatically converted to PDF to include with pdflatex
@@ -129,23 +130,23 @@
 %\addheadboxtemplate{\color{black}}{
 %\hskip0.5cm
 %\color{white}
-%\insertshortauthor \ \ \ \ 
-%\insertframenumber \ \ \ \ \ \ \ 
+%\insertshortauthor \ \ \ \
+%\insertframenumber \ \ \ \ \ \ \
 %\insertsection \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  \insertsubsection
 %\hskip0.5cm}
 %\addheadboxtemplate{\color{black}}{
 %\color{white}
-%\ \ \ \ 
+%\ \ \ \
 %\insertsection
 %}
 %\addheadboxtemplate{\color{black}}{
 %\color{white}
-%\ \ \ \ 
+%\ \ \ \
 %\insertsubsection
 %}
 
 % Insert frame number at bottom of the page.
-% \usefoottemplate{\hfil\tiny{\color{black!90}\insertframenumber}} 
+% \usefoottemplate{\hfil\tiny{\color{black!90}\insertframenumber}}
 
 \usepackage[english]{babel}
 \usepackage[latin1]{inputenc}
@@ -153,3 +154,8 @@
 
 \usepackage{times}
 \usepackage[T1]{fontenc}
+
+%% makes the ppagenote command for figure references at the end.
+\makepagenote
+\renewcommand{\notenumintext}[1]{}
+\newcommand{\ppagenote}[1]{\pagenote[Page \insertframenumber]{#1}}

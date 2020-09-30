@@ -1,0 +1,108 @@
+\section{Intro to Proofs}
+
+\frame{\tableofcontents[currentsection,hideallsubsections, firstsection=2, sections={2-5}]}
+
+\subsection{What is a Proof?}
+
+\begin{frame}
+  \frametitle{What is a proof?}
+
+  \begin{center}
+    \includegraphics[width=0.4\textwidth]{../img/pythagorean_theorem}
+  \end{center}
+  \begin{itemize}
+  \item Proofs are used to show \structure{how you know} something
+  \item Proofs are not obvious (more than 100 proofs for pythagoras)
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Why are proofs important for Computer Sciences?}
+
+  The techniques and ides of proofs can be used for \alert{debugging}.
+
+  \begin{block}{This program outputs the type of triangle}
+\begin{verbatim}
+int triangle_type(int a, int b, int c)
+  if (a == b)
+    if (b == c)
+      return "all sides are equal";
+    else
+      return "two sides are equal";
+  else if (b == c)
+    return "two sides are equal";
+  else
+    return "all sides are different";
+\end{verbatim}
+  \end{block}
+
+  \begin{itemize}
+  \item Is this program correct or incorrect?
+  \item How can you show it with \structure{confidence}?
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{What is a Proof?}
+
+  \begin{itemize}
+  \item \structure{A proposition} is a statement that can be
+    \structure{True} or \alert{False}.
+    \begin{itemize}
+    \item This room has 40 chairs.
+    \item Every intelligent being feels pain.
+    \item Please say your name.
+    \item $513 \times 435 = 223165$
+    \item Every even integer greater than 2 is the sum of two primes.
+    \item It is raining now.
+    \end{itemize}
+
+    \bigskip
+
+  \item A \structure{proof} is a method of proving the truth or falsehood of a proposition.
+    \begin{itemize}
+    \item \structure{mathematical proofs} normally use logical steps
+      to show the truth of a mathematical proposition.
+    \end{itemize}
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Proof Examples}
+  \begin{itemize}
+  \item Pitagoras by pictures
+  \item Getting rich with triangles
+  \item 1 == -1
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Morals of Proofs}
+  \begin{itemize}
+  \item Make sure that you are applying the rules properly.
+  \item \structure{Mindless calculation} does not replace \structure{understanding}.
+  \end{itemize}
+\end{frame}
+
+
+\subsection{Proof Terms}
+\begin{frame}
+  \frametitle{Common Terms used in Proofs}
+  \begin{itemize}
+  \item \structure{Proposition}:\\
+    \only<2>{A statement that is either true or false}
+  \item \structure{Predicate}:\\
+    \only<2>{A preposition that depends on variables}
+  \item \structure{Axiom}:\\
+    \only<2>{A preposition that is accepted to be true}
+  \item \structure{Proof}:\\
+    \only<2>{A sequence of axioms and proved statements that conclude with the proposition of interest}
+  \item \structure{Theorem}:\\
+    \only<2>{An important true proposition}
+  \item \structure{Lemma}:\\
+    \only<2>{A simpler proposition that is useful to prove later propositions}
+  \item \structure{Corollary}:\\
+    \only<2>{A proposition that follows from a theorem in a few logical steps}
+  \end{itemize}
+\end{frame}

@@ -1,0 +1,289 @@
+\section{Logical Formulas}
+
+\frame{\tableofcontents[currentsection,hideallsubsections, firstsection=2, sections={2-5}]}
+
+\begin{frame}
+  \begin{center}
+    Propositions and Logic
+  \end{center}
+\end{frame}
+
+\subsection{Ambiguous Language}
+\begin{frame}
+  \frametitle{Why Mathematical Language?}
+
+  \begin{itemize}
+  \item Greeks carry swords or javelins.
+
+    \bigskip
+
+  \item Greeks carry bronze or copper swords.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Mathematical Language}
+  \begin{itemize}
+  \item Mathematical Language helps create non-ambiguous statements.
+    \bigskip
+
+  \item We will not through all Logic operators here.
+    \bigskip
+
+  \item However, it is important to understand that they are based on
+    \structure{binary} or \structure{boolean} logic.
+  \end{itemize}
+\end{frame}
+
+%% Question -- Should I add slides on binary mathematical operations?
+%% How do I segue into this topic?
+
+\subsection{Truth Tables}
+\begin{frame}
+  \frametitle{Mathematical Language / Binary Logic}
+
+  Example: X \structure{XOR} Y
+
+  \bigskip
+
+  \begin{tabular}{ll|l}
+    X & Y & X XOR Y\\
+    \hline
+    TRUE & TRUE & FALSE\\
+    TRUE & FALSE & TRUE\\
+    FALSE & TRUE & TRUE\\
+    FALSE & FALSE & FALSE\\
+  \end{tabular}
+
+  \bigskip
+
+  \begin{itemize}
+  \item A \structure{Truth Table} is a way to understand a logic
+    operator.
+  \item We can use logic operators to transform \alert{ambiguous natural
+    language sentences} into \structure{clear logical propositions.}
+    \begin{itemize}
+    \item Greeks carry bronze or copper swords.
+    \item Greek carry bronze sword XOR greek carry copper sword.
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Binary Logic and Truth Tables}
+
+  The \structure{truth table} allows us to analyze a logical formula:
+
+  \bigskip
+
+  \begin{itemize}
+  \item Is it always true? Is it always false?
+  \item Is it equivalent to another logical formula?
+  \end{itemize}
+
+  To analyze a formula using the truth table, I need to analyse the
+  value of each variable.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Evaluation of a Formula}
+
+  Given the following variables:\\ P = \structure{True}, Q = \structure{True}, R = \alert{False}
+
+  \vfill
+
+  How do we \structure{evaluate} the following formula?
+  \begin{center}
+    NOT(NOT(P) OR Q) AND (R OR (P XOR Q))
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Comparison of Two Formulas}
+
+  We can decide whether two logical formulas are
+  \structure{equivalent} if the final column of their truth table is
+  identical.
+
+  \vfill
+
+  For example, let's prove DeMorgan's Law:
+  \begin{center}
+    NOT(P OR Q) \structure{equiv to} NOT(P) AND NOT(Q)
+  \end{center}
+\end{frame}
+
+\subsection{Satisfiability}
+
+\begin{frame}
+  \frametitle{Satisfiability and Validity}
+
+  \begin{itemize}
+  \item A logic formula is \structure{satisfiable} if it is true for
+    \alert{at least one} assignment.
+  \item A logic formula is \structure{valid} if it is true for
+    \alert{all} assignments.
+  \end{itemize}
+
+  \vfill
+
+  \begin{itemize}
+  \item \structure{Satisfiable:} NOT(B)
+  \item \structure{Not Satisfiable:} B AND NOT(B)
+  \item \structure{Valid:} B OR NOT(B)
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Checking for Validity and Satisfiability}
+
+  Checking if a logic formula is satisfiable or not is a
+  \structure{very importan problem} in CS.
+
+  \bigskip
+
+  But how to do it?
+
+  \bigskip
+
+  \alert{Alert!} If you try to use a truth table, the size of the
+  table grows with the number of variables:
+  \begin{itemize}
+  \item 1 variable - 2 lines
+  \item 2 variables - 4 lines
+  \item 10 variables - 1024 lines
+  \item n variables - $2^n$ lines...
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Checking for Validity and Satisfiability}
+  \begin{itemize}
+  \item Is there an efficient way to test for satisfiability? (SAT)
+    \bigskip
+
+  \item The Efficient SAT problem is equivalent to the P=NP problem
+    \bigskip
+
+  \item The validity problem is also related to the SAT problem.
+  \end{itemize}
+\end{frame}
+
+%\section{1.5 -- Quantifiers}
+\begin{frame}
+  \begin{center}
+    Logic Quantifiers
+  \end{center}
+
+  \bigskip
+  \begin{itemize}
+  \item For all: $\forall$
+  \item Exists: $\exists$
+  \end{itemize}
+\end{frame}
+
+\subsection{Predicates and quantifiers}
+\begin{frame}
+  \frametitle{What is a Predicate?}
+
+  A predicate is a proposition with variables in it:
+
+  \begin{equation*}
+    P(X,Y) ::= [X+2 = Y]
+  \end{equation*}
+
+  \vfill
+
+  The truth value of a predicate depends on the values of the variables:
+  \begin{itemize}
+  \item $X = 1, Y = 3$, P(X,Y) is True
+  \item $X = 2, Y = 2$, P(X,Y) is False
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Quantifiers}
+
+  \begin{itemize}
+  \item $\forall x$ -- For ALL X
+
+    \bigskip
+
+  \item $\exists y$ -- There exists SOME Y
+  \end{itemize}
+
+  \vfill
+
+  $\forall x$ works like \structure{AND}. For example:
+  \begin{equation*}
+    \forall x, x \in \{1,2,3\}|P(X) \text{ \alert{equiv} } P(1) \text{ AND } P(2) \text{ AND } P(3)
+  \end{equation*}
+
+  \bigskip
+
+  $\exists y$ works like \structure{OR}. For example:
+  \begin{equation*}
+    \forall x, x \in \{1,2,3\}|P(X) \text{ \alert{equiv} } P(1) \text{ OR } P(2) \text{ OR } P(3)
+  \end{equation*}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Quantifiers Example}
+
+  For $x,y \in \mathbb{N}$ (x and y range over the integers).
+
+  \begin{equation*}
+    Q(Y) ::= \exists x. x < y.
+  \end{equation*}
+
+  \begin{itemize}
+  \item Q(3) is \structure{True}. ($[x < 3]$ is T for $x = 1$)
+  \item Q(1) is \structure{True}. ($[x < 1]$ is T for $x = 0$)
+  \item Q(0) is \alert{False}. ($[x < 0]$ is not T for any $x\in\mathbb{N}$)
+  \end{itemize}
+
+  \bigskip
+
+  What about a simple example for $\forall$?
+\end{frame}
+
+\begin{frame}
+  \frametitle{Ordering Quantifiers}
+  What is the difference when we order $\exists$ and $\forall$?
+
+  \bigskip
+
+  \begin{block}{Example 1: Medicines}
+    $\forall d \in$ diseases. $\exists m \in$ medicine.\\
+    $m$ cures $d$
+  \end{block}
+
+  \begin{block}{Example 2: Panacea}
+    $\exists m \in$ medicine. $\forall d \in$ diseases.\\
+    $m$ cures $d$
+  \end{block}
+
+  We need to be careful when writing mathematical notation!
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Validity and Predicates}
+  \begin{itemize}
+  \item Propositional Validity: A \structure{proposition} is true for
+    all truth assignments of variables.
+    \begin{itemize}
+    \item Example: (P implies Q) OR (Q implies P)
+    \end{itemize}
+
+    \bigskip
+
+  \item Predicate Calculus Validity: A \structure{predicate} is valid
+    when it is true for all domains.
+    \begin{itemize}
+    \item Example: $\forall z. [P(z) \land Q(z)] \rightarrow [\forall x.P(x) \land \forall y.Q(y)]$
+    \end{itemize}
+  \end{itemize}
+
+
+\end{frame}

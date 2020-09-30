@@ -23,6 +23,7 @@
 *.fls
 *.gz
 *.fdb_latexmk
+*.ent
 
 # edited files
 *~
