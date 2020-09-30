@@ -1,3 +1,10 @@
+# Tasks:
+- [ ] Prepare and publish the report for W1
+- [ ] List Changes for W1
+- [ ] Changes for W1 Materials:
+- [ ] Record W1 Segments:
+
+
 # 2020
 ## Week 1: Basic Logic and Proofs
 - "Modus Ponens": Improve the explanation
@@ -13,6 +20,8 @@
   - More involved example of satisfiability: Show a set of Propositions (say, 3), and ask for a
     set of variable values that satisfy the propositions (similar to exercise 3)
   - Explain SAT problem in computer science.
+
+##########################################################
 
 ## Week 2: Sets, Relations and Induction
 - Error: Slide 26 -- Function Surjection and size: Change to Surjection
@@ -43,7 +52,7 @@
 ## Week 6--7: Combinatorics
 - Needs an explanation of Closed forms and recurrence
 - Needs Plug and Chug and harmonics
-- Put the "discrete" parts of 6 and 7 in one lecture, and re-add the recurrence lecture as another 
+- Put the "discrete" parts of 6 and 7 in one lecture, and re-add the recurrence lecture as another
   (6 recurrence, 7 discrete?)
 	- Add the explanation of using limits to estimate upper and lower
 	  bound to the harmonic numbers
