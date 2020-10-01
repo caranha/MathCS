@@ -1,29 +1,101 @@
-\section{Intro to Proofs}
+\section{Introduction to Proofs}
 
-\frame{\tableofcontents[currentsection,hideallsubsections, firstsection=2, sections={2-5}]}
+\frame{
+{Part 1: Introduction to Proofs.}
+
+\tableofcontents[currentsection,hideallsubsections, firstsection=2, sections={2-5}]
+}
 
 \subsection{What is a Proof?}
 
-\begin{frame}
-  \frametitle{What is a proof?}
+\begin{frame}{What is a proof?}
 
+  Some concepts are easy to understand, but not easy to show that they are true.\bigskip
+
+  \begin{columns}
+    \column{0.3\textwidth}
+      \centering
+      \includegraphics[width=.5\textwidth]{../img/triangle_rect}
+    \column{0.7\textwidth}
+      \begin{itemize}
+        \item Pythagoras Theorem:
+        \begin{equation*}
+          a^2+b^2=c^2
+        \end{equation*}
+        \item It is easy to show this is true for {\bf any one triangle}.
+        \item But how do you show it is is true for {\bf all} triangles?
+      \end{itemize}
+  \end{columns}
+  \bigskip
+
+  The proof of the Pythagoras theorem is {not obvious}: there are more than 100 different proofs!
+\end{frame}
+
+\begin{frame}{What is a proof?}{One Pythagoras Proof}
+
+  \begin{columns}[T]
+    \column{0.7\textwidth}
+      \begin{itemize}
+        \item {\bf Proof}: by geometric construction
+        \item Arrange four identical triangles;
+        \item Show that internal angles are right;
+        \item Internal square area: $c^2$
+        \item External square area: $(a+b)^2$
+        \item $(a+b)^2 = c^2 + 4(\text{area triangle})$
+        \item $(a+b)^2 = c^2 + 4(\frac{ab}{2})$
+        \item $a^2 + 2ab + b^2 = c^2 + 2ab$
+        \item $a^2 + b^2 = c^2$ \hfill $\blacksquare$
+      \end{itemize}
+    \column{0.3\textwidth}
+      \includegraphics[width=\textwidth]{../img/triangle_pytagoras}
+  \end{columns}
+  \bigskip
+
+  {\bf Remember:} There are many other possible proofs. (Beautiful proofs, short proofs, wrong proofs, etc.)
+\end{frame}
+
+\begin{frame}{False Proofs}{Infinite Chocolate!}
   \begin{center}
-    \includegraphics[width=0.4\textwidth]{../img/pythagorean_theorem}
+    \includegraphics[width=.9\textwidth]{../img/false_proof}
   \end{center}
   \begin{itemize}
-  \item Proofs are used to show \structure{how you know} something
-  \item Proofs are not obvious (more than 100 proofs for pythagoras)
+    \item What is wrong with the proof above?
+    \item \alert{Be careful!} A false proof can have many correct steps, and {\bf only one} impossible step.
+  \end{itemize}
+
+  \begin{block}{}
+    We can use proofs to show that something is {\bf incorrect} as well!
+  \end{block}
+\end{frame}
+
+\subsection{Proofs and Computer Science}
+
+\begin{frame}{Proofs and Computer Science}{Why are proofs important for Computer Science?}
+
+  \begin{itemize}
+    \item We don't use proofs only for mathematical equations.
+    \item We can use proofs to {\bf show that a program is correct}. (or incorrect)
+    \vfill
+
+    \item Example cases:
+    \begin{itemize}
+    \item Use proofs to show that the result of a program is correct for any input;
+    \item Use proofs to show that one type of input will cause a bug in the program;
+    \item Use proofs to show that a program finishes in $N$ steps;
+    \end{itemize}
   \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]
-  \frametitle{Why are proofs important for Computer Sciences?}
+\begin{frame}[fragile]{Proofs and Computer Science}{Example:}
+  \begin{itemize}
+    \item Is the program below correct or incorrect?
+    \item Can you show by using a proof?
+  \end{itemize}
+  \bigskip
 
-  The techniques and ides of proofs can be used for \alert{debugging}.
-
-  \begin{block}{This program outputs the type of triangle}
 \begin{verbatim}
 int triangle_type(int a, int b, int c)
+  // a, b, c are the length of the sides of a triangle;
   if (a == b)
     if (b == c)
       return "all sides are equal";
@@ -34,75 +106,8 @@ int triangle_type(int a, int b, int c)
   else
     return "all sides are different";
 \end{verbatim}
-  \end{block}
-
-  \begin{itemize}
-  \item Is this program correct or incorrect?
-  \item How can you show it with \structure{confidence}?
-  \end{itemize}
 \end{frame}
 
-\begin{frame}
-  \frametitle{What is a Proof?}
-
-  \begin{itemize}
-  \item \structure{A proposition} is a statement that can be
-    \structure{True} or \alert{False}.
-    \begin{itemize}
-    \item This room has 40 chairs.
-    \item Every intelligent being feels pain.
-    \item Please say your name.
-    \item $513 \times 435 = 223165$
-    \item Every even integer greater than 2 is the sum of two primes.
-    \item It is raining now.
-    \end{itemize}
-
-    \bigskip
-
-  \item A \structure{proof} is a method of proving the truth or falsehood of a proposition.
-    \begin{itemize}
-    \item \structure{mathematical proofs} normally use logical steps
-      to show the truth of a mathematical proposition.
-    \end{itemize}
-  \end{itemize}
-
-\end{frame}
-
-\begin{frame}
-  \frametitle{Proof Examples}
-  \begin{itemize}
-  \item Pitagoras by pictures
-  \item Getting rich with triangles
-  \item 1 == -1
-  \end{itemize}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Morals of Proofs}
-  \begin{itemize}
-  \item Make sure that you are applying the rules properly.
-  \item \structure{Mindless calculation} does not replace \structure{understanding}.
-  \end{itemize}
-\end{frame}
-
-
-\subsection{Proof Terms}
-\begin{frame}
-  \frametitle{Common Terms used in Proofs}
-  \begin{itemize}
-  \item \structure{Proposition}:\\
-    \only<2>{A statement that is either true or false}
-  \item \structure{Predicate}:\\
-    \only<2>{A preposition that depends on variables}
-  \item \structure{Axiom}:\\
-    \only<2>{A preposition that is accepted to be true}
-  \item \structure{Proof}:\\
-    \only<2>{A sequence of axioms and proved statements that conclude with the proposition of interest}
-  \item \structure{Theorem}:\\
-    \only<2>{An important true proposition}
-  \item \structure{Lemma}:\\
-    \only<2>{A simpler proposition that is useful to prove later propositions}
-  \item \structure{Corollary}:\\
-    \only<2>{A proposition that follows from a theorem in a few logical steps}
-  \end{itemize}
+\begin{frame}{Next Part:}
+  Proof Techniques: How do we prove something?
 \end{frame}
