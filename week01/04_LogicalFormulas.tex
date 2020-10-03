@@ -2,288 +2,156 @@
 
 \frame{\tableofcontents[currentsection,hideallsubsections, firstsection=2, sections={2-4}]}
 
-\begin{frame}
-  \begin{center}
-    Propositions and Logic
-  \end{center}
-\end{frame}
+% - Logical formulas
+%    - Logical formulas can be expressed as truth tables.
 
-\subsection{Ambiguous Language}
+\subsection{Predicate Cauculus and Truth Tables}
 \begin{frame}
   \frametitle{Why Mathematical Language?}
+  Human language can be imprecise, so we have mathematical language that can be more specific:\bigskip
 
-  \begin{itemize}
-  \item Greeks carry swords or javelins.
-
-    \bigskip
-
-  \item Greeks carry bronze or copper swords.
-  \end{itemize}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Mathematical Language}
-  \begin{itemize}
-  \item Mathematical Language helps create non-ambiguous statements.
-    \bigskip
-
-  \item We will not through all Logic operators here.
-    \bigskip
-
-  \item However, it is important to understand that they are based on
-    \structure{binary} or \structure{boolean} logic.
-  \end{itemize}
-\end{frame}
-
-%% Question -- Should I add slides on binary mathematical operations?
-%% How do I segue into this topic?
-
-\subsection{Truth Tables}
-\begin{frame}
-  \frametitle{Mathematical Language / Binary Logic}
-
-  Example: X \structure{XOR} Y
-
+  \begin{center}
+    "Go to the supermarket to buy 1 milk pack. If they have eggs, buy 12."
+  \end{center}
   \bigskip
 
-  \begin{tabular}{ll|l}
-    X & Y & X XOR Y\\
+  Which of the following is correct?
+  \begin{itemize}
+    \item If the supermarket has eggs, buy 1 milk pack and 12 eggs.
+    \item If the supermarket has eggs, buy 12 milk packs.
+  \end{itemize}
+  \bigskip
+
+  To avoid this imprecision, we prefer to use mathematical language when talking about logical relationships and proofs.
+\end{frame}
+
+% Truth table.
+
+\begin{frame}{Predicate Calculus and Logical Operators}
+  The mathematical language that we use in this lecture is called \emph{Predicate Calculus}. Predicate calculus connects {\bf Predicates} and {\bf Propositions} using logical operators.\bigskip
+
+  Many of the logical operators you already know from boolean logic:
+  \begin{itemize}
+    \item {\bf AND}, {\bf OR}, {\bf XOR}, {\bf NOT}, etc...
+  \end{itemize}\bigskip
+
+  There are a few more unusual logical operators too:
+  \begin{itemize}
+    \item {\bf IMPLIES}, {\bf IFF}, {\bf FOR ALL}, {\bf EXISTS}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Predicate Calculus and Truth Tables}
+  To evaluate a formula in predicate calculus, we can use \structure{Truth Tables}, which describe every possible truth value to each proposition.\bigskip
+
+  {\bf Example:} P AND Q IMPLIES R\bigskip
+
+  \begin{tabular}{|lll|l|l|}
+    P & Q & R & P AND Q & P AND Q IMPLIES R\\
     \hline
-    TRUE & TRUE & FALSE\\
-    TRUE & FALSE & TRUE\\
-    FALSE & TRUE & TRUE\\
-    FALSE & FALSE & FALSE\\
+    {\bf TRUE} & {\bf TRUE} & {\bf TRUE} & {\bf TRUE} & {\bf TRUE} \\
+    {\bf TRUE} & {\bf TRUE} & FALSE & {\bf TRUE} & FALSE \\
+    {\bf TRUE} & FALSE & {\bf TRUE} & FALSE & {\bf TRUE} \\
+    {\bf TRUE} & FALSE & FALSE & FALSE & {\bf TRUE} \\
+    FALSE & {\bf TRUE} & {\bf TRUE} & FALSE & {\bf TRUE} \\
+    FALSE & {\bf TRUE} & FALSE & FALSE & {\bf TRUE} \\
+    FALSE & FALSE & {\bf TRUE} & FALSE & {\bf TRUE} \\
+    FALSE & FALSE & FALSE & FALSE & {\bf TRUE} \\
   \end{tabular}
-
-  \bigskip
-
-  \begin{itemize}
-  \item A \structure{Truth Table} is a way to understand a logic
-    operator.
-  \item We can use logic operators to transform \alert{ambiguous natural
-    language sentences} into \structure{clear logical propositions.}
-    \begin{itemize}
-    \item Greeks carry bronze or copper swords.
-    \item Greek carry bronze sword XOR greek carry copper sword.
-    \end{itemize}
-  \end{itemize}
 \end{frame}
 
-\begin{frame}
-  \frametitle{Binary Logic and Truth Tables}
 
-  The \structure{truth table} allows us to analyze a logical formula:
+\subsection{Validity and Satisfiability}
+% - In mathematics and proofs: Every/Exists and their relationship
+%    with validity and satisfiability. (Not only boolean)
 
-  \bigskip
+\begin{frame}{Logic Operators: "For All" and "Exists"}
+  Two of the operators we mentioned are special, and deserve some special attention:
 
-  \begin{itemize}
-  \item Is it always true? Is it always false?
-  \item Is it equivalent to another logical formula?
-  \end{itemize}
+  \begin{block}{Operator: For all}
+    For a predicate $P(x)$, FOR ALL $P(x)$ is True if $P(x)$ is true for {\bf every} value of x. It is equivalent to a chain of "AND"s:
 
-  To analyze a formula using the truth table, I need to analyse the
-  value of each variable.
-\end{frame}
+    \[
+      F(P(x)): \forall x_i \in X, P(x_0) \land P(x_1) \land \ldots \land P(x_n)
+    \]
 
-\begin{frame}
-  \frametitle{Evaluation of a Formula}
-
-  Given the following variables:\\ P = \structure{True}, Q = \structure{True}, R = \alert{False}
-
-  \vfill
-
-  How do we \structure{evaluate} the following formula?
-  \begin{center}
-    NOT(NOT(P) OR Q) AND (R OR (P XOR Q))
-  \end{center}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Comparison of Two Formulas}
-
-  We can decide whether two logical formulas are
-  \structure{equivalent} if the final column of their truth table is
-  identical.
-
-  \vfill
-
-  For example, let's prove DeMorgan's Law:
-  \begin{center}
-    NOT(P OR Q) \structure{equiv to} NOT(P) AND NOT(Q)
-  \end{center}
-\end{frame}
-
-\subsection{Satisfiability}
-
-\begin{frame}
-  \frametitle{Satisfiability and Validity}
-
-  \begin{itemize}
-  \item A logic formula is \structure{satisfiable} if it is true for
-    \alert{at least one} assignment.
-  \item A logic formula is \structure{valid} if it is true for
-    \alert{all} assignments.
-  \end{itemize}
-
-  \vfill
-
-  \begin{itemize}
-  \item \structure{Satisfiable:} NOT(B)
-  \item \structure{Not Satisfiable:} B AND NOT(B)
-  \item \structure{Valid:} B OR NOT(B)
-  \end{itemize}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Checking for Validity and Satisfiability}
-
-  Checking if a logic formula is satisfiable or not is a
-  \structure{very importan problem} in CS.
-
-  \bigskip
-
-  But how to do it?
-
-  \bigskip
-
-  \alert{Alert!} If you try to use a truth table, the size of the
-  table grows with the number of variables:
-  \begin{itemize}
-  \item 1 variable - 2 lines
-  \item 2 variables - 4 lines
-  \item 10 variables - 1024 lines
-  \item n variables - $2^n$ lines...
-  \end{itemize}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Checking for Validity and Satisfiability}
-  \begin{itemize}
-  \item Is there an efficient way to test for satisfiability? (SAT)
-    \bigskip
-
-  \item The Efficient SAT problem is equivalent to the P=NP problem
-    \bigskip
-
-  \item The validity problem is also related to the SAT problem.
-  \end{itemize}
-\end{frame}
-
-%\section{1.5 -- Quantifiers}
-\begin{frame}
-  \begin{center}
-    Logic Quantifiers
-  \end{center}
-
-  \bigskip
-  \begin{itemize}
-  \item For all: $\forall$
-  \item Exists: $\exists$
-  \end{itemize}
-\end{frame}
-
-\subsection{Predicates and quantifiers}
-\begin{frame}
-  \frametitle{What is a Predicate?}
-
-  A predicate is a proposition with variables in it:
-
-  \begin{equation*}
-    P(X,Y) ::= [X+2 = Y]
-  \end{equation*}
-
-  \vfill
-
-  The truth value of a predicate depends on the values of the variables:
-  \begin{itemize}
-  \item $X = 1, Y = 3$, P(X,Y) is True
-  \item $X = 2, Y = 2$, P(X,Y) is False
-  \end{itemize}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Quantifiers}
-
-  \begin{itemize}
-  \item $\forall x$ -- For ALL X
-
-    \bigskip
-
-  \item $\exists y$ -- There exists SOME Y
-  \end{itemize}
-
-  \vfill
-
-  $\forall x$ works like \structure{AND}. For example:
-  \begin{equation*}
-    \forall x, x \in \{1,2,3\}|P(X) \text{ \alert{equiv} } P(1) \text{ AND } P(2) \text{ AND } P(3)
-  \end{equation*}
-
-  \bigskip
-
-  $\exists y$ works like \structure{OR}. For example:
-  \begin{equation*}
-    \forall x, x \in \{1,2,3\}|P(X) \text{ \alert{equiv} } P(1) \text{ OR } P(2) \text{ OR } P(3)
-  \end{equation*}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Quantifiers Example}
-
-  For $x,y \in \mathbb{N}$ (x and y range over the integers).
-
-  \begin{equation*}
-    Q(Y) ::= \exists x. x < y.
-  \end{equation*}
-
-  \begin{itemize}
-  \item Q(3) is \structure{True}. ($[x < 3]$ is T for $x = 1$)
-  \item Q(1) is \structure{True}. ($[x < 1]$ is T for $x = 0$)
-  \item Q(0) is \alert{False}. ($[x < 0]$ is not T for any $x\in\mathbb{N}$)
-  \end{itemize}
-
-  \bigskip
-
-  What about a simple example for $\forall$?
-\end{frame}
-
-\begin{frame}
-  \frametitle{Ordering Quantifiers}
-  What is the difference when we order $\exists$ and $\forall$?
-
-  \bigskip
-
-  \begin{block}{Example 1: Medicines}
-    $\forall d \in$ diseases. $\exists m \in$ medicine.\\
-    $m$ cures $d$
   \end{block}
 
-  \begin{block}{Example 2: Panacea}
-    $\exists m \in$ medicine. $\forall d \in$ diseases.\\
-    $m$ cures $d$
+  \begin{block}{Operator: Exists}
+    For a predicate $P(x)$, EXISTS $P(x)$ is True if $P(x)$ is true for {\bf any} value of x. It is equivalent to a chain of "OR"s:
+
+    \[
+      E(P(x)): \exists x_i \in X, P(x_0) \lor P(x_1) \lor \ldots \lor P(x_n)
+    \]
   \end{block}
-
-  We need to be careful when writing mathematical notation!
-
 \end{frame}
 
-\begin{frame}
-  \frametitle{Validity and Predicates}
+% - Validity: Always True
+% - Satisfiability: True for some values
+%    - Can test both with truth tables
+
+\begin{frame}{Validity and Satisfiability}
+  The logical operators "exists" and "for all" are closed linked to the concepts of "Validity" and "Satisfiability":\bigskip
+
   \begin{itemize}
-  \item Propositional Validity: A \structure{proposition} is true for
-    all truth assignments of variables.
-    \begin{itemize}
-    \item Example: (P implies Q) OR (Q implies P)
-    \end{itemize}
+    \item {\bf A logical formula is \structure{Valid} if}: The formula evaluates for true for every possible assignment of every variable.\medskip
 
-    \bigskip
+    For example: $P \lor \text{ NOT } P \implies Q$ is valid.\bigskip
 
-  \item Predicate Calculus Validity: A \structure{predicate} is valid
-    when it is true for all domains.
-    \begin{itemize}
-    \item Example: $\forall z. [P(z) \land Q(z)] \rightarrow [\forall x.P(x) \land \forall y.Q(y)]$
-    \end{itemize}
-  \end{itemize}
+    \item {\bf A logical formula is \structure{Satisfiable} if}: The formula evaluates for true for at least one possible assignment of variables.\medskip
+
+    For example: $P \lor (Q \land R)$ is satisfiable
+  \end{itemize}\bigskip
+\end{frame}
+
+\begin{frame}{Validity and Satisfiability}{Proofs and Validity}
+  There are many important implications and uses for the concepts of validity and satisfiability. For example, we can use these concepts when designing proofs.\bigskip
+
+  If we define a proposition that we want to prove as a logical formula, we can say that the proposition is true if the logical formula is \structure{Valid}.\bigskip
+
+  On the other hand, we can define a \structure{proof by contradiction} by showing that a logical formula that indicates the negative of the proposition is \structure{satisfiable}.
+\end{frame}
+
+% - Equivalence: A and B have exactly the same truth table (IFF)
+%    - Rewriting code
+
+\begin{frame}{Equivalence}{Comparison of Two Formulas}
+  Another related concept is \structure{Equivalence}. We say that two logical formulas are equivalent, if their result is identical for every variable assignment.\vfill
+
+  For example: $\text{NOT }(P \lor Q)$ is equivalent to $\text{NOT } P \land \text{ NOT } Q$\\
+  \hfill (DeMorgan's Law)\vfill
+
+  The equivalence of two formulas is useful when rewriting code, and showing that two different pieces of code have the same result.
+\end{frame}
+
+\begin{frame}{Validity, Satisfiability, Equivalence and Truth tables}
+  We can show the Validity, Satisfiability, or Equivalence of logical formulas using Truth tables:\bigskip
+
+  \begin{itemize}
+    \item {\bf A formula is valid}: If all lines in the truth table evaluate to TRUE.
+    \item {\bf A formula is satisfiable}: If at least one line in the truth table evaluates to TRUE.
+    \item {\bf Two formulas are equivalent}: If all lines in the truth table of the two formulas evaluate to the same value.
+  \end{itemize}\bigskip
+
+  However, remember that the size of a truth table is $2^n$, where $n$ is the number of variables in a formula, so this approach might not be feasible for complex formulas.
+\end{frame}
 
 
+\subsection{The Satisfiability Problem (SAT problem)}
+
+\begin{frame}{The Satisfiability Problem}
+
+  Consider the problem of simplifying a computer program: Given a program defined as a logical formula $A$, we want to find a smaller formula $B$ that has the same functionality.\vfill
+
+  We can test if a certain $B$ is equivalent to $A$ by testing if the expression $A \iff B$ is {\bf valid}. Alternatively, We can test that $B$ is {\bf not} equivalent to $A$ by testing if $\text{NOT }(A \iff B)$ is {\bf satisfiable}. If we can find only one variable assignment where $A$ and $B$ are not equal, then we can discard the program candidate $B$.\vfill
+
+  This kind of analysis is useful for making programs run faster, or for creating simpler and cheaper hardware.
+\end{frame}
+
+\begin{frame}{The Satisfiability Problem}{Proving equivalences}
+  The basic algorithm for proving equivalence in a SAT problem is to test each combination of variables (each line in the truth table). As we discussed before, the number of lines is $2^n$, so this can take a very long time.\vfill
+
+  Interestingly, if we KNOW one set of variables that satisfy the formula, it is very quick to test it. Just evaluate the formula.\vfill
+
+  This characteristic of SAT: "Very slow to find the answer, very fast to check the answer", is one of the key characteristics of NP-hardness. If you can find a quick solution to the SAT problem, you would become a very famous computer scientist!
 \end{frame}

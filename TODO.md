@@ -5,15 +5,10 @@
 - [ ] Record W1 Segments:
 
 
-# 2020
+# 2021
 ## Week 1: Basic Logic and Proofs
-- SAT: Improve the explanation of Satisfiability
-  - First, explain Propositions with variables. (use only binary variables)
-  - Explain Valid and Satisfiable propositions, and how you can test it with Truth Tables (don't explain Truth tables).
-  - Explain Every and Exists, and their relationship with Valid and Satisfiable.
-  - More involved example of satisfiability: Show a set of Propositions (say, 3), and ask for a
-    set of variable values that satisfy the propositions (similar to exercise 3)
-  - Explain SAT problem in computer science.
+- Improve the definition of SAT problem (maybe talk about DNF format)
+
 
 ##########################################################
 
