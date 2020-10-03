@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   sodipodi:docname="false_proof.svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="272.83955"
+     inkscape:cy="399.68332"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1850"
+     inkscape:window-height="1016"
+     inkscape:window-x="1990"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="opacity:1;fill:#891f0f;fill-opacity:1;stroke:#561800;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect815"
+       width="58.208332"
+       height="68.413696"
+       x="-67.120728"
+       y="169.3143"
+       inkscape:export-filename="/home/caranha/Work/Lectures/GB13604_MathCS/LectureNotes/img/false_proof.png"
+       inkscape:export-xdpi="90.370003"
+       inkscape:export-ydpi="90.370003" />
+    <path
+       style="fill:none;stroke:#ecffff;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:4, 4;stroke-dashoffset:0;stroke-opacity:1"
+       d="m -67.120729,237.728 58.20833,-68.4137"
+       id="path817"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/caranha/Work/Lectures/GB13604_MathCS/LectureNotes/img/false_proof.png"
+       inkscape:export-xdpi="90.370003"
+       inkscape:export-ydpi="90.370003" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:1.25;font-family:Acme;-inkscape-font-specification:Acme;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="-43.308231"
+       y="165.91252"
+       id="text821"
+       inkscape:export-filename="/home/caranha/Work/Lectures/GB13604_MathCS/LectureNotes/img/false_proof.png"
+       inkscape:export-xdpi="90.370003"
+       inkscape:export-ydpi="90.370003"><tspan
+         sodipodi:role="line"
+         id="tspan819"
+         x="-43.308231"
+         y="165.91252"
+         style="stroke-width:0.26458332">10cm</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:1.25;font-family:Acme;-inkscape-font-specification:Acme;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="198.38048"
+       y="4.1657052"
+       id="text825"
+       transform="rotate(90)"
+       inkscape:export-filename="/home/caranha/Work/Lectures/GB13604_MathCS/LectureNotes/img/false_proof.png"
+       inkscape:export-xdpi="90.370003"
+       inkscape:export-ydpi="90.370003"><tspan
+         sodipodi:role="line"
+         id="tspan823"
+         x="198.38048"
+         y="4.1657052"
+         style="stroke-width:0.26458332">11cm</tspan></text>
+    <g
+       id="g957"
+       transform="translate(-23.519718,0.80180858)"
+       inkscape:export-filename="/home/caranha/Work/Lectures/GB13604_MathCS/LectureNotes/img/false_proof.png"
+       inkscape:export-xdpi="90.370003"
+       inkscape:export-ydpi="90.370003">
+      <path
+         sodipodi:nodetypes="cccc"
+         inkscape:connector-curvature="0"
+         id="rect815-3"
+         d="m 33.333874,174.73622 h 58.208332 l -58.208332,68.4137 z"
+         style="opacity:1;fill:#891f0f;fill-opacity:1;stroke:#561800;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <text
+         id="text821-7"
+         y="171.30757"
+         x="52.280674"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:1.25;font-family:Acme;-inkscape-font-specification:Acme;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           style="stroke-width:0.26458332"
+           y="171.30757"
+           x="52.280674"
+           id="tspan819-5"
+           sodipodi:role="line">10cm + 1 cm</tspan></text>
+      <text
+         transform="rotate(90)"
+         id="text825-3"
+         y="-103.06584"
+         x="193.18759"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:1.25;font-family:Acme;-inkscape-font-specification:Acme;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           style="stroke-width:0.26458332"
+           y="-103.06584"
+           x="193.18759"
+           id="tspan823-5"
+           sodipodi:role="line">11cm - 1 cm</tspan></text>
+      <path
+         sodipodi:nodetypes="cccc"
+         inkscape:connector-curvature="0"
+         id="rect815-3-2"
+         d="M 97.948568,236.06014 H 39.740237 l 58.208331,-68.4137 z"
+         style="opacity:1;fill:#891f0f;fill-opacity:1;stroke:#561800;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path896"
+         d="m 91.542205,174.73622 h 6.545709"
+         style="fill:none;stroke:#ffffff;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1, 1;stroke-dashoffset:0;stroke-opacity:1" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path896-9"
+         d="m 33.194528,236.06014 h 6.545709"
+         style="fill:none;stroke:#ffffff;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.00000001, 1.00000001;stroke-dashoffset:0;stroke-opacity:1" />
+    </g>
+    <path
+       style="opacity:1;fill:#891f0f;fill-opacity:1;stroke:#561800;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 104.38334,176.00094 h 58.20833 l -58.20833,68.4137 z"
+       id="rect815-3-1"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccc"
+       inkscape:export-filename="/home/caranha/Work/Lectures/GB13604_MathCS/LectureNotes/img/false_proof.png"
+       inkscape:export-xdpi="90.370003"
+       inkscape:export-ydpi="90.370003" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:1.25;font-family:Acme;-inkscape-font-specification:Acme;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="123.33015"
+       y="172.5723"
+       id="text821-7-2"
+       inkscape:export-filename="/home/caranha/Work/Lectures/GB13604_MathCS/LectureNotes/img/false_proof.png"
+       inkscape:export-xdpi="90.370003"
+       inkscape:export-ydpi="90.370003"><tspan
+         sodipodi:role="line"
+         id="tspan819-5-7"
+         x="123.33015"
+         y="172.5723"
+         style="stroke-width:0.26458332">11 cm?</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:1.25;font-family:Acme;-inkscape-font-specification:Acme;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="194.45232"
+       y="-174.11531"
+       id="text825-3-0"
+       transform="rotate(90)"
+       inkscape:export-filename="/home/caranha/Work/Lectures/GB13604_MathCS/LectureNotes/img/false_proof.png"
+       inkscape:export-xdpi="90.370003"
+       inkscape:export-ydpi="90.370003"><tspan
+         sodipodi:role="line"
+         id="tspan823-5-9"
+         x="194.45232"
+         y="-174.11531"
+         style="stroke-width:0.26458332">10 cm ?</tspan></text>
+    <path
+       style="opacity:1;fill:#891f0f;fill-opacity:1;stroke:#561800;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 168.99803,237.32486 H 110.7897 l 58.20833,-68.4137 z"
+       id="rect815-3-2-3"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccc"
+       inkscape:export-filename="/home/caranha/Work/Lectures/GB13604_MathCS/LectureNotes/img/false_proof.png"
+       inkscape:export-xdpi="90.370003"
+       inkscape:export-ydpi="90.370003" />
+    <path
+       style="fill:none;stroke:#ffffff;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.00000001, 1.00000001;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 162.59167,176.00094 h 6.54571"
+       id="path896-6"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/caranha/Work/Lectures/GB13604_MathCS/LectureNotes/img/false_proof.png"
+       inkscape:export-xdpi="90.370003"
+       inkscape:export-ydpi="90.370003" />
+    <path
+       style="fill:none;stroke:#ffffff;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.00000002, 1.00000002;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 104.24399,237.32486 h 6.54571"
+       id="path896-9-0"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/caranha/Work/Lectures/GB13604_MathCS/LectureNotes/img/false_proof.png"
+       inkscape:export-xdpi="90.370003"
+       inkscape:export-ydpi="90.370003" />
+    <path
+       style="opacity:1;fill:#891f0f;fill-opacity:1;stroke:#561800;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 192.85085,190.60187 h 6.89528 l -6.89528,7.6072 z"
+       id="rect815-3-1-6"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccc"
+       inkscape:export-filename="/home/caranha/Work/Lectures/GB13604_MathCS/LectureNotes/img/false_proof.png"
+       inkscape:export-xdpi="90.370003"
+       inkscape:export-ydpi="90.370003" />
+    <path
+       style="opacity:1;fill:#891f0f;fill-opacity:1;stroke:#561800;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 201.33364,200.27056 h -6.89528 l 6.89528,-7.34262 z"
+       id="rect815-3-1-6-2"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccc"
+       inkscape:export-filename="/home/caranha/Work/Lectures/GB13604_MathCS/LectureNotes/img/false_proof.png"
+       inkscape:export-xdpi="90.370003"
+       inkscape:export-ydpi="90.370003" />
+    <rect
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#fbffff;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:0.99999999, 0.99999999;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect995"
+       width="11.759859"
+       height="9.3544331"
+       x="99.15699"
+       y="238.80518"
+       inkscape:export-filename="/home/caranha/Work/Lectures/GB13604_MathCS/LectureNotes/img/false_proof.png"
+       inkscape:export-xdpi="90.370003"
+       inkscape:export-ydpi="90.370003" />
+    <rect
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#fbffff;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:1, 1;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect995-6"
+       width="11.759859"
+       height="9.3544331"
+       x="159.54915"
+       y="165.1761"
+       inkscape:export-filename="/home/caranha/Work/Lectures/GB13604_MathCS/LectureNotes/img/false_proof.png"
+       inkscape:export-xdpi="90.370003"
+       inkscape:export-ydpi="90.370003" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:1.25;font-family:Acme;-inkscape-font-specification:Acme;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="183.88144"
+       y="210.40468"
+       id="text1014"
+       inkscape:export-filename="/home/caranha/Work/Lectures/GB13604_MathCS/LectureNotes/img/false_proof.png"
+       inkscape:export-xdpi="90.370003"
+       inkscape:export-ydpi="90.370003"><tspan
+         sodipodi:role="line"
+         id="tspan1012"
+         x="183.88144"
+         y="210.40468"
+         style="stroke-width:0.26458332">1cm x 1 cm???</tspan></text>
+  </g>
+</svg>

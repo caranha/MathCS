@@ -1,173 +1,113 @@
 \section{Proof Methods}
 
-\frame{
-{Part 2: Proof Methods}
+\frame{{Part 2: Proof Methods}
 
-\tableofcontents[currentsection,hideallsubsections, firstsection=2, sections={2-5}]}
+\tableofcontents[currentsection,hideallsubsections, firstsection=2, sections={2-4}]}
 
+\subsection{Inference Rules}
 
-\subsection{Concepts}
-
-\begin{frame}
-  \frametitle{What is a Proof?}
-
-  \begin{itemize}
-  \item \structure{A proposition} is a statement that can be
-    \structure{True} or \alert{False}.
-    \begin{itemize}
-    \item This room has 40 chairs.
-    \item Every intelligent being feels pain.
-    \item Please say your name.
-    \item $513 \times 435 = 223165$
-    \item Every even integer greater than 2 is the sum of two primes.
-    \item It is raining now.
-    \end{itemize}
-
-    \bigskip
-
-  \item A \structure{proof} is a method of proving the truth or falsehood of a proposition.
-    \begin{itemize}
-    \item \structure{mathematical proofs} normally use logical steps
-      to show the truth of a mathematical proposition.
-    \end{itemize}
-  \end{itemize}
-
-\end{frame}
-
-\begin{frame}
-  \frametitle{Proof Examples}
-  \begin{itemize}
-  \item Pitagoras by pictures
-  \item Getting rich with triangles
-  \item 1 == -1
-  \end{itemize}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Morals of Proofs}
-  \begin{itemize}
-  \item Make sure that you are applying the rules properly.
-  \item \structure{Mindless calculation} does not replace \structure{understanding}.
-  \end{itemize}
-\end{frame}
-
-
-\subsection{Proof Terms}
-\begin{frame}
-  \frametitle{Common Terms used in Proofs}
-  \begin{itemize}
-  \item \structure{Proposition}:\\
-    \only<2>{A statement that is either true or false}
-  \item \structure{Predicate}:\\
-    \only<2>{A preposition that depends on variables}
-  \item \structure{Axiom}:\\
-    \only<2>{A preposition that is accepted to be true}
-  \item \structure{Proof}:\\
-    \only<2>{A sequence of axioms and proved statements that conclude with the proposition of interest}
-  \item \structure{Theorem}:\\
-    \only<2>{An important true proposition}
-  \item \structure{Lemma}:\\
-    \only<2>{A simpler proposition that is useful to prove later propositions}
-  \item \structure{Corollary}:\\
-    \only<2>{A proposition that follows from a theorem in a few logical steps}
-  \end{itemize}
-\end{frame}
-
-
-\begin{frame}
-  \frametitle{Our first proof method: Modus Ponens}
-
-  \begin{equation*}
-    \frac{P, P \text{ implies } Q}{Q}\text{ or } \frac{P, P\rightarrow Q}{Q}
-  \end{equation*}
-
-  \vfill
-
-  \begin{block}{What does ``Modus Ponens'' mean?}
-
-    \begin{itemize}
-    \item If P is true.
-    \item and if P being true \alert{requires} that Q is true
-      too.
-    \item then Q is true.
-    \end{itemize}
-  \end{block}
-
-\end{frame}
-
-\begin{frame}
-  \frametitle{How can we use Modus Ponens to prove something?}
-  \begin{itemize}
-  \item We want to prove Q.
-  \item Prove that when P is true, Q \alert{must} be true
-  \item Prove that P is true
-  \item \structure{therefore}, Q must be true.
-  \end{itemize}
-\end{frame}
-
-\subsection{Proof by Contradiction}
-\begin{frame}
-  \frametitle{Proof By Contradiction}
-
-  A trivial proof:
-
-  \begin{equation*}
-    \sqrt[3]{1332} \leq 11
-  \end{equation*}
-
-\end{frame}
-
-\begin{frame}
-  \frametitle{Proof By Contradiction}
-
-  If an assertion \alert{implies something false}
-
+\begin{frame}{Inference Rules}{}
+  Inference (or logic deductions) are used to prove new propositions by using propositions that have been proposed before.
   \bigskip
 
-  Then the \alert{assertion must be false!}
+  We normally write an inference as follows:
+
+  \[
+  \frac{P, Q, R}{X}
+  \]
+
+  This means "propositions P, Q, R are true, meaning that proposition X is true".\bigskip
+
+  \structure{Inference Rules} are inferences that are particularly useful to build proofs. Let's see a few:
 \end{frame}
 
-\begin{frame}
-  \frametitle{Better Example: $\sqrt{2}$ is irrational}
+\begin{frame}{Inference Rules}{Modus Ponens}
+  The \emph{Modus Ponens} inference rule is:
+  \[
+  \frac{P, P\implies Q}{Q}
+  \]
+  If P is true, and P implies Q is true, then Q is true.\bigskip
 
-  \begin{center}
-    Think a little bit by yourselves first.
-  \end{center}
+  A few other related inference rules:
+  \[
+  \frac{P \implies Q, Q \implies R}{P \implies R},
+  \frac{not(P) \implies not(Q)}{Q \implies P}
+  \]
+
+  So one way to prove a proposition is to {\bf start with propositions that you know are true} and {\bf use inference rules to reach the proposition you want to prove}.
 \end{frame}
 
-\begin{frame}
-  \frametitle{Better Example: $\sqrt{2}$ is irrational}
+\subsection{Proving Implications}
 
-  Let's prove by contradiction:
+\begin{frame}{Proving an Implication}{Direct Proof}
+  The \emph{Modus Ponens} rule says that:
+  \[
+  \frac{P, P\implies Q}{Q}
+  \]
+  To prove $Q$, we have to prove that $P$, and that {\bf $P$ implies $Q$}.\bigskip
 
-  \bigskip
+  We can prove an implication directly, by assuming $P$ is true, and showing that $Q$ must be true, step by step.\bigskip
+\end{frame}
 
-  \begin{enumerate}
-  \item Assume that $\sqrt{2}$ is rational
-    \bigskip
-  \item Therefore $\sqrt{2} = \frac{m}{n}$, and $m$ and $n$ are
-    integers with \alert{no common prime factors} ($n\neq0$).
-    \bigskip
-  \item Therefore $n\sqrt{2} = m$, $2n^2 = m^2$, and $m^2$ is even.
-    \bigskip
-  \item If $m^2$ is even, then $m$ is even too. $m = 2k$ for some integer $k$.
-    \bigskip
-  \item Therefore $2n^2 = (2k)^2$, $2n^2 = 4k^2$, $n^2 = 2k^2$, and $n^2$ is even.
-    \bigskip
-  \item If $n^2$ is even, then $n$ is even too. \alert{$n$ and $m$ are both even (contradiction).}
-  \end{enumerate}
+\begin{frame}{Proving an Implication}{Direct Proof}
+{\bf Theorem:} If $0 \leq x \leq 2$, then $-x^3 + 4x + 1 > 0$\bigskip
 
-
+\begin{proof}
+\begin{itemize}
+  \item Let's assume $0 \leq x \leq 2$
+  \item We can rewrite $-x^3 + 4x$ as $x(2-x)(2+x)$
+  \item If $0 \leq x \leq 2$, then $x$, $(2-x)$, $(2+x)$ are all positive.
+  \item $x(2-x)(2+x) \geq 0$
+  \item $x(2-x)(2+x) + 1 > 0$
+  \item $-x^3 + 4x + 1 > 0$
+\end{itemize}
+\end{proof}
 
 \end{frame}
+
+\begin{frame}{Proving an Implication}{Contrapositive}
+  Another way to prove an implication is to "prove the contrapositive". This means using the following inference rule:
+
+  \[
+    \frac{\text{NOT}(Q) \implies \text{NOT}(P)}{P \implies Q}
+  \]
+
+  So if we show that when Q is false, then P is always false, it is equivalent to show that when P is true, then Q is always true.
+\end{frame}
+
+\begin{frame}{Proving an Implication}{Contrapositive}
+  {\bf Theorem:} if $r$ is irrational, then $\sqrt{r}$ is also irrational.
+
+  \begin{proof}
+    We prove the contrapositive: If $\sqrt{r}$ is rational, then $r$ is also rational.
+    \begin{itemize}
+      \item If $\sqrt{r}$ is rational, then $\sqrt{r}=\frac{m}{n}$.
+      \item $m$ and $n$ are integers (definition of rational numbers)
+      \item Square both sides: $r = \frac{m^2}{n^2}$.
+      \item $m^2$ and $n^2$ are also integers, so $r$ is rational.
+    \end{itemize}
+  \end{proof}
+\end{frame}
+
+
+
+\begin{frame}{Proving "If and only If"}
+  Remember that "If and only If" can be defined as:
+  \[
+  \frac{P\implies Q, Q \implies P}{P\iff Q}
+  \]
+
+  So to prove $P\iff Q$, we can first prove the implication from $P$ to $Q$, and then prove the implication from $Q$ to $P$.\bigskip
+
+  This is useful to show equivalence between two mathematical statements.
+\end{frame}
+
 
 \subsection{Proof by Cases}
 
-\begin{frame}[fragile]
-  \frametitle{Proof By Cases}
+\begin{frame}[fragile]{Proof By Cases}{Example}
 
-  Prove that these two code samples are the same:
-
+  Let's say you are refactoring code, and you want to profe that the two code samples below are equivalent. How would you do it?
   \vfill
 
   \begin{block}{Code 1}
@@ -182,70 +122,203 @@ If (X > 0 OR Y > 100)
   print("Hello!")
 \end{verbatim}
   \end{block}
-
 \end{frame}
 
-\begin{frame}
-  \frametitle{Proof By Cases}
+\begin{frame}{Proof By Cases}{Definition}
+  \structure{Proof By Cases}, is a proof technique that uses the idea of "divide and conquer".\vfill
 
-  \begin{itemize}
-  \item ``Proof by Cases'' breaks a complicated problem into easier, smaller sub-problems.
+  You break one complicated problem into easier, smaller sub-problems.
+  \vfill
 
-    \bigskip
-
-  \item It is important to make sure that \alert{the cases cover all possibilities}, or the
-    proof is not complete.
-  \end{itemize}
+  \alert{Important!} When you create the cases, make sure that all possible cases are covered!
 \end{frame}
 
-\begin{frame}
-  \frametitle{Proof By Cases: Friends and Strangers}
+\begin{frame}{Example: Friends and Strangers}
+
+  {\bf Theorem:} In a group of 6 people, where {\bf every pair} is either a friend or a stranger, then we {\bf always} have at least a set of \structure{3 mutual friends} or a set of \alert{3 mutual strangers}.
 
   \begin{center}
     \includegraphics[width=0.8\textwidth]{../img/friends_and_strangers}
   \end{center}
-
-  \begin{itemize}
-  \item Six people, every two are either \alert{friends} or \structure{strangers}.
-  \item {\bf Claim:} There is always a set of \alert{3 mutual
-    friends} or \structure{3 mutual strangers}.
-  \end{itemize}
-
 \end{frame}
 
-\begin{frame}
-  \frametitle{Friends and Strangers, and Ramsey's Theorem}
+\begin{frame}{Example: Friends and Strangers}
+  \begin{proof}
+    The proof is by case analysis. Let "A" be one of the six people. There are two cases:
+    \begin{enumerate}
+      \item Among the 5 other people, at least 3 are friends with A;
+      \item Among the 5 other people, at least 3 are strangers with A;
+    \end{enumerate}\medskip
 
-  For any $k$, every \structure{large enough group} of people
-  will contain $k$ mutual friends OR $k$ mutual strangers.
+    Let's assume case (1). Let's call the three friends B, C, D. There are two subcases:
+    \begin{enumerate}[A]
+      \item B-C, C-D, or B-D are friends. We have now \structure{3 mutual friends} with A and the pair here.
+      \item B-C, C-D and B-D are strangers. This makes a \structure{3 mutual strangers} set with the three pairs.
+    \end{enumerate}\medskip
 
+    This means that in case 1, the theorem holds. It is easy to see that case 2 is symmetrical to case 1.
+  \end{proof}
+\end{frame}
+
+
+\begin{frame}{A WRONG Proof By Cases}
+
+  {\bf Theorem:} $2a^2 > a$, for all $a\in \mathbb{Z}$.
+
+  \begin{proof}
+    The proof is by case analysis.
+  \begin{enumerate}
+    \item Case 1: $a > 0$;
+    \begin{itemize}
+      \item $2a^2$ is equal to $2a\times a$
+      \item Since $a > 0$ and $a \in \mathbb{Z}$, then $a \geq 1$
+      \item $2\times 1\times 1 > 1$
+    \end{itemize}
+    \item Case 2: $a < 0$
+    \begin{itemize}
+      \item Since $a < 0$ and $a \in \mathbb{Z}$, then $a \leq 1$
+      \item For any negative $a$, $a^2$ is positive, so $a^2 > a$.
+    \end{itemize}
+    \end{enumerate}
+    Because the theorem holds for case (1) and case (2), it holds for all possible cases.
+  \end{proof}
   \bigskip
 
+  What is wrong with this proof?
+\end{frame}
+
+\subsection{Proof by Contradiction}
+\begin{frame}{Proof By Contradiction}{Definition}
+
+  "Proof by Contradiction" is a technique where you show that {\bf the negative of the theorem implies a false fact to be true}.\bigskip
+
+  For a simple example: "If gravity did not exist, then we would all be flying. Since we are not flying, then gravity must exist."\bigskip
+
+  Sometimes, it can be easy to create a proof by contradiction by finding a good counter-example. Other times, we have to find an absurd consequence of the negative.\bigskip
+
+  Use "Proof by Contradiction" to prove the following theorem:\\
+  {\bf Theorem:} $\sqrt{2}$ is an irrational number.
+\end{frame}
+
+
+\begin{frame}{Proof by Contradiction}{Example}
+
+  \begin{proof}
+    We use proof by contradiction, and assume $\sqrt{2}$ is rational.
+  \begin{enumerate}
+  \item $\sqrt{2} = \frac{m}{n}$; $m,n \in \mathbb{Z}$; $n\neq 0$, and $m,n$ have no common factors.
+  \item $n\sqrt{2} = m$ and squaring both sides give $2n^2 = m^2$.
+  \item $m^2$ is even (because $n^2 = \frac{m^2}{2}$)
+  \item If $m^2$ is even, then $m$ is even too. So $m = 2k$ for some integer $k$.
+  \item So, $2n^2 = (2k)^2$, which leads to $n^2 = 2k^2$.
+  \item Following the logic of (3) and (4), $n^2$ is even, and $n$ is even too.
+  \item However, if $m$ and $n$ are even, it is a contradiction with (1).
+  \end{enumerate}
+  \end{proof}
+\end{frame}
+
+
+
+\subsection{The Well Ordering Outline}
+
+\begin{frame}{Well Ordering Principle}{Definition}
+
+  The Well Ordering Principle (WOP) is a very useful principle in mathematics, that can also look a little bit "obvious":\bigskip
+
+  {\Large
+  \begin{center}
+    Every \structure{non-empty} set of\\
+    \structure{Non-negative Integer Numbers} ($\mathbb{Z}^+$)\\
+    has \alert{one smallest element}
+  \end{center}}
+\end{frame}
+
+\begin{frame}{Well Ordering Principle}
+  \frametitle{Well Ordering Examples}
+    \begin{itemize}
+      \item What is the smallest age among students in Tsukuba?
+      \bigskip
+
+      \item What is the smallest number of coins that adds to 876 yens?
+      \bigskip
+
+      \item What are the smallest integers $m$ and $n$ so that $x = \frac{m}{n}$?
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Well Ordering Principle Proof Example}{}
+  We can re-write the proof that $\sqrt{2}$ is irrational using WOP.
+
+  \begin{proof}
+  \begin{enumerate}
+  \item $\sqrt{2} = \frac{m}{n}$; $m,n \in \mathbb{Z}$; $n\neq 0$;
+  \item \alert{By WOP, there is a {\bf smallest} $m$ and $n$ so that $\sqrt{2} = \frac{m}{n}$}
+  \item $n\sqrt{2} = m$ and squaring both sides give $2n^2 = m^2$.
+  \item $m^2$ is even (because $n^2 = \frac{m^2}{2}$)
+  \item If $m^2$ is even, then $m$ is even too. So $m = 2k$ for some integer $k$.
+  \item So, $2n^2 = (2k)^2$, which leads to $n^2 = 2k^2$.
+  \item Following the logic of (4) and (5), $n^2$ is even, and $n$ is even too.
+  \item If $m$ and $n$ are even, then $\sqrt{2} = \frac{m/2}{n/2}$, and \alert{$m/2$, $n/2$ are smaller than $m,n$, contradicting the WOP}.
+  \end{enumerate}
+  \end{proof}
+\end{frame}
+
+\begin{frame}{Why is the WOP useful?}{General form for a WOP proof}
+
+  The WOP gives us a general framework to produce proofs by contradiction:
+
   \begin{itemize}
-  \item $R(3) = 6$
-  \item $R(4) = 18$
-  \item $R(5) = \text{ unknown!}$
+    \item Structure your theorem around predicate $P(n)$, where $n \in \mathbb{N}$.
+    \item Define a set $C$ of counter examples, so that $C ::=\{n \in \mathbb{N}| P(n) \text{ is false}\}$.
+    \item By WOP, consider the minimum element $m \in C$.
+    \item Find a contradiction, for example:
+    \begin{itemize}
+      \item if $m$ exists, then it implies in the existence of a smaller element $m' < m, m' \in C$.
+      \item if $m$ exists, then actually $P(m)$ is true, and $m$ is not actually in $C$.
+    \end{itemize}
+    \item Therefore, the minimum element $m$ does not exist, the counter example set $C$ does not exist, and $P(n)$ is true for all $n$.
   \end{itemize}
 \end{frame}
 
-\begin{frame}
-  \frametitle{A bogus proof by cases: Prove $2a^2 > a$}
-  \begin{enumerate}
-  \item This proof is by case analysis.
-  \item There are two cases:
+\begin{frame}{WOP Proof examples:}
+  Let's see two quick examples of proofs using WOP. Try doing these two proofs by yourself first:
+  \vfill
+
+  \begin{itemize}
+    \item {\bf Theorem:} Every $n > 1, n\in\mathbb{N}$ is a product of prime numbers.\bigskip
+
+    \item {\bf Theorem:} For every $n\in\mathbb{N}$, $P(n): n+8 = 5a+3b; a,b \in\mathbb{N}$.\\(for every $n$, $n+8$ is composed of a sum of 3s and 5s)
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{WOP Proof example I: Prime factors}
+
+  {\bf Theorem:} Every integers bigger than 1 is a product of prime numbers.
+  \begin{proof}
+    Proof by contradiction using the WOP.
     \begin{itemize}
-      \item Case 1: $a$ is positive
-      \item Case 2: $a$ is negative
+      \item Assume, by WOP, that $m$ is the smallest $\mathbb{N}$ that is not a product of prime numbers.
+      \item Obviously $m$ is not a prime, so $m = a_1a_2\ldots a_n$, where $a_i$ is not prime.
+      \item Is $a_i$ a product of prime numbers?
+      \begin{itemize}
+        \item If $a_i$ is a product of prime numbers, then $a_i$ = $p_1p_2\ldots p_n$, and $m$ is now a product of prime numbers (\alert{contradiction})
+        \item If $a_i$ is not a product of prime numbers, then $m$ is not the {\bf smallest} product of prime numbers. (\alert{contradiction})
+      \end{itemize}
     \end{itemize}
-  \item One of these cases must always hold, because an integer is either positive or negative.
-  \item Case 1: Suppose $a$ is positive.
-  \item Since $a$ is an integer, we must have that $a \geq 1$.
-  \item Hence, $2a^2 = 2a\times a \geq 2a\times 1 > a$.
-  \item This implies the claim holds in Case 1.
-  \item Case 2: Suppose $a$ is negative.
-  \item Since $a$ is an integer, we must have that $a \leq -1$.
-  \item Hence, $2a^2 \geq 2\times (-1 \times -1) = 2 > -1 \geq a$.
-  \item This implies the claim holds in Case 2.
-  \item The claim therefore holds in both cases.
-  \end{enumerate}
+  \end{proof}
+\end{frame}
+
+\begin{frame}{WOP Proof example II: Postal Numbers}
+  {\bf Theorem:} For every $n$, $n+8$ is composed of 3s and 5s.
+
+  \begin{proof}
+    Proof by contradiction using the WOP
+    \begin{itemize}
+      \item First, we quickly verify that $P(n)$ is true for 0..8
+      \item By WOP, we assume that there is some minimum $m > 8$ where $P(m)$ is false.
+      \item If $P(m)$ is false, then $m+8$ cannot be composed of 3s and 5s.
+      \item If $m$ is minimum, then $P(m-8)$ is true, and $m$ is composed of 3s and 5s.
+      \item If $m$ is composed of 3s and 5s, then $m+8$ is $m+3+5$, and $P(m)$ is true! (\alert{Contradiction})
+    \end{itemize}
+  \end{proof}
 \end{frame}

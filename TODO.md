@@ -1,18 +1,12 @@
 # Tasks:
-- [ ] Prepare and publish the report for W1
-- [ ] List Changes for W1
+- [X] Prepare and publish the report for W1
+- [X] List Changes for W1
 - [ ] Changes for W1 Materials:
 - [ ] Record W1 Segments:
 
 
 # 2020
 ## Week 1: Basic Logic and Proofs
-- "Modus Ponens": Improve the explanation
-  - IMPORTANT: First needs to explain "imply"/"if"
-  - Explain the "divide" -> "means that" symbol.
-  - First proof method: Modus ponens: P, P->Q, Q
-- FIX: Replace the sqrt{3} proof with a simpler proof of
-  modus ponens (all men are mortal, etc)
 - SAT: Improve the explanation of Satisfiability
   - First, explain Propositions with variables. (use only binary variables)
   - Explain Valid and Satisfiable propositions, and how you can test it with Truth Tables (don't explain Truth tables).
