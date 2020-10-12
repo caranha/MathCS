@@ -1,23 +1,27 @@
-# Tasks:
-- [X] Prepare and publish the report for W1
-- [X] List Changes for W1
-- [ ] Changes for W1 Materials:
-- [ ] Record W1 Segments:
-
-
 # 2021
 ## Week 1: Basic Logic and Proofs
 - Improve the definition of SAT problem (maybe talk about DNF format)
 
+## Week 2:
+- Replace "binary relations" figures with my own
+- Add talk about using "binary relations"
+- Talk about Recursive data Type and Structural Induction
+  - Example with string bracket parsing (chapter 1.10 on site?)
+  - Structural Induction for functions: base case and constructors.
+  - Fast Exponentiation
+- Talk about Infinite Sets (1.11 on site)
+  - Why is CS interested in infinite sets if computers are finite?
+  - The sets we use are actuall infinite! (Natural, real, sets of sets)
+  - countables sets, cantor's theorem, halting problem, etc.
+- After composite relation:
+  - Add a discussion about a relation T (teaching) and its relation with
+    RV (for example, can we test whether T\intRV = nothing?)
 
-##########################################################
 
-## Week 2: Sets, Relations and Induction
-- Error: Slide 26 -- Function Surjection and size: Change to Surjection
-- Part 1: Explanation of set and surjection should be smaller. Need to
-  imporve what is Surjection.
-- Part 2: Induction. Slides are kinda ok, but explanation needs to be slower.
-  The point that you need to assume P(n) correct was not clear.
+===============
+
+# 2020
+
 
 ## Week 3: Mod, Number Theory, algorithms
 - There are MANY typos in the lecture -- fix them: specially differences between < and <=

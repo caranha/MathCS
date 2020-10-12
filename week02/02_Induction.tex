@@ -1,0 +1,254 @@
+\section{Induction}
+
+\frame{
+{Part 2: Induction}
+
+\tableofcontents[currentsection,hideallsubsections, firstsection=2, sections={2-4}]
+}
+
+\subsection{Introductory Examples}
+
+
+
+\begin{frame}{An initial induction (1/2)}
+  Imagine that I want to color the natural numbers ($\mathbb{N} \geq 0$), using the following rules:\bigskip
+
+  \begin{itemize}
+    \item Number $0$ is \alert{red}
+    \item Any integer next to a \alert{red} number is also \alert{red}
+  \end{itemize}\bigskip
+
+  Using these rules, can you imagine how the set $\mathbb{N}$ looks like?
+\end{frame}
+
+\begin{frame}{An initial induction (2/2)}
+
+  \begin{center}
+    Result: \alert{0,1,2,3,4,...}
+  \end{center}\bigskip
+
+  The "rule of reds" gives us a general idea of induction:
+
+  \begin{itemize}
+  \item $R(0)$ is True
+  \item $R(0) \rightarrow R(1); R(1) \rightarrow R(2); R(2) \rightarrow R(3); \ldots$
+  \item $R(n) \rightarrow R(n+1)$ for every $n \in \mathbb{N}$
+  \end{itemize}\bigskip
+
+  Induction can be used to prove a predicate that depends on some $n \in \mathbb{N}$ by modus ponens.
+  \begin{equation*}
+    \frac{R(0), R(n)\rightarrow R(n+1), n\in\mathbb{N}}{\forall n, R(n)}
+  \end{equation*}
+\end{frame}
+
+\begin{frame}{Example of proof by Induction}
+
+  Let's prove that:
+  \begin{equation*}
+    P(n): 1 + r + r^2 + r^3 + \ldots + r^n = \frac{r^{n+1}-1}{r-1}, r \neq 1, \forall n \in \mathbb{N}
+  \end{equation*}\bigskip
+
+  Remember the modus ponens rule for induction:
+  \begin{equation*}
+    \frac{P(0), P(n)\rightarrow P(n+1), n\in\mathbb{N}}{\forall n, P(n)}
+  \end{equation*}\bigskip
+
+  To prove the bottom part by induction, we need to prove the top part.
+
+  \begin{itemize}
+  \item First Step: Prove $P(0)$
+  \item Second Step: Prove $P(n) \rightarrow P(n+1)$
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Example of proof by Induction}
+
+  \begin{proof}
+    Proof by induction on $n$
+
+    {\bf First Step:} Prove $P(0)$
+    \begin{itemize}
+    \item $P(0)$, left side: $r^0 = 1$
+    \item $P(0)$, right side: $\frac{r^{0+1}-1}{r-1} = \frac{r-1}{r-1} = 1$
+    \end{itemize}\medskip
+
+    {\bf Second Step:} Prove $P(n) \rightarrow P(n+1)$
+    \begin{itemize}
+    \item $P(n+1)$, left side: $1 + r + r^2 + \ldots + r^n + r^{n+1}$, which is equal to $P(n)+r^{n+1}$
+    \item Because $P(n)$ is True, $P(n)+r^{n+1} = \frac{r^{n+1}-1}{r-1} + r^{n+1} = \frac{(r^{n+1}-1)}{r-1} + \frac{(r^{n+1}(r-1))}{r-1}$
+    \item Algebra: $\frac{(r^{n+1}-1) + (r^{n+1}(r-1))}{r-1} = \frac{r^{n+1} - 1 + r^{n+2} - r^{n+1}}{r-1} = \frac{r^{n+2} - 1 + (r^{n+1} - r^{n+1})}{r-1}$
+    \item $\frac{r^{n+2} - 1}{r-1} = \frac{r^{(n+1)+1} - 1}{r-1}$, which is the right side of $P(n+1)$
+    \end{itemize}
+  \end{proof}
+\end{frame}
+
+\subsection{Proof by Induction}
+\begin{frame}{Review: Proof Template for Induction}
+
+  {\larger
+    {\bf Proof by induction on $n$}\\
+    Proof hypothesis: $P(n) = \ldots$ for all $n \in \mathbb{N}. n \geq 0$\\
+
+    \bigskip
+
+    First we prove $P(0)$.\\
+    $\ldots$ \emph{(calculate that P(0) is True)}\\
+    $\ldots$\\
+
+    \bigskip
+
+    Second we prove that $\forall n \geq 0, P(n) \rightarrow P(n+1)$\\
+    $\ldots$ \emph{(calculate P(n+1) using P(n))}\\
+    $\ldots$\\
+
+    \bigskip
+
+    This completes the proof that $P(n)$ for all $n\in\mathbb{N}$\hfill$\qed$
+  }
+\end{frame}
+
+\subsection{The Statue Park}
+
+\begin{frame}{The Statue Park}{A more complex proof by induction}
+
+  The university is making a new park with the following rules:
+  \begin{itemize}
+    \item The park is square, with side $2^n$;
+    \item In the middle of the park, there is a statue, size $1\times 1$;
+    \item Other than that, the park is made of L-shaped tiles, with size $3m^2$;
+  \end{itemize}\bigskip
+
+  How can we prove that it is possible to build this park for any $n$?
+\end{frame}
+
+\begin{frame}[t]{The Statue Park}{Drawing Proof}
+  Remember the rule of induction:
+  \begin{itemize}
+    \item Prove that $P(0)$ is true.
+    \item Assume that $P(n)$ is true, then prove that $P(n) \implies P(n+1)$
+  \end{itemize}
+\end{frame}
+
+
+\subsection{BAD induction proof}
+
+\begin{frame}[t]{BAD Proof by induction: All horses are of the same color}
+
+  $P(n) ::=$ for any \structure{set} with \alert{exactly n horses}, all horses have the same color.\bigskip
+
+  \begin{itemize}
+
+  \item<2-> {\bf Prove P(1)}: For any set with one horse, all horses have the same (one) color.
+
+  \item<3-> {\bf Assume P(n) is true:} For any set with $n$ horses, all horses have the same color.
+  \item<4-> {\bf Show that $P(n) \implies P(n+1)$:}
+    \begin{itemize}
+    \item <5->Consider the set of n+1 horses: $H = h_1, h_2, \ldots, h_n, h_{n+1}$
+    \item <6->Subset A ($h_1, h_2, \ldots, h_n$): has $n$ horses, so all horses have the same color.
+    \item <7->Subset B ($h_2, \ldots, h_n, h_{n+1}$): \alert{also} has $n$ horses, so all horses have the same color.
+    \item <8->Horse $h_2$ is in subset $A$ {\bf and} in subset $B$, so subset $A$ and $B$ have the same color.
+    \end{itemize}
+  \item<9-> Since we showed that P(n+1) is true if P(n) is true, then all horses for any group size have the same color.
+  \end{itemize}\bigskip
+
+  \only<10>{\alert{QUIZ}: What is wrong with this proof?}
+\end{frame}
+
+\begin{frame}{What is wrong with the horse proof?}
+
+  The second step, when we show that $P(n) \implies P(n+1)$ is not valid.\bigskip
+
+  \begin{itemize}
+    \item The implication proof depends on "$h_i$ belongs to subsets $A$ and $B$".
+    \item But is this ALWAYS true?
+    \begin{itemize}
+      \item When $n+1 = 2$, The $n+1$ set is $\{h_1, h_2\}$, set $A = h_1$, set $B = h_2$;
+      \item But in this case, {\bf there is no $h_i$ that is common to $A$ and $B$}!
+    \end{itemize}
+    \item So the implication proof is not valid when $P(2)$.
+  \end{itemize}\bigskip
+
+  Note that this is the only problem with the proof!
+\end{frame}
+
+\subsection{Strong Induction}
+
+\begin{frame}
+  \frametitle{Strong Induction}
+
+  {\larger
+    \begin{itemize}
+    \item In regular induction, you assume P(n) to show P(n+1)
+
+      \bigskip
+
+    \item In strong induction, you assume P(0), P(1), P(2) \ldots
+      P(n), and use all of them to show P(n+1)
+    \end{itemize}
+  }
+\end{frame}
+
+\begin{frame}
+  \frametitle{Strong Induction Example: Stacking Game}
+  {\larger
+  \begin{itemize}
+  \item Begin with a stack of 10 blocks
+  \item Divide it in two (a,b): for example, 2 and 8 blocks.
+  \item You get $a\times b$ points: 10 points
+  \item Repeat with the new stacks until all stacks have 1 block.
+  \end{itemize}
+
+  \bigskip
+
+  \alert{What is the best strategy?}
+  \begin{itemize}
+  \item Simple strategy: 1+9, 1+8, 1+7, 1+6... \only<2->{45 points!}
+  \item CS strategy: 5+5, 2+3 and 2+3, ... \only<3->{45 points!}
+  \end{itemize}
+  }
+\end{frame}
+
+\begin{frame}
+  \frametitle{Proof: All strategies have the same score (Part I)}
+
+  {\larger
+  Let us prove by strong inductions that all strategies for the stack
+  game with ``n'' blocks have the same score:
+  \begin{equation*}
+    C(n) = \frac{n(n-1)}{2}
+  \end{equation*}
+
+  \bigskip
+
+  {\bf Base Cases: 0, 1}
+  \begin{itemize}
+  \item When the stack has 0 blocks, I have no moves, so 0 points.
+  \item When the stack has 1 block, I have no moves, so 0 points.
+  \end{itemize}
+  \begin{equation*}
+    C(0) = \frac{0(0-1)}{2}, C(1) = \frac{1(1-1)}{2} = 0
+  \end{equation*}
+  }
+\end{frame}
+
+\begin{frame}
+  \frametitle{Proof: All strategies have the same score (Part II)}
+
+    {\bf Inductive Case} $C(n+1)$\\
+    By strong induction, we assume that all $C(0)\ldots C(n)$ are true.
+
+    \bigskip
+
+    \begin{enumerate}
+    \item A stack with $n+1$ blocks can be split into two: $k$ and $n+1-k$\medskip
+
+    \item The score is: $C(n+1) = k\times(n+1-k) + C(k) + C(n+1-k)$\medskip
+
+    \item Using the strong inductive assumption: $\forall m \leq n, C(m) = \frac{m(m-1)}{2}$\medskip
+    
+    \item Transforming (2): $C(n+1) = \frac{2k(n+1-k)}{2} + \frac{k(k-1)}{2} +
+      \frac{(n+1-k)(n-k)}{2}$
+  \end{enumerate}\bigskip
+
+  ... You can finish the calculation from here ;-)
+\end{frame}
