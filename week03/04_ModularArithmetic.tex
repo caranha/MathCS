@@ -1,0 +1,169 @@
+\section{Modular Arithmetic}
+
+% From prime numbers to simple criptography
+
+\frame{
+{Part 4: Modular Arithmetic}
+
+\tableofcontents[currentsection,hideallsubsections, firstsection=1, sections={1-5}]
+}
+
+% Modular arithmetic and congruence
+
+\subsection{Congruence}
+\begin{frame}{Modular Arithmetic and Congruence}
+
+  Using \structure{modular arithmetic}, we can make the Turing Algorithm stronger.\bigskip
+
+  Modular arithmetic is centred around the concept of \structure{{\bf Congruence}}:
+
+  \begin{equation*}
+    a\equiv b (\text{modulo } n) \iff n|(a-b)
+  \end{equation*}\bigskip
+
+  \structure{Examples:}
+  \begin{itemize}
+\item $30\equiv12 (\text{modulo } 9)$,\hspace{4.3cm} because $9|(30-12)$
+\item $66666663 \equiv 788253 (\text{modulo } 10)$,\hspace{2cm} because $10|66666663 - 788253$
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Modular Arithmetic and Congruence}{Remainder Theorem}
+
+  One important implication of the definition of equivalence is the remainder theorem:
+
+
+  \begin{proof}
+    Proof by two way implication. Let the remainder of $a$ and $b$ be $r_{a,b}$:
+
+    \begin{itemize}
+    \item Let $a = q_an + r_{a,n}$, and $b = q_bn + r_{b,n}$
+    \item (right side) {\bf if} $r_{a,n} = r_{b,n}$ then $a-b = (q_a-q_b)n \implies n|(a-b)$
+    \item (left side) {\bf if} $n|(a-b)$ then $n|((q_a-q_b)n+(r_{a,n}-r_{b,n}))$
+    \begin{itemize}
+      \item but $0 \leq r_{*,n} < n$ so $r_{a,n}-r_{b,n}$ must be 0
+    \end{itemize}
+    \end{itemize}
+  \end{proof}
+\end{frame}
+
+% Congruence is preserved by addition and multiplication
+\begin{frame}{Modular Arithmetic and Congruence}{Consequences of the Remainder Theorem}
+
+  Remainder Theorem:
+  \begin{equation*}
+    a \equiv b (\text{mod } n) \iff \text{ rem}(a,n) = \text{ rem}(b,n)
+  \end{equation*}
+
+  \begin{itemize}
+  \item $a \equiv b$ (mod n) {\bf and} $b \equiv c$ (mod n) {\bf implies}
+    $a \equiv c$ (mod n)
+  \item $a \equiv $ rem(a,n) (mod n) \hspace{1cm} (\alert{important!})\bigskip
+  \item $a \equiv b$ (mod n) {\bf implies} $a+c \equiv b+c$ (mod n)
+  \item $a \equiv b$ (mod n) {\bf implies} $ac \equiv bc$ (mod n)
+  \item $a \equiv b$ (mod n) {\bf and} $c\equiv d$ (mod n)\\
+    \hspace{2cm}{\bf implies} $a+c \equiv b+d$ (mod n) {\bf and} $ac \equiv bd$ (mod n)
+  \end{itemize}\bigskip
+
+  The last three consequences show that we can freely use \structure{addition} and \structure{multiplication} in modular arithmetic. Try to prove some of these consequences!
+\end{frame}
+
+% Remainder Arithmetic
+\begin{frame}{Using Modular Arithmetic}{General Principle of Modular Arithmetic}
+
+  \begin{block}{}
+    You can simplify modulo operations composed of additions and multiplications by replacing integer operands by their remaiders.
+  \end{block}
+
+  Example: What is $287^9 \equiv$ ? (mod 4)
+
+  \begin{itemize}
+    \item Simplify $287^9$ (mod 4) to $3^9$ (mod 4), becase $r_{287,4} = 3$
+    \item $3^9 \to 3^8\times 3 \to 9^4 \times 3$
+    \item Simplify $9^4 \times 3$ (mod 4) to $1^4 \times 3$, because $r_{9,4} = 1$
+    \item $289^9 \equiv 1^4 \times 3 \equiv 3$ (mod 4)
+  \end{itemize}\bigskip
+
+  We calculated a large exponent without actually calculating the exponentiation!
+\end{frame}
+
+% Remainder Inverse
+% Remainder inverse and relatively prime numbers
+
+\subsection{Modular Inverses}
+
+\begin{frame}{Modular Arithmetic and Division}
+
+  We so that modular arithmetic works for addition and multiplication, so what about \structure{division}?\bigskip
+
+  \begin{itemize}
+    \item $8\times 2 \equiv 3\times 2$ (mod 10)
+    \item $8\times \not{2} \equiv 3\times \not{2}$ (mod 10)
+    \item $8 \equiv 3$ (mod 10) \hspace{2cm} \alert{\bf FALSE!}
+  \end{itemize}\bigskip
+
+  We cannot cancel out multiplications arbitrarily!
+\end{frame}
+
+\begin{frame}{Modular Arithmetic and Division}{Modular Inverses}
+
+  When we cancel the multiplication of a real number, it is equivalent of multiplying it by its {\bf multiplicative inverse}:
+
+  \begin{equation*}
+    an = bn \to a\not{n} = b\not{n} \to a(n\times \frac{1}{n}) = b(n\times \frac{1}{n})
+  \end{equation*}
+
+  So a multiplicative inverse of $n$ is the number $k$ so that $n\times k =1$.\bigskip
+
+  In modulo arithmetic, we have: $n\times k \equiv 1$ (mod m). But, it turns out that it is not possible to find a $k$ that solves this equation for every $n$ and $m$!
+\end{frame}
+
+
+\begin{frame}{Modular Inverses}{When does $n$ have an inverse, and how can we find it?}
+
+  It turns out that $n$ only has a modular inverse (module $m$) if $gcd(n,m) = 1$.\bigskip
+
+  It is relatively easy to find the modular inverse:
+  \begin{itemize}
+    \item First we calculate gcd(n,m) using the pulverizer, and obtaining $s$ and $t$ so that $sm+tn=1$
+    \item The multiplicative inverse of $n$ modulo $m$ is given by: $r_{m,t}$
+    \item So $n\times r_{m,t} \equiv 1$ (mod $m$)
+  \end{itemize}
+\end{frame}
+
+\subsection{Turing Code 2.0}
+
+\begin{frame}{Turing Code 2.0}
+  Using Modular Arithmetic, we can solve some of the problems of the cryptography algorithm described in the last section:
+
+  \begin{enumerate}
+    \item The sender and the receiver agree on a large prime number $n$, which will be the module, as well as the secret key $k < n$
+    \item {\bf Encription:} The message $m$ is a prime number ($0 < m < n$). The sender calculates the secret message $\hat{m}$ using modulo multiplication:
+    \begin{equation*}
+      \hat{m} = m\times k \text{ mod }n
+    \end{equation*}
+    \item {\bf Decription:} The receiver multiplies the encrypted message $\hat{m}$ by the inverse of the key: $k^{-1}$ (mod $n$):
+    \begin{equation*}
+      m = \hat{m}0\times k^{-1} \text{ mod }n
+    \end{equation*}
+  \end{enumerate}
+  We cannot find $k$ anymore by having two encrypted messages, so is this algorithm safe?
+\end{frame}
+
+\begin{frame}{Turing Code 2.0}{Breaking the Turing Code with a Plaintext Attack}
+
+  The new algorithm can be broken by what is called a \structure{{\bf Plaintext Attack}}.\bigskip
+
+  Imagine that an attacker is able to acquire an encrypted message $\hat{m}$ and its respective clear message $m$. To break this code:\bigskip
+
+  \begin{itemize}
+    \item Calculate the multiplicative inverse of $m$ modulo $n$: $m^{-1}$, using the Pulverizer.
+    \item Multiply the result by the encrypted message:
+    \begin{itemize}
+      \item $m^{-1}\times \hat{m} = m^{-1}\times (m \times k) = (m^{-1} \times m) \times k = 1\times k$ (mod $n$)
+    \end{itemize}
+    \item This allows us to recover the secret key $k$.
+  \end{itemize}\bigskip
+
+  So this algorithm is not so good after all! :-(
+\end{frame}

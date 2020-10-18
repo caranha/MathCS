@@ -1,0 +1,118 @@
+\section{RSA Algorithm}
+
+\frame{
+{Part 5: RSA Algorithm}
+
+\tableofcontents[currentsection,hideallsubsections, firstsection=1, sections={1-5}]
+}
+
+
+\begin{frame}{The RSA Cryptosystem}
+  Turing's cryptography algorithm that we described in the previous sections was flawed. But there is a cryptographic algorithm based on modular arithmetic which is the base of much of the security of the internet.\bigskip
+
+  The RSA algorithm involves computing the remainders of numbers raised to large powers.
+\end{frame}
+
+\subsection{Euler's Theorem}
+
+\begin{frame}{Euler's Function}
+
+  The number of integers between $0$ and $n$ that are relatively prime to $n$ is represented by \structure{Euler's Function}:
+  \begin{equation*}
+    \Phi(n) ::= \# k\in[0,n), GCD(k,n) = 1
+  \end{equation*}
+  \bigskip
+
+  For example:
+  \begin{itemize}
+    \item $\Phi(7) = 6$, because $\{1,2,3,4,5,6\}$ are relatively prime to 7;
+    \item $\Phi(12) = 4$, because $\{1,5,7,11\}$ are relatively prime to 12;
+  \end{itemize}\bigskip
+\end{frame}
+
+\begin{frame}{Euler's Theorem}
+  The value of $\Phi$ is important because of \structure{Euler's Theorem}: If $n$ and $k$ are relatively prime, then
+  \begin{equation*}
+    k^{\Phi(n)} \equiv 1 (\text{mod } n)
+  \end{equation*}\bigskip
+
+  Additionally, Euler's function and Euler's theorem gives us another way to calculate modular inverses:
+  \begin{itemize}
+    \item $k^{\Phi(n)} \equiv 1$ (mod $n$)
+    \item $k^{\Phi(n)-1}\times k \equiv 1$ (mod $n$)
+  \end{itemize}
+  So $k$ and $k^{\Phi(n)-1}$ are inverses, modulo $n$.
+\end{frame}
+
+%% TODO: Prove Euler's Theorem (Page 274)
+
+
+\begin{frame}{Calculating $\Phi(n)$}
+
+  We can calculate $\Phi(n)$ quickly with some simple rules:\bigskip
+
+  \begin{itemize}
+  \item If $n$ is prime, $\Phi(n) = n-1$\bigskip
+
+  \item If $n$ is a power of a prime, $\Phi(p^k) = p^k - p^{k-1}$
+    \begin{itemize}
+    \item Ex: $\Phi(9) = 3^2 - 3 = 6 \hspace{1cm} \{1,2,4,5,7,8\}$
+    \end{itemize}\bigskip
+
+  \item If $n$ is $ab$ where GCD(a,b)=1, $\Phi(ab) = \Phi(a)\Phi(b)$
+    \begin{itemize}
+    \item Ex: $\Phi(12) = \Phi(3) \times \Phi(4) = (3-1)\times (2^2 - 2) = 4$
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+% RSA
+
+\subsection{RSA Algorithm}
+\begin{frame}
+  \frametitle{The RSA Encryption System}
+
+  The RSA, created in 1977, is a \structure{Public Key Cyrptosystem}. This means that, unlike the Turing algorithm, it is not necessary to exchange a secret key between the \emph{sender} and the \emph{receiver}.\bigskip
+
+  The RSA uses Euler's theorem for encrypting and decrypting messages, and its security is based on the difficulty of factoring large numbers.
+\end{frame}
+
+\begin{frame}{The RSA System}{Algorithm}
+
+  {\bf Preparation}
+  \begin{itemize}
+    \item Generate two distinct large primes, $p$ and $q$, which are secret
+    \item Let $n = pq$
+    \item Create a \structure{public key} $e \in [0..n)$ such that gcd$(e, (p-1)(q-1)) = 1$;
+    \item Create a \structure{private key} $d \in [0..n)$ be the modular inverse of $e$ (mod $(p-1)(q-1)$);
+  \end{itemize}\bigskip
+
+  {\bf Encoding a Secret Message}
+  \begin{itemize}
+    \item Given a message $m \in [0..n)$, construct the encrypted message as $\hat{m} = m^e (\text{mod }n)$
+  \end{itemize}\bigskip
+
+  {\bf Decoding a Secret Message}
+  \begin{itemize}
+    \item Given an encrypted message $\hat{m}$, it is decrypted as $m = \hat{m}^d (\text{mod }n)$
+  \end{itemize}\bigskip
+\end{frame}
+
+\begin{frame}{The RSA System}{Assumptions}
+
+  \begin{itemize}
+  \item \structure{Basic Assumption:} {\bf One Way Functions}
+    that are \structure{easy to compute} but \alert{hard to invert}
+
+    \bigskip
+
+  \item It is \structure{easy} to compute the product $n$ of
+    two \structure{large primes} $p$ and $q$ ($n = pq$)
+
+    \bigskip
+
+  \item It is \alert{very hard} to \structure{factor} $n$
+    into $p$ and $q$.
+
+  \end{itemize}
+\end{frame}

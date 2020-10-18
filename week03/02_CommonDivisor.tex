@@ -1,0 +1,221 @@
+\section{Greatest Common Divisor}
+
+\frame{
+{Part 2: Greatest Common Divisors}
+
+\tableofcontents[currentsection,hideallsubsections, firstsection=1, sections={1-5}]
+}
+
+\begin{frame}{Greatest Common Divisor (GCD)}
+
+  The \structure{Greatest Common Divisor} of $a$ and $b$ ($gcd(a,b)$), is the largest $c$ so that $c|a \land c|b$.\bigskip
+
+  Examples:
+  \begin{itemize}
+  \item $gcd(10,12)$ = 2 \hfill $2|10 \land 2|12$
+  \item $gcd(13,12)$ = 1 \hfill 13 and 12 have no common factors, and $1|x, \forall x$
+  \item $gcd(17,17)$ = 17
+  \item $gcd(0,n)$ = n \hfill $\forall n\in\mathbb{N}, n > 0, n|0$
+  \end{itemize}
+\end{frame}
+
+
+\subsection{Computing the GCD}
+\begin{frame}{Euclidean Algorithm}{The Remainder Lemma}
+
+  The GCD is easy to compute, by using the \structure{Remainder Lemma}:\bigskip
+
+  \begin{equation*}
+    gcd(a,b) = gcd(b, \text{remainder}(a,b)), \text{ for } b\neq 0
+  \end{equation*}\bigskip
+
+  \begin{block}{Proof Idea}
+
+    \begin{itemize}
+    \item The division axiom states that: $a = qb + r, 0\leq r < b$;
+    \item $c = gcd(a,b) \implies c|a \land c|qb$;
+    \item $r = a - qb$, and $c|a \land c|qb \implies c|(a + (-1)*qb)$
+    \item So $c|r$
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Euclidean Algorithm}{Calculating with the Remainder Lemma}
+
+  To calculate the GCD of $a$ and $b$, we repeatedly calculate the remainder
+  of $a$ and $b$, and replace $a$ with the remainder.\bigskip
+
+  \begin{center}
+    GCD(899, 493) -- a = 899, b = 493
+  \end{center}\bigskip
+
+  \begin{itemize}
+  \item $899 = 493 \times 1 + 406$ \hfill \structure{division axiom}
+  \item GCD(899, 493) = GCD(493, 406) \hfill \structure{remainder lemma}
+  \item GCD(493, 406) = GCD(406, 87) \hfill \structure{$493 =
+    406\times 1 + 87$}
+  \item GCD(406,87) = GCD(87,58) \hfill \structure{$406 = 87\times 4 + 58$}
+  \item GCD(87,58) = GCD(58,29) = GCD(29,0) = \alert{29}
+  \end{itemize}
+\end{frame}
+
+\subsection{Proof of correctness}
+
+\begin{frame}{Euclidean Algorithm}{State Machine}
+  Let's use a State Machine to prove the correctness of Euclidean Algorithm:\bigskip
+
+  \begin{itemize}
+  \item \structure{States::=} $\mathbb{N}\times \mathbb{N}$\hspace{2cm} (values of $a$ and $b$)\bigskip
+  \item \structure{Start State::=} $(a,b)$ \bigskip
+  \item \structure{State Transitions::=}
+    $(x,y) \rightarrow (y,rem(x,y))$ if $y\neq 0$ \bigskip
+  \item \structure{End State::=} $y = 0$
+  \end{itemize}\bigskip
+
+  Remember that to prove correctness, we have to:
+  \begin{itemize}
+    \item Prove \structure{partial correctness}
+    \item Prove \structure{termination}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Proof of GCD}{Proof of Partial Correctness}
+
+  To prove partial correctness, we have to prove the \structure{preserved invariant} $P((x,y)) ::= [gcd(x,y) = gcd(a,b)]$.
+
+  \begin{proof}
+    We prove the preserved invariant $P((x,y))$ by induction:
+
+    \begin{itemize}
+      \item P(start) is trivial: $gcd(a,b) = gcd(a,b)$
+      \item If $P((x,y))$ is true, then it is still true for any transition.
+      \begin{itemize}
+        \item There is only one transition: $(x,y) \to (y,\text{rem}(x,y))$
+        \item The \structure{Remainder Lemma} says that: gcd(y,y) = gcd(y,rem(x,y));
+      \end{itemize}
+    \end{itemize}
+    By these two items, we proved that $P()$ holds for any state in the machine.
+  \end{proof}
+\end{frame}
+
+\begin{frame}{Proof of GCD}{Proof of Termination}
+  \begin{itemize}
+    \item The transition is $(x,y) \to (y,\text{rem}(x,y))$;
+    \item By the division axiom, $0 \leq \text{ rem}(x,y) < y$;
+    \item So $y$ becomes smaller after every transition;
+    \item When $y = 0$, \structure{the machine halts};
+  \end{itemize}\bigskip
+
+  By the way, when the machine stops, the state is $(x_e,0)$. Because the preserved invariant state that $gcd(a,b) = gcd(x,y)$, and $gcd(x,0) = x$, the final result of the algorithm is that $gcd(a,b) = x_e$.
+\end{frame}
+
+\begin{frame}{How fast is the GCD?}
+
+  Analysing the state machine, we can calculate how fast the GCD terminates:\bigskip
+
+  \begin{itemize}
+    \item At each transition, x is replaced by y. There are two cases:
+      \begin{enumerate}
+      \item $y \leq x/2$: so x is halved this step.\medskip
+      \item $y > x/2$: so rem$(x,y) = x - y$ and x will get
+        halved at the \emph{next} step.
+      \end{enumerate}\bigskip
+    \item So every two steps, x gets halved (or even smaller)
+    \item This means that after $\leq 2\log_2x$ steps, the algorithm stops.
+  \end{itemize}\bigskip
+
+  So GCD$(a,b)$ is calculated after $2\log_2a$ steps.
+\end{frame}
+
+
+\subsection{The Pulverizer}
+\begin{frame}{GCD and Linear Combinations}
+
+  Remember that we showed that a divisor $c$ of $a$ and $b$ is also a divisor of $(sa+tb)$.\bigskip
+
+  Note that $c$ is a divisor of itself too, so we can represent $c$ as $(sa+tb)$ for some $s$ and $t$.\bigskip
+
+  The \structure{Extended Euclid Algorithm} (also called "The Pulverizer") can calculate $s$ and $t$ so that gcd$(a,b) = sa + tb$.\bigskip
+
+  It is useful to note also that the gcd$(a,b)$ divides {\bf every linear combination} of $a$ and $b$.
+\end{frame}
+
+\begin{frame}{The Pulverizer Algorithm}
+
+    \structure{Calculate} Euclid's algorithm as usual:
+    \begin{itemize}
+    \item GCD(x,y) = GCD(y,rem(x,y)\hspace{2cm} {\bf Start}: GCD(a,b)
+    \end{itemize}
+
+    \bigskip
+
+    As we calculate GCD, \structure{keep track of} four coefficients: {\bf c,d,e,f}
+    \begin{itemize}
+    \item $x = ca+db$ and $y = ea+fb$
+    \item {\bf at start:} $x = 1a + 0b$, $y = 0a+1b$
+    \item {\bf update:} $x_{\text{next}} = y = ea + fb$
+    \item $y_{\text{next}} =
+      \text{rem}(x,y) = x - qy =
+      ca+db-q(ea+fb)$
+    \item $y_{\text{next}} = (c-qe)a+(d-qf)b$
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{The Pulverizer Algorithm}{Example}
+
+    {\bf a = 899, b = 493}\\
+    \hfill (remember: $e_1 = c_0-q_0e_0, f_1 = d_0 - q_0f_0$)
+
+    \vfill
+
+    \begin{tabular}{l|l|l|l|r|r|r|r}
+      a & b & q & rem(a,b) & c & d & e & f\\
+      \hline
+      899 & 493 & 1 & 406 & 1 & 0 & 0 & 1\\
+      493 & 406 & 1 & 87 & 0 & 1 & 1 & -1\\
+      406 & 87 & 4 & 58 & 1 & -1 & -1 & 2\\
+      87 & 58 & 1 & 29 & -1 & 2 & 5 & -9\\
+      58 & 29 & 2 & 0 & 5 & -9 & -6 & 11\\
+      29 & 0 & - & - & -6 & 11 & - & -\\
+    \end{tabular}
+
+    \begin{center}
+      GCD(899,493) = 29 = $-6\times 899 +11\times 493$
+    \end{center}
+\end{frame}
+
+\begin{frame}{The Pulverizer Algorithm}{Positive coefficients}
+
+  So the Pulverizer calculates one linear combination of $a$ and $b$ which is equal to the GCD:
+
+  \begin{equation*}
+  \text{GCD}(899, 493) = -6\times 899 + 11\times 493
+  \end{equation*}\bigskip
+
+  It is possible to obtain other linear combinations, by defining $s$ and $t$ as follows:
+
+  \begin{equation*}
+    \text{GCD}(899, 493) = (-6 + 493k)899 + (11 - 899k)493, \text{ for any }k
+  \end{equation*}\bigskip
+
+  For example, if we set $k = 1$, we can find the following coefficients for $s$ and $t$:
+
+  \begin{equation*}
+    \text{GCD}(899, 493) = 487\times 899 - 888\times 493
+  \end{equation*}
+
+\end{frame}
+
+\begin{frame}{The Pulverizer Algorithm}{Positive coefficients}
+
+  Remember the robot from last class? The position of the robot was $x = 5a - 3b$. For any $x$, we can use the pulverizer to find $a$ and $b$.\bigskip
+
+  \begin{itemize}
+    \item Let's say that we want to find the path of the robot for $x = 8$
+    \item gcd$(5,3) = 1 = 2\times5 - 3\times 3$, using the pulverizer.
+    \item $8 = 8\times 1 = 8\times(2\times 5 - 3\times3) = (8\times2)5 + (8\times 3)5$
+    \item Result: 16 moves forward, 24 moves back.
+  \end{itemize}\bigskip
+
+  This may not be the best solution for $x=8$, but it is an easy and fast algorithm to calculate a solution.
+\end{frame}

@@ -1,0 +1,118 @@
+\section{Primality}
+
+% From prime numbers to simple criptography
+
+\frame{
+{Part 3: Primality}
+
+\tableofcontents[currentsection,hideallsubsections, firstsection=1, sections={1-5}]
+}
+
+\begin{frame}{Prime Numbers}
+
+  Prime numbers are numbers that have \structure{no divisors}, others than 1 and themselves.\bigskip
+
+  In many senses, primes numbers are the {\bf building blocks} of arithmetic.\bigskip
+
+  \begin{block}{The Fundamental Theorem of Arithmetic}
+    Every positive integer has a {\bf unique} prime factorization.
+  \end{block}
+\end{frame}
+
+\subsection{Prime Number Factorization}
+
+% Fundamental theorem of arithmetic: Every number can be decomposed in primes
+
+\begin{frame}{Proving Prime Number Factorization}{Step 1}
+    {\bf Lemma 1:} If $p$ is prime and $p|ab$, then $p|a$ or $p|b$
+
+    \begin{proof}
+      \begin{itemize}
+        \item Let's assume that $p$ {\bf does not} divide $a$. So gcd$(a,p) = 1$
+        \item Consequently, $\exists s,t. sa+tp = 1$
+        \item Multiply everything by $b: sab+tpb = b$
+        \item $p|sab \land p|tpb \implies p|(sab+tpb) \implies p|b$
+      \end{itemize}
+    \end{proof}
+
+    {\bf Corolary 1:} If $p|a_1a_2a_3\ldots a_m$, then $\exists 0 < i \leq m, p|a_i$\\
+    \hfill (You can prove this by induction on m)
+\end{frame}
+
+
+\begin{frame}{Proving Prime Number Factorization}{Step 2}
+
+  In lecture 1 we showed that every positive integer was a product of prime numbers.\\
+  Now we need to show that the prime number factorization is {\bf unique}:
+
+  \begin{proof}
+    Proof by contradiction:
+    \begin{itemize}
+      \item By WOP, consider $n$ the smallest positive integer with a \alert{non-unique} factorization;
+      \item $n = p_1p_2\ldots p_k$ and $n = q_1q_2\ldots q_k$
+      \item Consider that these factors are {\bf ordered} ($q_1 \geq q_2 \geq \ldots$)
+      \item $p_1 \neq q_1$ (else, we could cancel then out, and find a smaller $n$ with 2 factorizations)
+      \item Assume $p_1 > q_1$. $p_1|n \implies p_1|q_1q_2q_3\ldots q_k$
+      \item However, $p_1 > q_1 \geq q_2 \geq q_3 \ldots\geq q_k$, which is a contradiction.
+    \end{itemize}
+
+  \end{proof}
+\end{frame}
+
+\subsection{Using Primes}
+% How many primes are out there? (Prime number theorem)
+\begin{frame}{Prime Properties}
+  Because prime numbers are so important, we are interested in knowing how many are there. Consider the $\pi(n)$ set of prime numbers between 2 and $n$:
+
+  \begin{equation*}
+    \pi(n) ::= [\{p\in[2..n]|p\text{ is prime}\}]
+  \end{equation*}
+  \bigskip
+
+  The \structure{Prime Number Theorem} states how the size of $\pi(n)$ grows:
+  \begin{equation*}
+    \lim_{n\to\infty}\frac{\pi(n)}{n/\ln n} = 1
+  \end{equation*}\bigskip
+
+  As a general idea, the frequency of primes around an integer $n$ is $\frac{1}{\ln n}$. In other words, the quantity of primes gets smaller as $n$ gets bigger.
+\end{frame}
+
+
+% Few primes leads to difficulty of prime factorization
+
+% Cryptography
+  % Every number can be composed of primes
+  % Prime factorization is difficult
+\begin{frame}[fragile]{Prime Cryptography}{The Turing Algorithm}
+  Alan Turing, among his many works in computer science, proposed a cryptography method using prime numbers.\bigskip
+
+  \begin{enumerate}
+    \item Transform the message you want to send ($m$) into a prime number:
+\begin{verbatim}
+  v  i  c  t  o  r  y       (not prime)         (prime)   **
+  22 09 03 20 15 18 25 -> 22090320151825 -> 2209032015182513
+\end{verbatim}
+    \item Choose a secret key ($k$) as a large prime, and share it with the receiver;
+    \item The \emph{sender} calculates the \emph{encrypted message} as follows, and sends it.
+    \begin{equation*}
+      \hat{m} = m\times k
+    \end{equation*}
+    \item The \emph{receiver} recovers the \emph{original message} using the secret key:
+    \begin{equation*}
+      m = \hat{m}/k
+    \end{equation*}
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}{Prime Cryptography}{How secure is the Turing Algorithm?}
+  Because of the difficulty of finding the prime factors of a large number, it is very hard to find $m$ and $k$ if you only have $\hat{m}$.\bigskip
+
+  So if an adversary only knows $\hat{m}$, it is very hard to break this code. But what happens if the adversary has {\bf two} secret messages, $\hat{m_1}$ and $\hat{m_2}$?\bigskip
+
+  Remember that $\hat{m_1} = k\times m_1$ and $\hat{m_2} = k\times m_2$. $k$ is a \structure{common divisor} of $\hat{m_1}$ and $\hat{m_2}$, so:
+  \begin{equation*}
+    k = gcd(\hat{m_1}, \hat{m_2})
+  \end{equation*}\bigskip
+
+  So it is very easy to find the secret key of this algorithm. Can we improve it?
+\end{frame}

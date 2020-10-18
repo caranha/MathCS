@@ -1,24 +1,16 @@
 # 2021
 ## Week 1: Basic Logic and Proofs
-- Improve the definition of SAT problem (maybe talk about DNF format)
+- TODO: improve definition of SAT problem, specially the relationship
+  between SAT and computer science.
+- TODO: talk about DNF format? See material in the book.
 
 ## Week 2:
-- Replace "binary relations" figures with my own
-- Add talk about using "binary relations"
-- Talk about Recursive data Type and Structural Induction
-  - Example with string bracket parsing (chapter 1.10 on site?)
-  - Structural Induction for functions: base case and constructors.
-  - Fast Exponentiation
-- Talk about Infinite Sets (1.11 on site)
-  - Why is CS interested in infinite sets if computers are finite?
-  - The sets we use are actuall infinite! (Natural, real, sets of sets)
-  - countables sets, cantor's theorem, halting problem, etc.
-- After composite relation:
-  - Add a discussion about a relation T (teaching) and its relation with
-    RV (for example, can we test whether T\intRV = nothing?)
+- Generally ok.
+- Need to replace the figures in this class with my own
+- TODO: talk about measuring set sizes with relations, and infinite sets
+  (lecture 1.11 on the site)
+- TODO: talk about structural induction? Maybe lecture too long?
 
-
-===============
 
 # 2020
 

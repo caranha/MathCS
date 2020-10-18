@@ -1,0 +1,111 @@
+\section{Divisibility}
+
+\frame{
+{Part 1: Divisibility}
+
+\tableofcontents[currentsection,hideallsubsections, firstsection=1, sections={1-5}]
+}
+
+\subsection{Definitions}
+
+\begin{frame}
+  \frametitle{Talking about Division}
+
+  How should we define the \emph{divide} operation on integers?\bigskip
+
+  Consider $a/b$, for $a,b \in \mathbb{N}$ and $b > 0$. We have:
+  \bigskip
+
+  \begin{itemize}
+  \item q = quotient(a,b)
+  \item r = remainder(a,b)
+  \end{itemize}
+
+  \bigskip
+
+  The {\bf Division Theorem} says that $\exists$ {\bf unique} $q$ and $r$ in $\mathbb{N}$ such as
+  \begin{equation*}
+    a = bq + r, 0 < r \leq a
+  \end{equation*}\bigskip
+
+  {\bf Example}: $16/3: a = 16, b = 3, q = 5, r = 1$;\hspace{1cm} $16 = 3\times 5 + 1$
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Divisibility}
+
+  We say that $c$ {\bf divides} $a (c|a)$ {\bf iff}
+    \begin{equation*}
+      \exists k \in \mathbb{N}, a = k\times c.
+    \end{equation*}
+    \begin{center}
+      $c$ divides $a$ if there is a number $k$ where $a$ equals $c$ times $k$.
+    \end{center}
+
+  \bigskip
+
+  \begin{itemize}
+  \item $5 | 15$ because $15 = 3 \times 5$
+  \item $n | 0$ because $0 = 0 \times n$ \hspace{1cm} every number divides 0
+  \item $1 | n$ because $n = n \times 1$ \hspace{1cm} 1 divides every number
+  \end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Implications of Divisibility (1/2)}
+
+  \begin{block}{Lemma 1: $c|a \implies c|(sa)$}
+    If $c$ divides $a$, then $c$ divides all multiples of $a$. {\bf Miniproof}: Multiply both sides by $s$:
+    \begin{itemize}
+      \item $a = kc$\hfill Definition of divisibility
+      \item $sa = skc$\hfill Multiplies both sides by $s$
+      \item $(sa) = (sk)\times c \implies c|sa$\qed
+    \end{itemize}
+  \end{block}
+
+  \begin{block}{Lemma 2: $c|a \land c|b \implies c|(a+b)$}
+    If $c$ divides $a$ and $b$, then $c$ divides $a+b$. {\bf Miniproof}: Distributive property of multiplication:
+    \begin{itemize}
+      \item $a = k_1c, b = k_2c$\hfill Definition of divisibility
+      \item $a+b = k_1c + k_2c$\hfill Adding both equations together
+      \item $(a+b) = (k_1+k_2)c \implies c|(a+b)$\qed
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}[t]{Implication of Divisibility (2/2)}
+
+  \begin{block}{$c|a \land c|b \implies c | (sa+tb)$}
+    If $c$ divides $a$ and $b$, then $c$ divides all \alert{linear combinations} of $a$ and $b$.\\
+    {\bf This one is pretty important.}
+  \end{block}
+  Try to solve it by yourself first:\bigskip
+
+  \begin{onlyenv}<2>
+  \begin{itemize}
+    \item Lemma 1: $c|a \implies c|ka$ for any $k$.\medskip
+    \item Collorary: $c|a \land c|b \implies c|sa \land c|tb$\medskip
+    \item Lemma 2: $c|a \land c|b \implies c|(a+b)$.\medskip
+    \item Collorary: $c|sa \land c|tb \implies c|(sa+tb)$\qed
+  \end{itemize}
+  \end{onlyenv}
+\end{frame}
+
+\subsection{Common Divisors}
+
+\begin{frame}
+  \frametitle{Common Divisors}
+
+    If $c|a$ and $c|b$, we say that c is a \structure{common divisor} of $a$ and $b$.\bigskip
+
+    As we saw in the last slide, a common divisor of $a$ and $b$ will also divide the linear combinations of $a$ and $b$:
+    \begin{equation*}
+      c|a \land c|b \implies \forall s,t\in\mathbb{N}, c|(sa+tb)
+    \end{equation*}\bigskip
+
+    In the next section, let's talk in more details about $c$, $s$ and $t$.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
