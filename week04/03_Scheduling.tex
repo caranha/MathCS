@@ -1,0 +1,573 @@
+\section{Scheduling and Partial Orders}
+
+\frame{
+{Part 3: Scheduling and Partial Orders}
+
+\tableofcontents[currentsection,hideallsubsections, firstsection=1, sections={1-4}]
+}
+
+\subsection{Scheduling}
+
+\begin{frame}
+  \frametitle{Using DAGs for Scheduling}
+
+  Let's consider again using DAGs for calculating course prerequisites.\medskip
+
+  \begin{columns}[T]
+    \column{0.3\textwidth}
+    $18.01 \rightarrow 6.042$\\
+    $18.01 \rightarrow 18.02$\\
+    $18.01 \rightarrow 18.03$
+    \column{0.35\textwidth}
+    $6.001 \rightarrow 6.034$\\
+    $6.042 \rightarrow 6.046$\\
+    $8.02 \rightarrow 6.002$\\
+    $18.03, 6.002 \rightarrow 6.004$
+    \column{0.35\textwidth}
+    $6.001, 6.004 \rightarrow 6.033$\\
+    $6.033 \rightarrow 6.857$\\
+    $6.046 \rightarrow 6.840$
+  \end{columns}
+
+  \vfill
+
+  We say that $u$ is a \structure{indirect prerequisite} of $v$ if there is a positive length walk in graph $R$:
+
+    \begin{center}
+      $18.01 \rightarrow 6.042 \rightarrow 6.046 \rightarrow 6.840$
+    \end{center}
+\end{frame}
+
+
+
+\begin{frame}{DAGs and Scheduling}{Minimal, Minimum, Maximal, Maximum of a DAG}
+  \begin{columns}
+    \column{0.4\textwidth}
+      \includegraphics[width=1\textwidth]{../img/greedy_schedule}
+
+      \column{0.6\textwidth}
+    \begin{itemize}
+    \item A \structure{minimal} course is does not have any prerequisites:
+    \begin{itemize}
+      \item $\emptyset \to 18.01$, $\emptyset \to 6.001$, $\emptyset \to  8.02$
+    \end{itemize}\bigskip
+
+    \item A \structure{minimum} course is an indirect prerequisite of {\bf all} courses.
+    \begin{itemize}
+      \item none in this example!
+      \item if we add a course $x \to \{18.01, 8.02, 6.001\}$, then $x$ would be the minimum.
+    \end{itemize}\bigskip
+
+    \item \structure{Maximal} and \structure{maximum} courses have a similar definition.
+    \begin{itemize}
+      \item $\{18.02, 6.840, 6.857, 6.034\}\to \emptyset$ are maximal.
+    \end{itemize}
+    \end{itemize}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{DAG and Scheduling}{How to Schedule}
+
+  \begin{columns}
+    \column{0.4\textwidth}
+      \includegraphics[width=1\textwidth]{../img/greedy_schedule}
+
+    \column{0.6\textwidth}
+      If we have the graph of course requirements, how do we select the courses for each semester? \medskip
+
+      \structure{Greedy Scheduling}:
+      \begin{enumerate}
+      \item Identify Minimal Subjects;
+      \item Add Minimal Subjects to Schedule;
+      \item Remove Minimal Subjects;
+      \item Return to Step 1
+      \end{enumerate}
+  \end{columns}\medskip
+
+  Schedule:\\
+  $\{18.01, 8.02, 6.001\} \to \{18.02, 6.042, 18.03, 6.002, 6.034\} \to \{6.046, 6.004\} \to \{ 6.840, 6.033\} \to 6.857$
+\end{frame}
+
+
+\begin{frame}{DAG and Scheduling}{Anti-Chains}
+  \begin{columns}
+  \column{0.4\textwidth}
+    \includegraphics[width=1\textwidth]{../img/greedy_schedule}
+
+  \column{0.6\textwidth}
+
+    \begin{itemize}
+    \item An \structure{anti-chain} is a set of vertices (courses) where there is no direct or indirect requisite relation among them.\medskip
+
+    \item This means that the courses in an anti-chain can be taken in any order, even all at the same time.\medskip
+
+    \item Members of an anti-chain are \structure{imcomparable}: It is not possible to say which one comes first.\medskip
+
+    \item A relation graph can have multiple anti-chains. Example:
+    \begin{itemize}
+      \item $\{6.046, 6.004\}$
+      \item $\{6.046, 18.03, 6.001\}$
+    \end{itemize}
+    \end{itemize}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{DAG and Scheduling}{Chains and Topological Sort}
+
+  \begin{block}{Chains}
+    Just like anti-chain is a set of vertices that have no relation among themselves, a \structure{chain} is a set of vertices that {\bf all} have a relation among themselves.
+  \end{block}\medskip
+
+  Using of chains and anti-chains, we define a \structure{Topological Sort}. A topological sort is an ordering of all vertices in $G$ that obeys the requisite relations.
+  \begin{itemize}
+    \item 18.01, 6.001, 8.02, 6.002, 18.03, 6.034, 6.042, 18.02, 6.004, 6.046, 6.033, 6.840, 6.857
+    \item 6.001, 8.02, 6.002, 18.01, 6.034, 18.03, 18.02, 6.042, 6.004, 6.046, 6.033, 6.857, 6.840
+  \end{itemize}
+  If $G$ has anti-chains, it will also have multiple topological sorts.
+
+\end{frame}
+
+\begin{frame}{DAG and Scheduling}{Parallel Processing}
+
+  We can use the same way of thinking to describe \structure{parallel scheduling} of tasks.\bigskip
+
+  \begin{itemize}
+    \item $n$ tasks have to be executed by $p$ processors.
+    \item some pairs of tasks have a {\bf prerequisite} relation.
+    \item \structure{Minimum Parallel Time}: minimum time to complete all tasks (assuming no limits on $p$)
+      \begin{itemize}
+        \item Minimum Parallel Time = Maximum Chain Size
+      \end{itemize}
+    \item \structure{Maximum Parallel Load}: value of $p$ necessary to achieve the Minimum Parallel Time
+    \begin{itemize}
+      \item Maximum Parallel Load $\leq$ Maximum Anti-chain Size
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\section{Partial Orders and Equivalence}
+
+\begin{frame}{Partial orders: Transitivity}
+
+  In a graph $G$, if there is a walk from $u$ to $v$, and a walk from $v$ to $w$, then there is a walk from $u$ to $w$
+  \begin{center}
+    \begin{tikzpicture}[scale=.5,auto,swap]
+      \tikzset{edge/.style = {->,>=latex'}}
+      \node[vertex] (a) at (0,0) {u};
+      \node[vertex] (b) at (3,0) {v};
+      \node[vertex] (c) at (6,0) {w};
+      \draw[edge] (a) to (b);
+      \draw[edge] (b) to (c);
+      \draw[dotted] (a) to[bend right] (c);
+    \end{tikzpicture}
+  \end{center}\bigskip
+
+  Representing this in terms of \structure{walk relation} in $G$:
+  \begin{equation*}
+    uG^+v \land vG^+w \implies uG^+w
+  \end{equation*}\bigskip
+
+  \begin{block}{Definition: Transitive Relations}
+    A relation {\bf R} is transitive if:\hspace{1cm} $xRy \land yRz \implies xRz$
+  \end{block}
+\end{frame}
+
+\begin{frame}{Partial Orders: Assimetry}
+
+  In an \structure{acyclic digraph G}, we can observe that for any two vertices $v$ and $u$, if there is a walk from $v$ to $u$, then there is no walk from $u$ to $v$.\bigskip
+
+  \begin{block}{Definition: Assimetric Relation}
+    A relation {\bf R} is assimetric if: $uD^+v \implies \text{NOT}(vD^+u)$
+  \end{block}
+\end{frame}
+
+\begin{frame}{Strict Partial Order}
+
+  A relation $R$ is a \structure{Strict Partial Order}(SPO) {\bf iff} it is {\bf Transitive} and {\bf Assimetric}.\bigskip
+
+  Examples:
+  \begin{itemize}
+  \item The $\subset$ relation on sets
+  \item The ``indirect prerequisite'' relationship on subjects.
+  \item The $<$ relationship on $\mathbb{R}$
+  \end{itemize}\bigskip
+
+  Another way to say it, is that $R$ is a \structure{SPO} {\bf iff} $R$ is the walk relation $D^+$ for some DAG $D$.
+\end{frame}
+
+\begin{frame}{Path Total Orders}
+
+    A \structure{Strict Partial Order} is also \structure{Path Total} if, for any two distinct elements, one will always be ``greater than'' another.
+
+    \bigskip
+
+    Example: $<$ on $\mathbb{R}$: if $x,y \in \mathbb{R},
+    x\neq y \implies x>y \text{ or } y>x$
+
+    \bigskip
+
+    Counter-Example: $\subset$ in POW($\mathbb{N}$): $\{1,3\} \not\subset \{2,5\} \not\subset \{1,3\}$
+
+    \vfill
+
+    \begin{itemize}
+    \item Relation $R$ is \structure{path total}: if $x \neq y \implies xRy \lor yRx$
+    \item This means there are \alert{no imcomparable elements}
+    \end{itemize}
+
+    In a \structure{path total} relation, the whole graph is a
+    \structure{chain}
+  \begin{center}
+    \begin{tikzpicture}[scale=.8,auto,swap]
+      \tikzset{edge/.style = {->,>=latex'}}
+      \node[vertex] (a) at (0,0) {};
+      \node[vertex] (b) at (1,0) {};
+      \node[vertex] (c) at (2,0) {};
+      \node[vertex] (d) at (4,0) {};
+      \node[vertex] (e) at (5,0) {};
+      \node[vertex] (f) at (6,0) {};
+      \draw[edge] (a) to (b);
+      \draw[edge] (b) to (c);
+      \draw[dotted] (c) to (d);
+      \draw[edge] (d) to (e);
+      \draw[edge] (e) to (f);
+    \end{tikzpicture}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Weak Partial Order}
+
+  A \structure{weak partial order} is the same as a \structure{strict
+    partial order} R, except that $aRa$ always holds:
+  \begin{center}
+    \begin{tikzpicture}[scale=.8,auto,swap]
+      \tikzset{edge/.style = {->,>=latex'}}
+      \node[vertex] (a) at (0,0) {};
+      \node[vertex] (b) at (1,0) {};
+      \node[vertex] (c) at (2,0) {};
+      \node[vertex] (d) at (4,0) {};
+      \node[vertex] (e) at (5,0) {};
+      \node[vertex] (f) at (6,0) {};
+      \draw[edge] (a) to (b);
+      \draw[edge] (b) to (c);
+      \draw[dotted] (c) to (d);
+      \draw[edge] (d) to (e);
+      \draw[edge] (e) to (f);
+      \draw[edge] (a) to[loop] (a);
+      \draw[edge] (b) to[loop] (b);
+      \draw[edge] (c) to[loop] (c);
+      \draw[edge] (d) to[loop] (d);
+      \draw[edge] (e) to[loop] (e);
+      \draw[edge] (f) to[loop] (f);
+    \end{tikzpicture}
+  \end{center}
+
+  \bigskip
+
+  \begin{itemize}
+  \item Examples: $\subseteq$ on sets, $\leq$ on $\mathbb{R}$
+  \item Weak Partial Orders define the property of
+    \structure{Reflexivity}
+  \item Relation $R$ on $A$ is \structure{reflexive} {\bf iff} $aRa,
+    \forall a\in A$
+  \end{itemize}
+
+  Another way to define a weak partial order is that $R$ is a WPO {\bf iff}\\ $R = D^*$ for some DAG $D$
+\end{frame}
+
+\begin{frame}
+  \frametitle{Assimetry and Antissimetry}
+
+  {\larger
+
+    \begin{block}{Assimetry}
+      \begin{itemize}
+      \item Reflexibility is \alert{never} allowed
+      \item R is \structure{assimetric} {\bf iff}:
+        \begin{equation*}
+          xRy \implies \text{NOT}(yRx)
+        \end{equation*}
+      \end{itemize}
+
+    \end{block}
+
+    \begin{block}{Antissimetry}
+      \begin{itemize}
+      \item Reflexibility is \alert{sometimes} allowed
+      \item R is \structure{antissimetric} {\bf iff}
+        \begin{equation*}
+          xRy \implies \text{NOT}(yRx), \text{ for } x \neq y
+        \end{equation*}
+      \end{itemize}
+    \end{block}
+  }
+\end{frame}
+
+
+\subsection{Partial Orders and Isomorphisms}
+
+\begin{frame}{Partial Orders and Isomorphism}{Proper Subset Relation}
+  \frametitle{Proper Subset Relation}
+
+  The proper subset relation: $A \subset B$ represents a partial order.\bigskip
+
+  For example, the proper subset relation defined on the power set of $\{1,2,3,5,10,15,30\} - \emptyset$ is as follows:
+
+\begin{center}
+    \begin{tikzpicture}[scale=1.2,auto,swap]
+      \tikzset{edge/.style = {->,>=latex'}}
+      \node[vertex,label={1}] (a) at (0,1) {};
+      \node[vertex,label={1,3}] (b) at (2,0) {};
+      \node[vertex,label={1,5}] (c) at (2,1) {};
+      \node[vertex,label={1,2}] (d) at (2,2) {};
+      \node[vertex,label={1,3,5,15}] (e) at (4,0) {};
+      \node[vertex,label={1,2,5,10}] (f) at (4,2) {};
+      \node[vertex,label={1,2,3,5,10,15,30}] (g) at (5,1) {};
+      \draw[edge] (a) to (b);
+      \draw[edge] (a) to (c);
+      \draw[edge] (a) to (d);
+      \draw[edge] (c) to (e);
+      \draw[edge] (b) to (e);
+      \draw[edge] (c) to (f);
+      \draw[edge] (d) to (f);
+      \draw[edge] (e) to (g);
+      \draw[edge] (f) to (g);
+    \end{tikzpicture}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Partial Orders and Isomorphism}{Proper Divide Relation}
+
+  The \structure{proper divide} relation is defined as $a R b$ if $a|b$ and $a \neq b$.\bigskip
+
+  We can see that, for the set $\{1,2,3,5,10,15,30\}$, the proper subset relation and the proper division relation have {\bf the same relationship DAG}.\bigskip
+
+  This means that the two relations are \structure{{\bf isomorphic}}
+
+  \begin{center}
+    \begin{tikzpicture}[scale=1.2,auto,swap]
+      \tikzset{edge/.style = {->,>=latex'}}
+      \node[vertex,label={1}] (a) at (0,1) {};
+      \node[vertex,label={3}] (b) at (2,0) {};
+      \node[vertex,label={5}] (c) at (2,1) {};
+      \node[vertex,label={2}] (d) at (2,2) {};
+      \node[vertex,label={15}] (e) at (4,0) {};
+      \node[vertex,label={10}] (f) at (4,2) {};
+      \node[vertex,label={30}] (g) at (5,1) {};
+      \draw[edge] (a) to (b);
+      \draw[edge] (a) to (c);
+      \draw[edge] (a) to (d);
+      \draw[edge] (c) to (e);
+      \draw[edge] (b) to (e);
+      \draw[edge] (c) to (f);
+      \draw[edge] (d) to (f);
+      \draw[edge] (e) to (g);
+      \draw[edge] (f) to (g);
+    \end{tikzpicture}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Isomorphism}
+
+    \begin{itemize}
+    \item Two graphs are \structure{isomorphic} if they have the same \structure{set of vertices and set of edges}\bigskip
+
+    \item More formally, two graphs $G_1, G_2$ are \structure{isomorphic} if there is a relation $M$ which is an \emph{edge preserving maching} between their vertices.\bigskip
+
+    \item $G_1 \text{ isomorphic } G_2 \iff \exists \text { bijection
+    } M:V_1\to V_2$\\\hfill with $(u,v) \in E_1 \iff
+      (M(u),M(v)) \in E_2$
+
+    \end{itemize}
+\end{frame}
+
+%% TODO: Remember why this is important and then re-add to the lecture
+% \begin{frame}
+%   \frametitle{Isomorphism, $\subset$ and partial orders}
+%
+%   {\larger
+%     {\bf Theorem:} Every strict p.o. $R$ is isomorphic to some
+%     collection of sets partially ordered by $\subset$.
+%
+%     \bigskip
+%
+%     {\bf Proof (by construction):}
+%     \begin{itemize}
+%     \item Map element $a$ to the set of elements below it.
+%     \item in other words, $a$ maps to $\{b \in A| bRa \lor b = a\}$\\
+%       \hfill(remember that NOT$(aRa)$)
+%     \item in other words, $f(a) ::= R^{-1}(a) \cup \{a\}$
+%     \end{itemize}
+%
+%     \bigskip
+%
+%     {\bf Example:} from divides
+%     \begin{itemize}
+%     \item $f(10) = 1|10, 2|10, 5|10, \cup \{10\} = \{1,2,5,10\}$
+%     \item $f(3) = 1|3, \cup \{3\} = \{1,3\}$
+%     \end{itemize}
+%   }
+% \end{frame}
+
+\subsection{Equivalence Relations}
+
+\begin{frame}
+  \frametitle{Symmetric Relations and Equivalence Relations}
+
+  \begin{itemize}
+    \item If there is a walk from $u$ to $v$ and a walk from $v$ to
+      $u$, then we say that $u$ and $v$ are \structure{strongly
+      connected}.
+      \begin{itemize}
+        \item $uG^*v$ and $vG^*u$
+      \end{itemize}\bigskip
+
+    \item The relation $R$ is \structure{symmetric} if $aRb \implies bRa$.
+    \begin{itemize}
+      \item The walk relation of A \structure{strongly connected} graph is symmetric.
+    \end{itemize}\bigskip
+
+    \item An \structure{equivalence relation} $R$ is: transitive,
+      symmetric and reflexive.\bigskip
+
+    \item This means that $R$ is an \structure{equivalence relation} {\bf iff} $R$ is the \structure{strongly connected} relation of some DiGraph.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Equivalence Relations Examples}
+
+  The definitions of the last slide allows us to formally define an \emph{equivalence equation}.\bigskip
+
+  {\larger
+    Examples:
+    \begin{itemize}
+    \item Equality: $=$
+    \item $\equiv $(mod n)
+    \item Same Size, Same Color, etc.
+    \end{itemize}
+  }\bigskip
+
+  It may seem that an equivalence relation is too obvious to need a definition (specially for numbers!), but this can be useful when we want to define equivalence for more complex things, like sets.
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Relation Properties: Graphical Review}
+
+  {\larger
+
+    \begin{columns}
+      \column{0.5\textwidth}
+      \begin{center}
+      Reflexive:\\
+      \begin{tikzpicture}[scale=1,auto,swap]
+        \tikzset{edge/.style = {->,>=latex'}}
+        \node[vertex] (a) at (0,0) {};
+        \node[vertex] (b) at (1,0) {};
+        \node[vertex] (c) at (0,1) {};
+        \draw[edge] (a) to[loop] (a);
+        \draw[edge] (b) to[loop](b);
+        \draw[edge] (c) to[loop] (c);
+        \draw[edge] (c) to (b);
+      \end{tikzpicture}
+
+      \bigskip
+
+      Transitive:\\
+      \begin{tikzpicture}[scale=1,auto,swap]
+        \tikzset{edge/.style = {->,>=latex'}}
+        \node[vertex] (a) at (0,0) {};
+        \node[vertex] (b) at (1,0) {};
+        \node[vertex] (c) at (2,0) {};
+        \draw[edge] (a) to (b);
+        \draw[edge] (b) to (c);
+        \draw[dotted] (a) to[bend right] (c);
+      \end{tikzpicture}
+      \end{center}
+      \column{0.5\textwidth}
+      \begin{center}
+      Assymetric:\\
+      \begin{tikzpicture}[scale=1,auto,swap]
+        \tikzset{edge/.style = {->,>=latex'}}
+        \node[vertex] (a) at (0,0) {};
+        \node[vertex] (b) at (1,1) {};
+        \node[vertex] (c) at (2,0) {};
+        \draw[edge] (a) to (b);
+        \draw[edge] (b) to (c);
+        \draw[edge] (a) to (c);
+      \end{tikzpicture}
+
+      \bigskip
+
+      Symetric:\\
+      \begin{tikzpicture}[scale=1,auto,swap]
+        \tikzset{edge/.style = {->,>=latex'}}
+        \node[vertex] (a) at (0,0) {};
+        \node[vertex] (b) at (1,0) {};
+        \node[vertex] (c) at (2,0) {};
+        \draw[edge] (a) to[bend left] (b);
+        \draw[edge] (b) to[bend left] (a);
+        \draw[edge] (b) to[bend left] (c);
+        \draw[edge] (c) to[bend left] (b);
+      \end{tikzpicture}
+
+      \end{center}
+    \end{columns}
+  }
+\end{frame}
+
+
+% TODO: Remember why this is important and re-introduce it!
+% \begin{frame}
+%   \frametitle{Representing Equivalence}
+%   {\larger
+%
+%     \begin{itemize}
+%     \item For a total function $f:A\rightarrow B$
+%     \item We can define an equivalence relation: $\equiv_f$ on $A$:
+%       \begin{equation}
+%         a \equiv_f a' \iff f(a) = f(a')
+%       \end{equation}
+%
+%       \bigskip
+%
+%     \item {\bf Theorem:} Relation $R$ on set $A$ is an equiv. relation
+%       {\bf iff}: $R$ is $\equiv_f$ for some $f:A\rightarrow B$
+%
+%       \bigskip
+%
+%     \item {\bf Example:} $\equiv$ (mod n) is $\equiv_f$
+%       \structure{where} $f(k) ::= \text{rem}(k,n)$
+%     \end{itemize}
+%   }
+% \end{frame}
+%
+% \begin{frame}
+%   \frametitle{Equivalence and Partition}
+%
+%   {\larger
+%     \begin{itemize}
+%     \item We define a \structure{partition} $\Pi$ of a set $A$, where
+%       $\$Pi$ is a collection of subsets of $A$ that cover all elements
+%       but do not overlap.
+%
+%       \bigskip
+%
+%       {\bf Example:} For A = $\{a,b,c,d,e\}$ one partition could be:
+%       $\{a,b\},\{c,e\},\{d\}$
+%
+%
+%       \bigskip
+%
+%     \item We define a relatin $\equiv_{\Pi}$ on A: $a \equiv_{\Pi} a'$
+%       if both $a$ and $a'$ are in the same subset of $\Pi$
+%
+%       \bigskip
+%
+%     \item A relation $R$ on set $A$ is an equivalence relation {\bf
+%       iff} $R$ is $\equiv_{\Pi}$ for some partition $\Pi$ of $A$.
+%     \end{itemize}
+%
+%   }
+% \end{frame}

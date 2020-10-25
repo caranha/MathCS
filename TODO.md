@@ -11,28 +11,16 @@
   (lecture 1.11 on the site)
 - TODO: talk about structural induction? Maybe lecture too long?
 
+## Week 3:
+- Generally ok.
+- TODO: Add explanation/proof of the calculation for encryption/decription of RSA.
+- TODO: Add proof of Euler function?
+
+## Week 4:
+- It is probably worth it to re-read chapter 9 and re-order the topics of this chapter to make it easier to follow the requisites.
 
 # 2020
 
-
-## Week 3: Mod, Number Theory, algorithms
-- There are MANY typos in the lecture -- fix them: specially differences between < and <=
-- Improve RSA:
-  - Add a number example of calculating plaintext and cryptotext
-  - Explain how to calculate d
-  - Add a last slide about how hard it is to break RSA.
-
-## Week 4:
-- Partial Orders:
-  - There are multiple partial orders for one graph.
-  - Improve the relationship between scheduling and parallel
-    processing.
-
-- Extras:
-  - Animation of matrix multiplication for paths.
-  - Show what happens on adjacency matrix multiplication
-    with self loops, and without self loops.
-    (How to see a total connection, how to find loops)
 
 ## Week 6--7: Combinatorics
 - Needs an explanation of Closed forms and recurrence
