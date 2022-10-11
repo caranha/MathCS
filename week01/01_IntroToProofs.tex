@@ -51,65 +51,74 @@
   \end{columns}
   \bigskip
 
-  {\bf Remember:} There are many other possible proofs.\\(Beautiful proofs, short proofs, wrong proofs, etc.)
+  The {\bf Key Idea} of this proof is that $a$, $b$ and $c$ can be assigned to \alert{any right triangle}.\\
+  But how do we find a new proof?
 \end{frame}
 
-\begin{frame}{False Proofs}{Infinite Chocolate!}
+\begin{frame}{False Proofs -- Infinite Chocolate!}
+  \begin{block}{}
+    \begin{itemize}
+      \item \alert{Be Careful!} -- It can be very hard to detect a wrong step in a proof.
+      \item A wrong proof can be used to say something impossible is true.
+      \item What is wrong in the proof below? \only<2>{\alert{Always check your assumptions!}}
+    \end{itemize}
+  \end{block}
+
   \begin{center}
     \includegraphics[width=.9\textwidth]{../img/false_proof}
   \end{center}
-  \begin{itemize}
-    \item What is wrong with the proof above?
-    \item \alert{Be careful!} A false proof can have many correct steps, and {\bf only one} impossible step.
-  \end{itemize}
-
-  \begin{block}{}
-    We can use proofs to show that something is {\bf incorrect} as well!
-  \end{block}
 \end{frame}
 
 \subsection{Proofs and Computer Science}
 
-\begin{frame}{Proofs and Computer Science}{Why are proofs important for Computer Science?}
+\begin{frame}[t]{Proofs and Computer Science}
+
+  \begin{center}
+    {\bf Why are proofs important for Computer Science?}
+  \end{center}
+  \bigskip
 
   \begin{itemize}
-    \item We don't use proofs only for mathematical equations.
-    \item We can use proofs to {\bf show that a program is correct}. (or incorrect)
-    \vfill
-
-    \item Example cases:
-    \begin{itemize}
-    \item Use proofs to show that the result of a program is correct for any input;
-    \item Use proofs to show that one type of input will cause a bug in the program;
-    \item Use proofs to show that a program finishes in $N$ steps;
-    \end{itemize}
+    \item Proofs can be used {\bf to show that a program is correct}.\\
+    (or to show that a program is incorrect)
   \end{itemize}
+
+  \vfill
+
+  \begin{block}{Examples}
+    \begin{itemize}
+      \item Prove that the output of a program is correct for any input.
+      \item Prove that certain input will cause a bug or crash in a program.
+      \item Prove that a program finishes in $N$ steps;
+    \end{itemize}
+  \end{block}
+
+
 \end{frame}
 
 \begin{frame}[fragile]{Proofs and Computer Science}{Example:}
+
+  Can you prove that the program below is correct (or incorrect)?
+
   \begin{itemize}
-    \item Is the program below correct or incorrect?
-    \item Can you show by using a proof?
+    \item To prove correctness, must prove for {\bf any} input $a,b,c$
+    \item To prove incorrectness, it is enough to show {\bf one} input
   \end{itemize}
 
 \begin{verbatim}
 int triangle_type(int a, int b, int c)
   // a, b, c are the length of the sides of a triangle;
   if (a == b)
-    if (b == c)
-      return "all sides are equal";
-    else
-      return "two sides are equal";
-  else if (b == c)
-    return "two sides are equal";
-  else
-    return "all sides are different";
+    if (b == c)        return "all sides are equal";
+    else               return "two sides are equal";
+  else if (b == c)     return "two sides are equal";
+  else                 return "all sides are different";
 \end{verbatim}
 \end{frame}
 
 \subsection{Definitions}
 
-\begin{frame}{Proof Concepts}{Propositions}
+\begin{frame}{Proof Concepts -- Propositions}
   A proposition is a statement that is either \structure{True} or \alert{False}, and nothing else.\bigskip
 
   \begin{columns}[T]
@@ -133,7 +142,7 @@ int triangle_type(int a, int b, int c)
   \end{columns}
 \end{frame}
 
-\begin{frame}{Proof Concepts}{Predicates}
+\begin{frame}{Proof Concepts -- Predicates}
   A predicate is a kind of proposition where the truth value depends on one or more variables:\bigskip
 
   \begin{itemize}
@@ -145,9 +154,9 @@ int triangle_type(int a, int b, int c)
   \begin{alertblock}{Do not confuse predicates and number expressions!}
     Numeric expressions have numeric values, predicates have True or False values.
     \begin{itemize}
-      \item $p(x) = x^2 + 3x + 1$.\hfill This is a numeric expression;
-      \item $P(X)$: $p(x+1) = p(x) + x + 1$.\hfill This is a predicate;
-      \item $P(X)$ is True for any $x \geq 0$.\hfill This is a proposition;
+      \item $p(x) = x^2 + 3x + 1$.\hfill $p(x)$ is a numeric expression;
+      \item $P(X)$: $p(x+1) = p(x) + x + 1$.\hfill $P(X)$ is a predicate;
+      \item $K:$ $P(X)$ is True for any $x \geq 0$.\hfill $K$ is a proposition;
     \end{itemize}
   \end{alertblock}
 \end{frame}
