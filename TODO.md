@@ -1,15 +1,15 @@
-# 2021
+Material improvement:
+
 ## Week 1: Basic Logic and Proofs
-- TODO: improve definition of SAT problem, specially the relationship
-  between SAT and computer science.
-- TODO: talk about DNF format? See material in the book.
+- Improve section 3, linking the "propositional cauculus" slides more and
+  talking about SAT and its relationship with CS in more detail.
+- Do note that this lecture is already rather long.
 
 ## Week 2:
 - Generally ok.
-- Need to replace the figures in this class with my own
-- TODO: talk about measuring set sizes with relations, and infinite sets
-  (lecture 1.11 on the site)
-- TODO: talk about structural induction? Maybe lecture too long?
+- Replace the figures in these materials with my own figures
+- TODO: Add a slide talking about how we can use relations to measure set sizes (lecture 1.11)
+- TODO: Maybe talk about structural induction (lecture already too long, though)
 
 ## Week 3:
 - Generally ok.
@@ -19,7 +19,6 @@
 ## Week 4:
 - It is probably worth it to re-read chapter 9 and re-order the topics of this chapter to make it easier to follow the requisites.
 
-# 2020
 
 
 ## Week 6--7: Combinatorics
