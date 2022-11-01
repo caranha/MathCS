@@ -1,23 +1,39 @@
 Material improvement:
+# FOR 2023: 
+- Last half of lecture 4 needs a rewrite!
+- Fix typos (a few here and there)
+- Improve Relations on lecture 2
+- Improve RSA on lecture 3
 
 ## Week 1: Basic Logic and Proofs
+- TYPO in the logical formulas (can't remember where)
+
 - Improve section 3, linking the "propositional cauculus" slides more and
   talking about SAT and its relationship with CS in more detail.
 - Do note that this lecture is already rather long.
 
+
 ## Week 2:
-- Generally ok.
-- Replace the figures in these materials with my own figures
-- TODO: Add a slide talking about how we can use relations to measure set sizes (lecture 1.11)
-- TODO: Maybe talk about structural induction (lecture already too long, though)
+- TYPO: Strong induction game example has a formula error
+
+- TODO: Need to fix part about relations
+  - Replace MIT figures and examples with Tsukuba versions
+  - Improve the explanation about composite relationship
+
+- FUTURE: Add a slide talking about how we can use relations to measure set sizes (lecture 1.11)
+- FUTURE: Maybe talk about structural induction (lecture already too long, though)
 
 ## Week 3:
 - Generally ok.
+
+- TODO: Add explanation relating the Euler function with the RSA (related to the TODO below)
 - TODO: Add explanation/proof of the calculation for encryption/decription of RSA.
 - TODO: Add proof of Euler function?
 
 ## Week 4:
-- It is probably worth it to re-read chapter 9 and re-order the topics of this chapter to make it easier to follow the requisites.
+- NOT OK.
+  - The last section, about Graph Assymetry and Relations is weird, not easy to explain, 
+    with confusing slides. THIS PART NEEDS TO BE REWRITTEN!
 
 
 
