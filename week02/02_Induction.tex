@@ -194,7 +194,7 @@
   \begin{itemize}
   \item Begin with a stack of 10 blocks
   \item Divide it in two (a,b): for example, 2 and 8 blocks.
-  \item You get $a\times b$ points: 10 points
+  \item You get $a\times b$ points: 16 points
   \item Repeat with the new stacks until all stacks have 1 block.
   \end{itemize}
 
@@ -202,8 +202,8 @@
 
   \alert{What is the best strategy?}
   \begin{itemize}
-  \item Simple strategy: 1+9, 1+8, 1+7, 1+6... \only<2->{45 points!}
-  \item CS strategy: 5+5, 2+3 and 2+3, ... \only<3->{45 points!}
+  \item Simple strategy: $1 \times 9$ + $1 \times 8$ + $1 \times 7$ + $1 \times 6$... \only<2->{45 points!}
+  \item CS strategy: $5 \times 5$ + $2 \times 3$ + $2 \times 3$, ... \only<3->{45 points!}
   \end{itemize}
   }
 \end{frame}
@@ -242,7 +242,7 @@
     \begin{enumerate}
     \item A stack with $n+1$ blocks can be split into two: $k$ and $n+1-k$\medskip
 
-    \item The score is: $C(n+1) = k\times(n+1-k) + C(k) + C(n+1-k)$\medskip
+    \item The score is: $C(n+1) = (k\times(n+1-k)) + C(k) + C(n+1-k)$\medskip
 
     \item Using the strong inductive assumption: $\forall m \leq n, C(m) = \frac{m(m-1)}{2}$\medskip
     

@@ -6,22 +6,27 @@ Material improvement:
 - Improve RSA on lecture 3
 
 ## Week 1: Basic Logic and Proofs
-- TYPO in the logical formulas (can't remember where)
+- Improve Section 3 (formulas, validity, propositional calculus)
+  - Motivation: Are two programs equal? Find input that program stops
+  - Transform prepositions in fixed rules
+    - Propositional Calculus / Formulas
+    - Slide with standard notation: For all, Every, And, Or, Not, IF, IFF
+  - Truth tables
+  - Satisfiability, Validity
+  - Satisfiability problem (and normal form)
+  - Why the problem is important
 
-- Improve section 3, linking the "propositional cauculus" slides more and
-  talking about SAT and its relationship with CS in more detail.
 - Do note that this lecture is already rather long.
 
-
 ## Week 2:
-- TYPO: Strong induction game example has a formula error
-
-- TODO: Need to fix part about relations
+- TODO: Need to improve part about relations
   - Replace MIT figures and examples with Tsukuba versions
   - Improve the explanation about composite relationship
 
-- FUTURE: Add a slide talking about how we can use relations to measure set sizes (lecture 1.11)
-- FUTURE: Maybe talk about structural induction (lecture already too long, though)
+- FUTURE: Add a slide talking about how we can use relations 
+  to measure set sizes (lecture 1.11)
+- FUTURE: Maybe talk about structural induction 
+  (lecture already too long, though)
 
 ## Week 3:
 - Generally ok.
