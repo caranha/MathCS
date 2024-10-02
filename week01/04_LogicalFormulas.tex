@@ -96,7 +96,7 @@
   \begin{itemize}
     \item {\bf A logical formula is \structure{Valid} if}: The formula evaluates for true for every possible assignment of every variable.\medskip
 
-    For example: $P \lor \text{ NOT } P \implies Q$ is valid.\bigskip
+    For example: $P \land \text{ NOT } P \implies Q$ is valid.\bigskip
 
     \item {\bf A logical formula is \structure{Satisfiable} if}: The formula evaluates for true for at least one possible assignment of variables.\medskip
 
@@ -104,13 +104,13 @@
   \end{itemize}\bigskip
 \end{frame}
 
-\begin{frame}{Validity and Satisfiability}{Proofs and Validity}
-  There are many important implications and uses for the concepts of validity and satisfiability. For example, we can use these concepts when designing proofs.\bigskip
+% \begin{frame}{Validity and Satisfiability}{Proofs and Validity}
+%   There are many important implications and uses for the concepts of validity and satisfiability. For example, we can use these concepts when designing proofs.\bigskip
 
-  If we define a proposition that we want to prove as a logical formula, we can say that the proposition is true if the logical formula is \structure{Valid}.\bigskip
+%   If we define a proposition that we want to prove as a logical formula, we can say that the proposition is true if the logical formula is \structure{Valid}.\bigskip
 
-  On the other hand, we can define a \structure{proof by contradiction} by showing that a logical formula that indicates the negative of the proposition is \structure{satisfiable}.
-\end{frame}
+%   On the other hand, we can define a \structure{proof by contradiction} by showing that a logical formula that indicates the negative of the proposition is \structure{satisfiable}.
+% \end{frame}
 
 % - Equivalence: A and B have exactly the same truth table (IFF)
 %    - Rewriting code
@@ -124,16 +124,18 @@
   The equivalence of two formulas is useful when rewriting code, and showing that two different pieces of code have the same result.
 \end{frame}
 
-\begin{frame}{Validity, Satisfiability, Equivalence and Truth tables}
-  We can show the Validity, Satisfiability, or Equivalence of logical formulas using Truth tables:\bigskip
+\begin{frame}[t]{Verifying Validity, Satisfiability, and Equivalence}
+  How can we verify that some logical formulas are (Valid | Satisfiable | Equivalent)?\bigskip 
+
+  One way to do that is to examine the truth tables of the formulas:
 
   \begin{itemize}
-    \item {\bf A formula is valid}: If all lines in the truth table evaluate to TRUE.
-    \item {\bf A formula is satisfiable}: If at least one line in the truth table evaluates to TRUE.
-    \item {\bf Two formulas are equivalent}: If all lines in the truth table of the two formulas evaluate to the same value.
+    \item {\bf A formula is satisfiable}: At least one line in the truth table evaluates to TRUE.
+    \item {\bf A formula A is valid}: The formula $\lnot{A}$ is NOT satisfiable.
+    \item {\bf Two formulas (X,Y) are equivalent}: The formula $(A \land B) \lor (\lnot{A}\land\lnot{B})$ is valid.
   \end{itemize}\bigskip
 
-  However, remember that the size of a truth table is $2^n$, where $n$ is the number of variables in a formula, so this approach might not be feasible for complex formulas.
+  However, there is a problem: The size of the truth table is $2^n$, where $n$ is the number of variables!
 \end{frame}
 
 

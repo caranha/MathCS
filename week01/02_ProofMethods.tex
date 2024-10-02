@@ -4,60 +4,174 @@
 
 \tableofcontents[currentsection,hideallsubsections, firstsection=2, sections={2-4}]}
 
-\subsection{Inference Rules}
 
-\begin{frame}{Inference Rules}{}
-  Inference (or logic deductions) are used to prove new propositions by using propositions that have been proposed before.
+
+\subsection{Definitions}
+
+\begin{frame}[t]{Proof Concepts}
+  Just like computer programs, we can explain proofs using natural language, or using formal structures.\bigskip 
+
+  The use of formal structures help us make sure that discussions about proofs are {\bf accurate}, and help avoid confusions.\bigskip
+
+  Let's review some concepts that are used when describing and discussing proofs.
+
+\end{frame}
+
+\begin{frame}{Proof Concepts -- Propositions}
+  A proposition is a statement that is either \structure{True} or \alert{False}, and nothing else.\bigskip
+
+  \begin{columns}[T]
+    \column{0.5\textwidth}
+    \structure{Proposition}
+    \begin{itemize}
+      \item $2 + 3 = 5$
+      \item $1 + 1 = 3$
+      \item $513 \times 435 = 223165$
+      \item There is no human taller than 3 meters.
+      \item It rained on October, 3rd, 2020, 10:00 in Tokyo.
+      \item Emacs is better than Vim.
+    \end{itemize}
+    \column{0.5\textwidth}
+    \alert{Not proposition}
+    \begin{itemize}
+      \item What is $2 \times 8$?
+      \item Please give me cake.
+      \item It is raining now.
+    \end{itemize}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Proof Concepts -- Predicates}
+  A predicate is a kind of proposition where the truth value depends on one or more variables:\bigskip
+
+  \begin{itemize}
+    \item $P(n)$: $n$ is a prime number;
+    \item $L(N)$: The name $N$ has five letters;
+    \item $M(x,y)$: $x$ and $y$ are members of the same group;
+  \end{itemize}\vfill
+
+  \begin{alertblock}{Do not confuse predicates and number expressions!}
+    Numeric expressions have numeric values, predicates have True or False values.
+    \begin{itemize}
+      \item $p(x) = x^2 + 3x + 1$.\hfill $p(x)$ is a numeric expression;
+      \item $P(X)$: $p(x+1) = p(x) + x + 1$.\hfill $P(X)$ is a predicate about an expression;
+      \item $K:$ $P(X)$ is True for any $x \geq 0$.\hfill $K$ is a proposition;
+    \end{itemize}
+  \end{alertblock}
+\end{frame}
+
+\begin{frame}[t]{Proof Concepts}{Implication (IF)}
+  An \structure{implication} is a particular type of predicate that is very common in proofs:
+  \begin{center}
+    $P \implies Q$
+  \end{center}
+  What does it mean?:
+  \begin{itemize}
+    \item $P \implies Q$: "If P is true, Q is true";
+    \item $P \implies Q$: "When P is true, Q is true";
+  \end{itemize}\medskip
+  Note that this is a \structure{predicate}. We could also write: $I(P, Q): P \implies Q$
+\end{frame}
+
+\begin{frame}[t]{Proof Concepts}{If and only iff (IFF)}
+  \alert{Be careful!} The implication only defines the value of $Q$ when $P$ is \structure{True}:
+
+  \begin{itemize}
+  \item $P \implies Q$ \hspace{2cm} If P is True, Q is True\\
+  \item $P \implies Q$ \hspace{2cm} \alert{If P is False, Q can be TRUE OR FALSE}
+  \end{itemize}
   \bigskip
 
-  We normally write an inference as follows:
+  Another common predicate is {\bf If and only if}. It states that the two propositions must be true together.
+  \begin{itemize}
+    \item $P \iff Q$;
+    \item IFF(P,Q);
+    \item $P\implies Q$ AND $Q \implies P$;
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[t]{Proof Concepts}{Common Notation}
+  The following notation is useful for creating logic predicates:\bigskip
+
+  \begin{itemize}
+  \item And: X AND Y, $X \land Y$, X \&\& Y
+  \item Or: X OR Y, $X \lor Y$, X || Y
+  \item Not: NOT(X), $\lnot X$, $\overline{X}$
+  \item If: IF X THEN Y, $X \implies Y$
+  \item If and only if: IFF, $\iff$, $(X \implies Y) \land (Y \implies X)$
+  \item Exists: $\exists n \text{ in } X(n)$; Every: $\forall n \text{ in } X(n)$ (\alert{We will talk about these soon})
+  \end{itemize}\bigskip
+
+  There are more symbols that are used! Check the reference if you come across an unknown symbol.
+\end{frame}
+
+\begin{frame}[t]{Proving things using Predicates}{}
+  We can use prepositions and predicates to organize our proofs into a "Logic Calculus". This is not very different from writing a computer program.
+  
+    \begin{block}{}
+    For every nonnegative integer $n$, the value of $n^2+n+41$ is prime.
+  \end{block}\medskip
+
+  We can define the expression $p(n) = n^2+n+41$, and the predicate:
+
+  $P: \forall n \in \mathbb{N}, n \ge 0, p(n) \text{ is prime}$\bigskip
+
+  Then we can try to derivate new predicates to show that the predicate above is True in all situations.
+\end{frame}
+
+
+\subsection{Inference Rules}
+
+\begin{frame}[t]{Inference Rules}{}
+  To show that something is true using logic predicates, we organize them in "well known" constructs, just like in programming.\bigskip
+
+  These constructs are "inference rules", they usually have formal names, and are shaped as follows:\bigskip
 
   \[
   \frac{P, Q, R}{X}
-  \]
+  \]\bigskip
 
-  This means "propositions P, Q, R are true, meaning that proposition X is true".\bigskip
-
-  \structure{Inference Rules} are inferences that are particularly useful to build proofs. Let's see a few:
+  The above structure means: "if we show that propositions P, Q, and R are true, then X must be true".\bigskip
 \end{frame}
 
-\begin{frame}{Inference Rules}{Modus Ponens}
-  The \emph{Modus Ponens} inference rule is:
-  \[
-  \frac{P, P\implies Q}{Q}
-  \]
-  If P is true, and P implies Q is true, then Q is true.\bigskip
+% \begin{frame}[t]{Inference Rules}{Modus Ponens Inference Rule}
+%   \[
+%   \frac{P, P\implies Q}{Q}
+%   \]
+%   "If P is true, and P implies Q is true, then Q is true".\bigskip
 
-  A few other related inference rules:
-  \[
-  \frac{P \implies Q, Q \implies R}{P \implies R},
-  \frac{not(P) \implies not(Q)}{Q \implies P}
-  \]
+%   A few other related inference rules:
+%   \[
+%   \frac{P \implies Q, Q \implies R}{P \implies R},
+%   \frac{not(P) \implies not(Q)}{Q \implies P}
+%   \]
 
-  So one way to prove a proposition is to {\bf start with propositions that you know are true} and {\bf use inference rules to reach the proposition you want to prove}.
-\end{frame}
+%   So one way to prove a proposition is to {\bf start with propositions that you know are true} and {\bf use inference rules to reach the proposition you want to prove}.
+% \end{frame}
 
 \subsection{Proving Implications}
 
-\begin{frame}{Proving an Implication}{Direct Proof}
-  The \emph{Modus Ponens} rule says that:
+\begin{frame}[t]{Proving an Implication}{Direct Proof by Modus Ponens inference rule}
+  The \emph{Modus Ponens} inference rule says that:
   \[
   \frac{P, P\implies Q}{Q}
-  \]
-  To prove $Q$, we have to prove that $P$, and that {\bf $P$ implies $Q$}.\bigskip
+  \]\bigskip 
+  "If P is true, and P implies Q is true, then Q must be true";\medskip
 
-  We can prove an implication directly, by assuming $P$ is true, and showing that $Q$ must be true, step by step.\bigskip
+  So to prove $Q$, we have to prove that $P$, and then that {\bf $P$ implies $Q$} is also true.\bigskip
+
+  To prove the implication directly, we can assume that $P$ is true, then show that $Q$ must be true, step by step.\bigskip
 \end{frame}
 
 \begin{frame}{Proving an Implication}{Direct Proof}
-{\bf Theorem:} If $0 \leq x \leq 2$, then $-x^3 + 4x + 1 > 0$\bigskip
+{\bf Prove the implication:} IF $0 \leq x \leq 2$, THEN $-x^3 + 4x + 1 > 0$\bigskip
 
 \begin{proof}
 \begin{itemize}
-  \item Let's assume $0 \leq x \leq 2$
+  \item Let's assume $0 \leq x \leq 2$ is true;
   \item We can rewrite $-x^3 + 4x$ as $x(2-x)(2+x)$
-  \item If $0 \leq x \leq 2$, then $x$, $(2-x)$, $(2+x)$ are all non-negative.
-  \item $x(2-x)(2+x) \geq 0$
+  \item If $0 \leq x \leq 2$, then $x \ge 0$ , $(2-x) \ge 0$, and $(2+x) \ge 0$
+  \item $x \times (2-x) \times (2+x) \geq 0$
   \item $x(2-x)(2+x) + 1 > 0$
   \item $-x^3 + 4x + 1 > 0$
 \end{itemize}
@@ -65,21 +179,25 @@
 
 \end{frame}
 
-\begin{frame}{Proving an Implication}{Contrapositive}
+\begin{frame}[t]{Proving an Implication}{Contrapositive}
   Another way to prove an implication is to "prove the contrapositive". This means using the following inference rule:
 
   \[
     \frac{\text{NOT}(Q) \implies \text{NOT}(P)}{P \implies Q}
-  \]
+  \]\bigskip
 
-  So if we show that when Q is false, then P is always false, it is equivalent to show that when P is true, then Q is always true.
+  So:
+  \begin{itemize}
+    \item If we show that "when Q is false, then P must be false"
+    \item This is equivalent to show that "When P is true, Q must be true";
+  \end{itemize}
 \end{frame}
 
 \begin{frame}{Proving an Implication}{Contrapositive}
-  {\bf Theorem:} if $r$ is irrational, then $\sqrt{r}$ is also irrational.
+  {\bf Theorem:} if $r$ is irrational (P), then $\sqrt{r}$ is also irrational (Q).
 
   \begin{proof}
-    We prove the contrapositive: If $\sqrt{r}$ is rational, then $r$ is also rational.
+    We prove the contrapositive: If $\sqrt{r}$ is rational ($\lnot Q$), then $r$ is also rational ($\lnot P$).
     \begin{itemize}
       \item If $\sqrt{r}$ is rational, then $\sqrt{r}=\frac{m}{n}$.
       \item $m$ and $n$ are integers (definition of rational numbers)
@@ -91,7 +209,7 @@
 
 
 
-\begin{frame}{Proving "If and only If"}
+\begin{frame}[t]{Proving "If and only If"}
   Remember that "If and only If" can be defined as:
   \[
   \frac{P\implies Q, Q \implies P}{P\iff Q}
@@ -189,7 +307,7 @@ If (X > 0 OR Y > 100)
 \end{frame}
 
 \subsection{Proof by Contradiction}
-\begin{frame}{Proof By Contradiction}{Definition}
+\begin{frame}[t]{Proof By Contradiction}{Definition}
 
   "Proof by Contradiction" is a technique where you show that {\bf the negative of the theorem implies a false fact to be true}.\bigskip
 
@@ -199,6 +317,10 @@ If (X > 0 OR Y > 100)
 
   Use "Proof by Contradiction" to prove the following theorem:\\
   {\bf Theorem:} $\sqrt{2}$ is an irrational number.
+
+  \begin{alertblock}{}
+    Careful!!! Contradiction $\neq$ Contrapositive
+  \end{alertblock}
 \end{frame}
 
 

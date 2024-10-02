@@ -1,22 +1,5 @@
-Material improvement:
-# FOR 2023: 
-- Last half of lecture 4 needs a rewrite!
-- Fix typos (a few here and there)
-- Improve Relations on lecture 2
-- Improve RSA on lecture 3
-
 ## Week 1: Basic Logic and Proofs
-- Improve Section 3 (formulas, validity, propositional calculus)
-  - Motivation: Are two programs equal? Find input that program stops
-  - Transform prepositions in fixed rules
-    - Propositional Calculus / Formulas
-    - Slide with standard notation: For all, Every, And, Or, Not, IF, IFF
-  - Truth tables
-  - Satisfiability, Validity
-  - Satisfiability problem (and normal form)
-  - Why the problem is important
-
-- Do note that this lecture is already rather long.
+- Improved for 2024
 
 ## Week 2:
 - TODO: Need to improve part about relations
@@ -31,17 +14,21 @@ Material improvement:
 ## Week 3:
 - Generally ok.
 
-- TODO: Add explanation relating the Euler function with the RSA (related to the TODO below)
-- TODO: Add explanation/proof of the calculation for encryption/decription of RSA.
-- TODO: Add proof of Euler function?
+- TODO: Add 15 minutes explanation of the RSA:
+  - More complete algorithm
+  - Role of Euler function in the RSA
+  - How to break RSA
+  (proof of Euler function is a good exercise)
 
 ## Week 4:
 - NOT OK.
+  - Last half of lecture 4 needs a rewrite!
   - The last section, about Graph Assymetry and Relations is weird, not easy to explain, 
     with confusing slides. THIS PART NEEDS TO BE REWRITTEN!
 
+## Week 5:
 
-
+## Week 6--10: Check if Ye has changed the slides, add my own improvements.
 ## Week 6--7: Combinatorics
 - Needs an explanation of Closed forms and recurrence
 - Needs Plug and Chug and harmonics
