@@ -5,16 +5,26 @@
 
 ## Week 2:
 - For 2024:
-  - Move Relations and Sets to 3rd part
-    (After Induction and State Machine)
-  - Replace MIT Figures and examples with Tsukuba Ver.
-  - Improve "Surjective" etc explanation (Examples)
-  - Improve "Composite" explanation (Examples)
-
+  - Induction and State Machine (Chapter 5)
+    - Add A suggestion to read chapter 6 
+      for Structural / Recursive Induction
+  - Sets and Relations (Chapter 4) 
+    - Move Sets and Relations to the end of the class
+      (And rename it to Sets and Relations)
+    - Move all sets definitions to the beginning,
+      Add sequence as well (1, 2, 1)
+    - Improve Relations Explanation:
+      - Replace MIT figures with DrawIO figures
+      - Add explanation for Domain / Co-Domain
+      - Function/Total (Arrow Out of Domain)
+        Surjective/Injective (Arrow In Co-Domain)
+      - Examples
+    - Add a suggestion to Read Chapter 7 for using 
+      relations for measuring sizes of infinity
+        
 - For 2025:
-  - Return part about using relations to measure set sizes
-    (Lecture 1.11 in the material)
-  - Maybe talk about Structural Induction.
+  - Introduce Composite Functions
+  - Think about Introducting a bit of chapters 6/7
 
 ## Week 3:
 - Generally ok.
