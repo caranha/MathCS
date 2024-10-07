@@ -1,15 +1,20 @@
 ## Week 1: Basic Logic and Proofs
-- Improved for 2024
+- For 2025: 
+  - More examples for "Implies" rules
+  - More examples for "Every" and "For All"
 
 ## Week 2:
-- TODO: Need to improve part about relations
-  - Replace MIT figures and examples with Tsukuba versions
-  - Improve the explanation about composite relationship
+- For 2024:
+  - Move Relations and Sets to 3rd part
+    (After Induction and State Machine)
+  - Replace MIT Figures and examples with Tsukuba Ver.
+  - Improve "Surjective" etc explanation (Examples)
+  - Improve "Composite" explanation (Examples)
 
-- FUTURE: Add a slide talking about how we can use relations 
-  to measure set sizes (lecture 1.11)
-- FUTURE: Maybe talk about structural induction 
-  (lecture already too long, though)
+- For 2025:
+  - Return part about using relations to measure set sizes
+    (Lecture 1.11 in the material)
+  - Maybe talk about Structural Induction.
 
 ## Week 3:
 - Generally ok.
