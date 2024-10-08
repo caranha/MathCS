@@ -10,7 +10,9 @@
 \begin{frame}
   \frametitle{Mathematical Set}
 
-  \structure{Mathematical Sets} are useful when talking about proofs. Last class we have already used some sets: \bigskip
+  \structure{Mathematical Sets} are useful when talking about proofs.\bigskip
+  
+  We have already used some sets: \bigskip
 
   \begin{itemize}
     \item $\mathbb{N}$ -- Set of natural (non negative) numbers;
@@ -20,58 +22,79 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Characteristics of sets}
+  \frametitle{Characteristics of Mathematical Sets}
 
   \begin{itemize}
-    \item  \structure{Mathematical Sets} can mix different "types" of objects:
+    \item  \structure{Sets} can mix different "types" of objects:
     \begin{itemize}
     \item \{7, ``Aranha'', $\pi/2$, TRUE\}
-    \end{itemize}\bigskip
+    \end{itemize}\medskip
 
-    \item \structure{Mathematical Sets} do not have a concept of "order":
+    \item \structure{Sets} do not have a concept of "order":
     \begin{itemize}
-      \item \{7, ``Aranha'', $\pi/2$, TRUE\} =   \item \{TRUE, 7, $\pi/2$, ``Aranha''\}
-    \end{itemize}\bigskip
+      \item \{7, ``Aranha'', $\pi/2$, TRUE\} is the same as \item \{TRUE, 7, $\pi/2$, ``Aranha''\}
+    \end{itemize}\medskip
 
-    \item \structure{Mathematical Sets} do not contain duplicates:
+    \item \structure{Sets} do not contain duplicates:
     \begin{itemize}
     \item \{7, $\pi$\} = \{7, $\pi$, 7\}
-    \end{itemize}
+    \end{itemize}\medskip
+
+    \item \structure{Sets} can be Infinite: $\mathbb{N}, \mathbb{R}, \ldots$\medskip
+    
+    \item The empty set: $\varnothing = \{\}$
   \end{itemize}
 \end{frame}
 
-\begin{frame}
-  \frametitle{Set: Membership}
 
-  The fundamental property of a set is \structure{membership}, represented by the symbol $\in$. Note that membership is \alert{not} recursive!\vfill
+\begin{frame}[t]{Set Membership}
+
+  The fundamental property of a set is \structure{membership}, represented by the symbol $\in$.\bigskip
 
   \begin{columns}
     \column{.5\textwidth}
-  A = \{7,TRUE,$\pi$\}
+  Set A = \{7, TRUE, $\pi$\}
   \begin{itemize}
   \item $7 \in A$
   \item 7 is an element of $A$,
+  \item 7 is in $A$,
   \item $3 \notin A$
   \end{itemize}\bigskip
 
   \column{.5\textwidth}
-  B = \{7, $\mathbb{Z}$, 3\}
+  Set B = \{7, $\mathbb{Z}$, 3\}
   \begin{itemize}
     \item $7 \in B$
     \item $7 \in \mathbb{Z}$
     \item $\mathbb{Z} \in B$
     \item \alert{$1 \notin B$}
   \end{itemize}
-\end{columns}
+\end{columns}\bigskip
+
+Note that membership is \alert{not} recursive!\bigskip
+
+$1$ belongs to the set $\mathbb{Z}$, but $1$ does not belong to the set $B$.
 \end{frame}
 
-\begin{frame}{Set: Subsets}
+\begin{frame}[t]{Set Builder Notation}
+  We can use \structure{Predicates} to construct sets. The set is composed of all value for which the predicate is true. For example:\bigskip 
+
+  \begin{itemize}
+  \item $A ::= \{n \in \mathbb{N} | n \text{ is a prime and } n = 4k + 1 \text{ for } k \in \mathbb{Z} \}$
+  \item $B ::= \{x \in \mathbb{R} | x^3 - 3x + 1 > 0\}$
+  \item $C ::= \{a^2 | a = b^2, a, b \in \mathbb{N}\}$ 
+  \end{itemize}\bigskip
+
+  Please list a few elements of each set. This looks like python's comprehension lists!
+\end{frame}
+
+\begin{frame}[t]{Set: Subsets}
 
   {\larger
   \begin{block}{Subset}
     \begin{itemize}
     \item $A \subset B$ means that every element of A is also an element of B
-    \item $A\subset B \text{ equiv }\forall x, x\in A \rightarrow x\in B$
+    \item $A\subset B \equiv \forall x, x\in A \rightarrow x\in B$
     \item $\mathbb{Z} \subset \mathbb{R}, \mathbb{R} \subset \mathbb{C}, \{3\} \subset \{5,3,7\}$
     \end{itemize}
   \end{block}
@@ -79,7 +102,7 @@
   \begin{block}{Important!}
     \begin{itemize}
     \item $A \subset A$
-    \item $\forall X\text{ is a set}, \varnothing \subset X$
+    \item Every set contains the empty subset: $\forall X, \varnothing \subset X$
     \end{itemize}
   \end{block}
   }
@@ -107,29 +130,25 @@
   \bigskip
 
   \begin{itemize}
-    \item $\{3\} \in \{5, 6, \{3\}\}$
+    \item \alert{$\{3\} \in \{5, 6, \{3\}\}$}
   \end{itemize}
   }
   \end{columns}
 \end{frame}
 
-\begin{frame}{Power Set}
+\begin{frame}[t]{Power Set}
   The \structure{Power Set} of A is a special set composed of ALL subsets of A.
 
   \begin{equation*}
     POW(A) = \forall x \subset A, x \in POW(A)
   \end{equation*}
 
-  For example:
+  For example: $POW(\{T,F\}) = \{\{T\},\{F\},\{T,F\},\varnothing\}$\vfill
+    
+  \alert{Check the following}: If a set $A$ is a subset of $B$, then $A$ is a member of POW$(B)$
 
   \begin{equation*}
-    POW(\{T,F\}) = \{\{T\},\{F\},\{T,F\},\varnothing\}
-  \end{equation*}
-
-  The definition of power set means that for any set $A$ contained in $B$, $A$ is an element of POW(B):
-
-  \begin{equation*}
-    \mathbb{N} \in POW(\mathbb{R}), \mathbb{N} \subset \mathbb{R}, \mathbb{N} \notin \mathbb{R}
+    \mathbb{N} \subset \mathbb{R}, \mathbb{N} \notin \mathbb{R}, \mathbb{N} \in POW(\mathbb{R})
   \end{equation*}
 \end{frame}
 
@@ -149,34 +168,9 @@
 
 \subsection{Sets and Proofs}
 
-\begin{frame}{Sets, Proofs and Predicates}
+\begin{frame}[t]{Example of proofs using sets (1)}
 
-  Sets are used often as parts of proofs. We used sets a little bit when we talked about the \structure{Well Ordering Principle}.\bigskip
-
-  It is common to use predicates to determine what elements are members of a set. For example, $P(X)$ be a predicate that defines $A$. If $P(X)$ is true for a certain $X$, then $X \in A$.
-
-  \begin{block}{Example 1}
-    \begin{itemize}
-    \item $A = x \in \mathbb{N}, \{x < 12 \text{ AND } x \text{ is prime}\}$
-    $\implies A = \{2,3,5,7,11\}$
-    \end{itemize}
-    A is the set of "prime numbers smaller than 12"
-  \end{block}
-
-  \begin{block}{Example 2}
-    \begin{itemize}
-    \item $B = x \in \mathbb{N}, \{x \text{ is prime AND } x+2 \text{ is prime}\} \implies$\\
-    $B = \{3 (5), 5 (7), 11 (13), 17 (19), 29 (31), \ldots\}$
-    \end{itemize}
-    B is the set of "prime numbers x where x+2 is also prime".
-  \end{block}
-\end{frame}
-
-
-\begin{frame}{Sets and Proofs Example (1)}
-{Prove that the empty set is a subset of every set.}
-
-  \begin{proof}
+  \begin{proof}[Prove that the empty set is a subset of every set.]
     Proof by construction:
 
   \begin{enumerate}
@@ -193,14 +187,13 @@
 \end{frame}
 
 
-\begin{frame}{Sets and Proofs Example (2)}
-{Proof that Union and Intersection are Distributive}
+\begin{frame}[t]{Sets and Proofs Example (2)}
 
   \begin{equation*}
     A \cup (B \cap C) \iff (A \cup B) \cap (A \cup C)
   \end{equation*}
 
-  \begin{proof}
+  \begin{proof}[Proof that Union and Intersection are Distributive]
     Proof by sequence of "IFF"s:
     \begin{enumerate}
     \item \structure{$x \in A \cup (B \cap C)$} {\bf iff}
@@ -218,6 +211,24 @@
   \end{proof}
 \end{frame}
 
+\begin{frame}[t]{Sequences and Sets}
+  A \alert{sequence} is another kind of mathematical object. It is similar to a set, but \alert{different in important ways.}\bigskip 
+
+  \begin{itemize}
+  \item Sequences are represented by parenthesis: $(1, 2, 1), (T, F)$
+  \item Sequences can have repeated elements: $(T, T, T, F, F)$
+  \item The order of elements in a sequence is important: $(0, 1) \neq (1, 0)$
+  \end{itemize}\bigskip 
+
+  We often see sequences as the products of \structure{multiplication between sets}:\bigskip
+
+  \begin{itemize}
+    \item All binary sequences with 3 elements: $\{0,1\}^3 = (0, 0, 0), (0, 0, 1), \ldots (1, 1, 1)$
+    \item All pairs of two natural numbers: $\mathbb{N}^2 = (0, 0), (0, 1), (0, 2), (0, 3) \ldots (100, 7) \ldots$
+  \end{itemize}
+\end{frame}
+
+
 \subsection{Binary Relations}
 \begin{frame}
   \frametitle{Definition of Binary Relations}
@@ -231,7 +242,7 @@
 
     \item Operations such as set membership can be expressed as binary relations.
     \begin{itemize}
-      \item For example, the predicate $P(x): x is prime$ defines a binary relation from $\mathbb{N}$ to \{TRUE, FALSE\}
+      \item For example, the predicate \structure{$P(x): x \text{ is prime}$} defines a binary relation from $\mathbb{N}$ to \{TRUE, FALSE\}
     \end{itemize}\bigskip
 
     \item "Relational Databases" (for example, SQL) are also based on the idea of binary relations
@@ -243,21 +254,31 @@
 
 \subsection{Binary Relation Definitons}
 
-\begin{frame}{Example of Binary Relation}
+\begin{frame}[t]{Example of Binary Relation}
+  Relation \structure{$P(x): x \text{ is prime}$}:\bigskip
+
+  \begin{itemize}
+  \item Domain: $x \in \mathbb{N}$
+  \item Co-Domain: $P(x) \in \{True, False\}$ 
+  \item Examples:\\ $P(1) = False$\\ $P(3) = True$\\$P(13) = True$\\$P(20) = False$
+  \end{itemize}\bigskip 
+
+  It is common to represent binary relations as a graph between the \structure{domain} and the \structure{co-domain}.
+
+
+\end{frame}
+
+\begin{frame}[t]{Binary Relations as a Graph}
 
   \begin{columns}[t]
     \column{0.4\textwidth}
-    Let's consider the binary relation from the set of students {\bf (D)} that are registered to the set of subjects {\bf (J)}.\bigskip
+    Let's consider the binary relation {\bf R} from a set of students {\bf (D)} that are registered to a set of courses {\bf (J)}.\bigskip
 
-    Components of a binary relation:
     \begin{itemize}
-    \item \structure{Domain}: Set of Students;
-    \item \structure{Co-domain}: Set of Classes;
-    \item \structure{Relation Graph}:
-    \begin{itemize}
-      \item Vertices: Union of Domain and Co-domain;
-      \item Edges: Directed edges from Domain to Co-domain;
-    \end{itemize}
+    \item \structure{Domain}: Set of students;
+    \item \structure{Co-domain}: Set of courses;
+    \item \alert{Vertices:} Domain and Co-domain are represented as vertices;
+    \item \alert{Edges:} Directed edges from Domain to Co-domain;
     \end{itemize}\bigskip
 
     \column{0.6\textwidth}
@@ -265,7 +286,7 @@
     \begin{center}
       \includegraphics[width=0.6\textwidth]{../img/relations}
     \end{center}\pagenote{Relation Graph Image from MIT OCS}
-    Representation of a binary relation:
+    Notation to describe the relation:
     \begin{itemize}
     \item $R($Jason$) = \{6.042, 6.012\}$
     \item Jason $R$ 6.042
@@ -281,12 +302,12 @@
 
   Relation $R$:
   \begin{equation*}
-    R(X) ::= {j \in J | \exists d \in X. d R j}
+    R(X) ::= {j \in J | \exists d \in X, d R j}
   \end{equation*}
 
   Reverse Relation $R^{-1}$:
   \begin{equation*}
-    R^{-1}(Y) ::= {d \in S | \exists j \in Y. d R j}
+    R^{-1}(Y) ::= {d \in S | \exists j \in Y, d R j}
   \end{equation*}
   \bigskip
 
@@ -303,7 +324,7 @@
   \end{columns}
 \end{frame}
 
-\begin{frame}{Composite Relations}
+\begin{frame}[t]{Composite Relations}
 
   \begin{columns}[t]
 
@@ -316,7 +337,9 @@
     \begin{itemize}
       \item professor FTL super{\bf V}ises Joan;\bigskip
 
-      \item Joan is {\bf R}egistered to class 6.003;
+      \item Joan is {\bf R}egistered to class 6.003;\bigskip
+
+      \item professor FTL {\bf VR} 6.003 (superregister?)
     \end{itemize}
     \end{itemize}
 

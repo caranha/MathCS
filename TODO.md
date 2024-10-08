@@ -4,22 +4,15 @@
   - More examples for "Every" and "For All"
 
 ## Week 2:
-- For 2024:
-  - Sets and Relations (Chapter 4) 
-    - Move all sets definitions to the beginning,
-      Add sequence as well (1, 2, 1)
-    - Improve Relations Explanation:
-      - Replace MIT figures with DrawIO figures
-      - Add explanation for Domain / Co-Domain
-      - Function/Total (Arrow Out of Domain)
-        Surjective/Injective (Arrow In Co-Domain)
-      - Examples
-    - Add a suggestion to Read Chapter 7 for using 
-      relations for measuring sizes of infinity
-        
 - For 2025:
-  - Introduce Composite Functions
-  - Think about Introducting a bit of chapters 6/7
+    - Relations: Replace MIT figures and examples with DrawIO figures
+    - Improve explanation of Types of binary relations (surj, inj, etc)
+      - Increase the number of slides (one for in, one for out)
+      - Give more and easier examples
+      - Explain why this is useful (Mention that chapter 7 shows these definitions being used to compare the size of infinite sets)
+  - More in the future (2026+):
+    - Induction: Actually introduce the repeated exponation algorithm state machine here.
+    - Relations: Actually show example of using relations to compare sizes of infinity (ch7)
 
 ## Week 3:
 - Generally ok.
