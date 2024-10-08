@@ -1,7 +1,7 @@
 \section{Induction}
 
 \frame{
-{Part 2: Induction}
+{Part 1: Induction}
 
 \tableofcontents[currentsection,hideallsubsections, firstsection=2, sections={2-4}]
 }
@@ -35,7 +35,7 @@
   \item $R(n) \rightarrow R(n+1)$ for every $n \in \mathbb{N}$
   \end{itemize}\bigskip
 
-  Induction can be used to prove a predicate that depends on some $n \in \mathbb{N}$ by modus ponens.
+  Induction can be used to prove a predicate that depends on some $n \in \mathbb{N}$.
   \begin{equation*}
     \frac{R(0), R(n)\rightarrow R(n+1), n\in\mathbb{N}}{\forall n, R(n)}
   \end{equation*}
@@ -53,7 +53,7 @@
     \frac{P(0), P(n)\rightarrow P(n+1), n\in\mathbb{N}}{\forall n, P(n)}
   \end{equation*}\bigskip
 
-  To prove the bottom part by induction, we need to prove the top part.
+  To prove the bottom part, we need to prove all statements in the top part are true.
 
   \begin{itemize}
   \item First Step: Prove $P(0)$
@@ -63,9 +63,7 @@
 
 \begin{frame}{Example of proof by Induction}
 
-  \begin{proof}
-    Proof by induction on $n$
-
+  \begin{proof}[Proof of $P(n), \forall n \in \mathbb{N}$ by induction on $n$]
     {\bf First Step:} Prove $P(0)$
     \begin{itemize}
     \item $P(0)$, left side: $r^0 = 1$
@@ -83,7 +81,7 @@
 \end{frame}
 
 \subsection{Proof by Induction}
-\begin{frame}{Review: Proof Template for Induction}
+\begin{frame}[t]{Review: Proof Template for Induction}
 
   {\larger
     {\bf Proof by induction on $n$}\\
@@ -109,7 +107,7 @@
 
 \subsection{The Statue Park}
 
-\begin{frame}{The Statue Park}{A more complex proof by induction}
+\begin{frame}[t]{The Statue Park}{A more complex proof by induction}
 
   The university is making a new park with the following rules:
   \begin{itemize}
@@ -156,7 +154,7 @@
 
 \begin{frame}{What is wrong with the horse proof?}
 
-  The second step, when we show that $P(n) \implies P(n+1)$ is not valid.\bigskip
+  The induction step when we show that $P(n) \implies P(n+1)$ is not valid.\bigskip
 
   \begin{itemize}
     \item The implication proof depends on "$h_i$ belongs to subsets $A$ and $B$".
@@ -173,8 +171,7 @@
 
 \subsection{Strong Induction}
 
-\begin{frame}
-  \frametitle{Strong Induction}
+\begin{frame}[t]{Strong Induction}
 
   {\larger
     \begin{itemize}
@@ -193,17 +190,17 @@
   {\larger
   \begin{itemize}
   \item Begin with a stack of 10 blocks
-  \item Divide it in two (a,b): for example, 2 and 8 blocks.
-  \item You get $a\times b$ points: 16 points
+  \item Divide it in two (a, b): for example, 2 and 8 blocks.
+  \item For each division, you get $a\times b$ points: 16 points
   \item Repeat with the new stacks until all stacks have 1 block.
   \end{itemize}
 
   \bigskip
 
-  \alert{What is the best strategy?}
+  \alert{Which of the two strategies below give you more points?}
   \begin{itemize}
-  \item Simple strategy: $1 \times 9$ + $1 \times 8$ + $1 \times 7$ + $1 \times 6$... \only<2->{45 points!}
-  \item CS strategy: $5 \times 5$ + $2 \times 3$ + $2 \times 3$, ... \only<3->{45 points!}
+  \item Simple strategy: $(1 \times 9)$ + $(1 \times 8)$ + $(1 \times 7)$ + $(1 \times 6)$... \only<2->{45 points!}
+  \item CS recursive strategy: $(5 \times 5)$ + $(2 \times 3)$ + $(2 \times 3)$, ... \only<3->{45 points!}
   \end{itemize}
   }
 \end{frame}
@@ -212,8 +209,8 @@
   \frametitle{Proof: All strategies have the same score (Part I)}
 
   {\larger
-  Let us prove by strong inductions that all strategies for the stack
-  game with ``n'' blocks have the same score:
+  Let us prove by strong inductions that {\bf ALL} strategies for the \alert{stack
+  game with ``n'' blocks} have the same final score:
   \begin{equation*}
     C(n) = \frac{n(n-1)}{2}
   \end{equation*}

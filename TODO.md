@@ -5,12 +5,7 @@
 
 ## Week 2:
 - For 2024:
-  - Induction and State Machine (Chapter 5)
-    - Add A suggestion to read chapter 6 
-      for Structural / Recursive Induction
   - Sets and Relations (Chapter 4) 
-    - Move Sets and Relations to the end of the class
-      (And rename it to Sets and Relations)
     - Move all sets definitions to the beginning,
       Add sequence as well (1, 2, 1)
     - Improve Relations Explanation:
