@@ -8,23 +8,46 @@
 
 \subsection{Walks, Paths and Relations}
 
-\begin{frame}{Walks and Paths}
+\begin{frame}[t]{A solution to a problem can be a set of edges and vertices}
 
-  The example of the "course schedule" shows that the solution of a problem can be represented as a sequence of vertices or edges.\bigskip
+{\bf Question:} Is it possible to graduate in the curriculum below?
+\begin{tabular}{p{.1\textwidth}|p{.45\textwidth}||p{.3\textwidth}}
+  \hline
+  Code & Lecture & Prerequisites \\
+  \hline
+  0000 & {\small Social Questions} & \emph{none} \\
+  0001 & {\small Intro to Programming} & \emph{none} \\
+  0002 & {\small Calculus I} & \emph{none} \\
+  0003 & {\small Programming Theory} & \emph{0001} \\
+  0004 & {\small Linear Algebra} & \emph{0000, 0002} \\
+  0005 & {\small Programming Challenges} & \emph{0000, 0001, 0003} \\
+  0006 & {\small Computer Graphics} & \emph{0003, 0004} \\
+  \hline
+\end{tabular}\bigskip 
 
-  We can talk about these sequences as "Walks" or "Paths".\bigskip
+{\bf Answer:} Create the \emph{curriculum's graph} and find a way to go to all vertices from the starting ones.
+
+
+\end{frame}
+
+
+\begin{frame}[t]{Walks and Paths}
+
+  The solution of many graph problems is represented as a sequence of vertices and edges.\bigskip 
+
+  A sequence of vertices in a graph is a \structure{Walk} or a \structure{Path}.\bigskip
 
   \begin{itemize}
-    \item A {\bf Walk} is a sequence of successive edges;\bigskip
+    \item {\bf Walk:} Any sequence of successive edges. 
 
-    \item A {\bf Path} is a walk that does not repeat vertices;
+    \item {\bf Path:} A walk that never visits the same vertex more than once.
   \end{itemize}
 \end{frame}
 
 \begin{frame}{Walk example}
 
   \begin{center}
-    \begin{tikzpicture}[scale=1.5,auto,swap]
+    \begin{tikzpicture}[scale=1.2,auto,swap]
       \tikzset{edge/.style = {->,>=latex'}}
       \node[vertex] (a) at (0,1) {a};
       \node[vertex] (b) at (0,0) {b};
@@ -45,7 +68,7 @@
 
   \bigskip
 
-  \begin{block}{Walk: a sequence of successive edges}
+  \begin{block}{Walk: any sequence of successive edges}
 
     \begin{tikzpicture}[scale=1,auto,swap]
       \tikzset{edge/.style = {->,>=latex'}}
@@ -64,8 +87,8 @@
 
     \begin{itemize}
     \item {\bf Walk lengh:} 5 edges (The length of a walk is the EDGES, not the VERTICES)
-    \item {\bf Representing as a relation:} $E(E(E(E(E(a)))))$
-    \item Note that a walk can repeat edges and vertices! It is just a compound relation.
+    \item {\bf Representing as a compound relation:} $E(E(E(E(E(a)))))$
+    \item NOTE: a walk can repeat edges and vertices! 
     \end{itemize}
   \end{block}
 
@@ -75,7 +98,7 @@
   \frametitle{Path example}
 
   \begin{center}
-    \begin{tikzpicture}[scale=1.5,auto,swap]
+    \begin{tikzpicture}[scale=1.2,auto,swap]
       \tikzset{edge/.style = {->,>=latex'}}
       \node[vertex] (a) at (0,1) {a};
       \node[vertex] (b) at (0,0) {b};
@@ -110,62 +133,70 @@
     \end{tikzpicture}\hspace{1cm} {\bf Stuck!}
 
     \begin{itemize}
-    \item {\bf Walk lengh:} 4 edges (Not 5 vertices)
-    \item Can you find a walk that visits all vertices in the graph?
+    \item {\bf Path lengh:} 4 edges (The length is counted in EDGES, not vertices)
+    \item {\bf \structure{Eulerian Walk:}} Every \structure{edge} is visited once ({\bf E}ulerian).
+    \item {\bf \alert{Hamiltonian Path:}} Every \alert{vertex} is visited once.
+    \item {\bf Eulerian / Hamiltonian Circuit}: You go back to the initial vertex
     \end{itemize}
   \end{block}
 \end{frame}
 
-\begin{frame}{Walks and Paths}
-  Simple example proof with graphs: \emph{"The shortest walk between two vertices is a Path"}
-
-  \begin{proof}
-    {\bf Proof by contradiction:} Assume a shortest walk that is not a graph.
+\begin{frame}{Proofs with Walks and Paths}
+  \begin{proof}[Proof: The shortest Walk between two vertices is a Path]
+    {\bf Proof by contradiction:} Assume a shortest walk that is not a path.
 
     \begin{enumerate}
     \item The shortest walk between $v_0$ and $v_n$ is not a path. So it has a repeated vertice $v_k$:
     \begin{equation*}
-      w_s = v_0 \to v_1 \to \ldots \to v_k \to \ldots \to v_k \to \ldots \to v_{n-1} \to v_n
+      w_{0,n} = v_0 \to v_1 \to \ldots \to v_k \to \ldots \to v_k \to \ldots \to v_{n-1} \to v_n
     \end{equation*}
 
-    \item The walk $w_s$ from $v_0$ to $v_n$, contains a small walk $w_k$ from $v_k$ to $v_k$ of size $|w_k| \geq 1$.
-    \item We can remove $w_k$ from $w_s$, resulting in a smaller walk $w_s'$ with size $|w_s| - |w_k|$
-    \item $w_s'$ is a walk from $v_0$ to $v_n$ that is shorter than $w_s$, which is a contradiction.
+    \item $w_{0,n}$  contains a smaller walk $w_{k,k}$ from $v_k$ to $v_k$ of size $|w_{k,k}| \geq 1$.
+    \item We can remove $w_{k,k}$ from $w_{o,n}$, resulting in a smaller walk $w_{0,2}'$ with size $|w_{0,n}| - |w_{k,k}|$
+    \item $w_{0,n}'$ is a walk from $v_0$ to $v_n$ that is shorter than $w_{0,n}$, which is a contradiction.
     \end{enumerate}
   \end{proof}
 
+  This can be used to prove the \structure{Triangle Inequality} in walks (the distance of $i,j$ is equal or smaller than the distance from $i,k$ + $k,j$)
+
 \end{frame}
 
-\begin{frame}{The Walk Relation}
+\begin{frame}[t]{The Walk Relation}
 
-  We define the \structure{Length $n$ Walk Relation}:
-  \begin{equation}
-    v G^n w.
-  \end{equation}\bigskip
+  Let's describe a binary relation between vertices $v_i$ and $v_j$ in graph $G$,\\ and call it the \structure{Walk Relation}: 
+  \begin{equation*}
+    v_i G^n v_j.
+  \end{equation*}
 
-  This means "There is a walk of length exactly $n$ from $v$ to $w$ in $G$".\bigskip
+  The relation $G^n$ means: "There is a walk from $v_i$ to $v_j$ with length exactly $n$."\bigskip
 
-  Some facts about the $G^n$
+  Let's think about $G^n$:
   \begin{itemize}
-  \item $G^1$ is the relation of vertices directly connected by edges in $G$.
-  \item {\bf addition:} $G^n \circ G^m = G^{n+m}$ \hspace{.5cm}
-    (the composite of two Walk Relations is their addition)
-  \item {\bf common vertex:} $x~G^m \circ G^n~y \rightarrow \exists z, x~G^m~z~G^n~y$
-    \hfill ($G^m\circ G^n$ has a common vertex)
+    \item $G^0$ is the set of all vertices (walk of size 0 goes nowhere)
+    \item $G^1$ is the set of all pairs of vertices connected by 1 edge    
+    \item {\bf composition and addition:} $G^n \circ G^m = G^{n+m}$ \hspace{.5cm}\\
+    (For example, $G^2 + G^3 = G^5$)
+    \item {\bf common vertex:} If there is a composite relation between $v_x$ and $v_y$ ($v_x~G^m \circ G^n~v_y$), this implies that there is a common vertex connecting them:\\
+    $v_x~G^m \circ G^n~v_y\rightarrow \exists z, v_x~G^m~v_k, v_k~G^n~v_y$
+
   \end{itemize}
 \end{frame}
 
-\begin{frame}{Walk Relations: Composition and the Adjacency Matrix}
+\begin{frame}[t]{The Walk Relation and the Adjacency Matrix}
 
-  Consider the adjency matrix $A_{G^n}$ that describes the relation $G^n$: $a_{ij} = 1 \iff v_i G v_j$.\bigskip
+  Before, we described the Adjacency Matrix $A$, where $A_{i,j}=1$ if $E(v_i$,$v_j)$.
+  \bigskip
+  
+  If we rename $A$ to $A_{G^1}$, we can generalize this concept to the \structure{Walk Matrix $A_{G^n}$}, which is the adjacency matrix representing $G^n$: $A_{G^n,i,j}=1$ if $v_i~G^n~v_j$. ($\exists$ walk of size $n$ from $v_i$ to $v_j$)
+  \bigskip
 
-  It is possible to calculate the Adjacency Matrix of a composite walk relation using \emph{boolean matrix multiplication}: $A_{G^n\circ G^m} = A'_{G^n} \odot A''_{G_m}$:
+  It is possible to calculate $A_{G^n}$ using \emph{boolean matrix multiplication}: $A_{G^n\circ G^m} = A'_{G^n} \odot A''_{G_m}$:
 
-  \begin{equation}
+  \begin{equation*}
     a_{ij} = A'_{i*} \odot A''_{*j} = (a'_{i0} \land a''_{0j}) \lor (a'_{i1} \land a''_{1j}) \lor (a'_{i2} \land a''_{2j}) \lor \ldots \lor (a'_{in} \land a''_{nj})
-  \end{equation}\bigskip
+  \end{equation*}\medskip
 
-  This means that we can calculate $A_{G^n}$ quickly using the \structure{Fast Matrix Exponentiation} algorithm:
+  This means that we can calculate $A_{G^n}$ quickly using the \structure{Fast Matrix Exponentiation}:
 
   \begin{itemize}
     \item $A_{G^n} = A_{G^{n/2}} \odot A_{G^{n/2}} = (A_{G^{n/4}} \odot A_{G^{n/4}}) \odot (A_{G^{n/4}} \odot A_{G^{n/4}}) = \ldots$
@@ -173,20 +204,20 @@
 
 \end{frame}
 
-\begin{frame}
-  \frametitle{Walk Relation $G^*$ of a Digraph}
+\begin{frame}[t]{Walk Relation $G^*$ of a Digraph}
 
   \begin{itemize}
-  \item $G^n$ is the \structure{length $n$ walk relation}; while $G^*$ is the \structure{walk relation of $G$}
-  \item $u G^* v$ means that there is a walk from $u$ to $v$ \structure{of {\bf any} length}\\
+  \item $G^n$ is the \structure{length $n$ walk relation}: It representes \structure{all walks of size exaclty $n$}
+  \item $G^*$ is the \alert{walk relation of $G$}: It representes \alert{all walks in $G$}.
+  \item $u G^* v$ means that \alert{there is a walk of {\bf some} length from $u$ to $v$}\\
   \end{itemize}\bigskip
 
-  \alert{QUIZ:} How do we calculate $G^*$ for a graph, given the adjacency matrix $A$?\bigskip
+  \structure{QUIZ:} How do we calculate $A_{G^*}$ for a graph, given adjacency matrix $A_{G^1}$?\bigskip
 
-  Remember that a walk can be infinite. So is it possible to solve this problem with a {\bf finite} algorithm?
+  \alert{HINT:} Remember that a walk can be infinite. But we need to solve this problem with a {\bf finite} algorithm! When does the algorithm stop?
 \end{frame}
 
-\begin{frame}{Walk Relation of a DiGraph}{How to calculate $G^*$}
+\begin{frame}[t]{Walk Relation of a DiGraph}{How to calculate $G^*$}
 
   \begin{enumerate}
   \item Let $G^1$ be the relation defined by the original graph (or its adjacency matrix).\medskip
@@ -196,13 +227,32 @@
       \tikzset{edge/.style = {->,>=latex'}}
       \node[vertex] (a) at (0,0) {};
       \draw[edge] (a) to[loop left] (a);
-    \end{tikzpicture} (Or the identity matrix).\medskip
+    \end{tikzpicture}\\
+    ($A_{G^0}$: the identity matrix).\medskip
 
-  \item The relation $G^{\leq 1} = G^0 \cup G^1$ is the relation for walks of \emph{length 1 or less};\medskip
+  \item The relation $G^{\leq 1} = G^0 \cup G^1$ is the relation for walks of \emph{length 1 or less};\\
+  ($A_{G^\leq 1} = A_{G^0} \times A_{G^1}$)\medskip
 
-  \item $G^* = (G^{\leq})^{n-1}$, so you can calculate $G^*$ in $\log n$ matrix boolean multiplications
+  \item $G^* = (G^{\leq})^{n-1}$: All walks of size $n-1$ or less.\hfill ({\bf Q: Why not n?})\medskip 
+  
+  \item Using fast exponentiation, you can calculate $G^*$ in $\log n$ matrix boolean multiplications
   \end{enumerate}
 \end{frame}
+
+\begin{frame}[t]{Adjacency Matrices and Neural Networks}{Why did we just study this?}
+  We just studied an algorithm that can quickly calculate all the walks in a directed graph.\bigskip 
+
+  If the graph is also {\bf acyclic}, and the edges have {\bf weights} in them, this algorithm can be easily generalized to \structure{calculate the total weight between any two vertices}.\bigskip 
+
+  This can be used to quickly calculate the weight between the input neuron and the output neuron of a very large network!\bigskip
+
+  \structure{This is one reason why Matrix Multiplications are important for Machine Learning.}
+
+  \vfill 
+  (caveat emptor: it gets more complicated with loops, non-linear activation functions, etc)
+\end{frame}
+
+\subsection{Prerequisite Course Graphs}
 
 \begin{frame}{Walks and Prerequisite Course Graphs}
   \begin{columns}

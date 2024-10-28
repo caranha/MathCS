@@ -24,10 +24,10 @@
   (proof of Euler function is a good exercise)
 
 ## Week 4:
-- NOT OK.
-  - Last half of lecture 4 needs a rewrite!
-  - The last section, about Graph Assymetry and Relations is weird, not easy to explain, 
-    with confusing slides. THIS PART NEEDS TO BE REWRITTEN!
+- TODO: Fixed the "Graphs, Partial Orders, Relations" part in 2024.
+- TODO: Add some stuff about detecting isomorphism in 2025. 
+- IDEA: Add some easy exercises to the book to the final slide to use the remaining time?
+
 
 ## Week 5:
 

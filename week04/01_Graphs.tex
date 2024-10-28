@@ -8,7 +8,7 @@
 
 \subsection{Motivations}
 
-\begin{frame}{Using Graphs to Solve Problems}{Course Registration}
+\begin{frame}{Using Graphs to Solve Problems}{First Example Problem: Course Registration}
 
   We can represent a list of courses in a university, and their requirements, using a graph structure. For example, to take \emph{"Computer Graphics"}, you need to take \emph{"Programming Theory"} and \emph{"Linear Algebra"} first.\medskip
 
@@ -30,7 +30,7 @@
 \end{frame}
 
 
-\begin{frame}{Using Graphs to Solve Problems}{Course Registration}
+\begin{frame}{Using Graphs to Solve Problems}{First Example Problem: Course Registration}
 
   The university proposes a new lecture, \emph{"Maths for Computer Science"}. The updated table is below. \medskip
 
@@ -52,7 +52,7 @@
   \end{tabular}
 \end{frame}
 
-\begin{frame}{Using Graphs to Solve Problems}{Airplane}
+\begin{frame}{Using Graphs to Solve Problems}{Second Example Problem: Airplane}
   \begin{columns}
 
     \column{0.3\textwidth}
@@ -65,7 +65,7 @@
 \end{frame}
 
 \begin{frame}[t]{Problems as Graphs}
-  Many problems that can be described by the \emph{relationship} betwene entities in the problem can be represented as graphs.\bigskip
+  Many problems that can be described by the \emph{relationship} between entities in the problem can be represented as graphs.\bigskip
 
   \begin{itemize}
     \item A course is a prerequisite to another one;
@@ -74,6 +74,12 @@
   \end{itemize}\bigskip
 
   These relationships can be described mathematically using a graph structure.
+
+  \vfill 
+
+  \begin{block}{}
+  Graph representation allows us to use the same mathematical tools for different problems!
+  \end{block}
 \end{frame}
 
 \subsection{Definitions}
@@ -121,13 +127,22 @@
 
     Graph $G = (V, E)$
     \begin{itemize}
-      \item $V = \{a,b,c,d\}$
-      \item $E = \{(a,c),(a,b),(c,b)\}$
+      \item Set of vertices $V = \{a,b,c,d\}$
+      \item Set of edges $E = \{(a,c),(a,b),(c,b)\}$
     \end{itemize}\bigskip
 
-    A digraph with vertices $V$ can be understood as a \structure{binary relation $V \to V$}\bigskip
+    \begin{itemize}
+    \item Every graph can be described as \structure{a binary relation $V \to V$}
+    \begin{itemize}
+      \item $E(a) = \{b,c\}$
+      \item $E(c) = \{b\}$
+      \item $E(d) = \emptyset$
+    \end{itemize}
+    
+    \bigskip
 
-    In the same way, every \structure{binary relation} can be written as a directed graph too.
+    \item And every binary relation can be described as a directed graph too!
+    \end{itemize}
   \end{columns}
 \end{frame}
 
@@ -168,15 +183,12 @@
         e &0&0&0&0&0&1\\
         f &0&0&0&1&0&0\\
       \end{tabular}
-    }\medskip
+    }
+  \end{columns}\bigskip
 
-    {\bf Adjacency Matrix}
-  \end{columns}
-  \bigskip
-
-  An \structure{Adjacency Matrix} A represents a digraph, when $A_{i,j}$ is 1 if $v_i \to v_j$, and 0 if not.
-
-  \begin{equation*}
-    A(v_i,v_j) = 1 \iff E(v_i) = v_j
-  \end{equation*}
+  \begin{itemize}
+    \item A digraph is represented by a $|V|x|V|$ binary matrix ({\bf adjacency matrix})
+    \item If there is an edge between $v_i$ and $v_j$, then $A_{i,j} = 1$, else $A_{i,j} = 0$ 
+    \item Another way to state it:    $A(v_i,v_j) = 1 \iff v_j \in E(v_i)$
+  \end{itemize}
 \end{frame}
